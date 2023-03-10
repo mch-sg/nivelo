@@ -1,0 +1,88 @@
+/*  SCREEN ADJUSTMENTS   */
+
+@media only screen and (max-width: 812px) {
+  form {
+    width: 325px;
+    padding: 10px;
+    max-width: 100%;
+  }
+
+  .container {
+    width: 350px;
+    /* max-width: 100%; */
+  }
+
+  .input {
+    width: 86%;
+    font-size: 1.1rem;
+  }
+
+  .container {
+    margin-top: 50px;
+  }
+
+  .todos li {
+    font-size: 1.1rem;
+    padding: 1.25rem 1.25rem;
+  }
+
+  .loader::after {
+    width: 60px;
+    height: 60px;
+  }
+
+  button {
+    font-size: 15px; // 17 px
+    padding: 1rem 1.5rem;
+  }
+
+  .input {
+    padding: 1rem 1.5rem;
+  }
+
+  form ul li span {
+    display: block;
+    width: 15px;
+    height: 15px;
+  }
+
+  li .destroy {
+    display: block;
+    font-size: 30px;
+
+    top: 0;
+    right: 10px;
+    bottom: 0;
+    width: 40px;
+    height: 40px;
+    max-height: 35px;
+
+    margin: auto 0;
+    padding: 0;
+
+    border-radius: 50%;
+    margin-bottom: 25px;
+  }
+
+  #input3 {
+    max-width: 90%;
+    height: 100%;
+    font-size: 1.25rem;
+  }
+}
+
+@media only screen and (min-width: 2000px) {
+  form {
+    width: 600px;
+    max-width: 100%;
+  }
+
+  .input {
+    width: 92%;
+  }
+
+  .container {
+    width: 600px;
+    max-width: 100%;
+  }
+}
