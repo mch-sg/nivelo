@@ -12,20 +12,20 @@
     include_once 'db/includes/nav.php';
 ?>
 
-<main class="centerMain">
+<main class="centerMain aalign">
     <!-- <p style="margin-bottom: -10px;">welcome to..</p> -->
-    <h1 style="margin-top: 15px">Welcome!</h1>
-    <a href="https://"><button>Try it today!</button></a>
+    <h1>Welcome!</h1>
+    <a href="https://"><button style="margin-top: 25px;">Try it today!</button></a>
 
 
 </main>
 
 <footer class="footer">
-    <p>
+    <!-- <p>
         adfasdasd
         <br/><br/>
-    </p>
-    <p class="copy">© Memento by <a href="https://magnushvidtfeldt.com" target="_blank"> Magnus Hvidtfeldt</a></p>
+    </p> -->
+    <p class="copy">© Memento by <a href="https://" target="_blank"> Magnus Hvidtfeldt</a></p>
 
 </footer>
 

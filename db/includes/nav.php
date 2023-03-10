@@ -1,17 +1,17 @@
 <header id="header" class="head">
-    <a class="h-logo" href="/">
+    <a class="h-logo" href="/webportal">
         <!-- <img src="https://res.cloudinary.com/coolors/image/upload/t_60x60/v1636729140/live/custom-avatars/fzhn1oqool8tpb2am7hx.jpg"></img> -->
     image
     </a>
 
     <nav>
         <ul class="nav_links">
-            <li>
+            <!-- <li>
                 <div class="divclr">
                     <a id="p1" class="diva" href="#">Projects</a>
                     <a id="p2" class="divb bi bi-chevron-down"></a>
                 </div>
-            </li>
+            </li> -->
             <li><a class="pro" href="/?about">Go Pro</a></li>
 
             <?php
