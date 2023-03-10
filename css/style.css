@@ -25,25 +25,6 @@
   --dim: #FFFFFF3C;
 }
 
-/* body.light-theme {
-  --fw: 300;
-  --b: #fdfdfd; 
-  --minclr: #f9f9f9;
-  --lihover: #f1f1f1; 
-  --borderclr: #0000000a;
-  --focusclr: #00000008;
-  --hrc: #4e4e4e0c;
-  --loaderclr: #0000002c;
-
-  --add: #b4aba9;
-
-  --w: #3e3e3e;
-  --sekclr: #0e0e0ebf;
-  --dim: #00000037;
-  --smallclr: #15151555;
-}  */
-
-
 
 /*  PRELOADER  */
 #preloader {
@@ -91,17 +72,6 @@
   visibility: hidden;
 }
 
-.bri {
-  /* transition: 0.2s; */
-  color: var(--add);
-}
-.bri:hover {
-  color: var(--dimclr);
-}
-
-#toggleLight {
-  cursor: pointer;
-}
 
 
 /* ALL * */
@@ -146,11 +116,6 @@ body {
   display: flex;
 }
 
-.centerFooter {
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
 
 h1 {
   color: var(--w);
@@ -256,7 +221,7 @@ form {
   transition: 0.2s;
 }
 
-.input {
+/* .input {
   font-family: "Inter", sans-serif;
   font-weight: 300;
   width: 90%;
@@ -265,71 +230,15 @@ form {
   background-color: var(--minclr);
   border: none;
   font-size: 1.25rem;
-  /* border: 1px solid #FFFFFF0A; */
   padding: 1.35rem 1.5rem;
   display: block;
 
-  overflow: hidden;
-  word-wrap: break-word;
-
   transition: 0.2s;
 }
-
-.input:focus {
-  background-color: var(--focusclr);
-  border-radius: 10px;
-}
-
-i {
-  transition: 0.2s;
-}
-
-.input::placeholder {
-  color: var(--dim);
-}
-
-.input:active,
-.input:focus {
-  outline: none;
-  border-radius: 10px 10px 0 0;
-  /* outline: 1px solid var(--sekclr); */
-}
-
+*/
 
 span {
   cursor: pointer;
-}
-
-
-.list-container {
-  margin-bottom: 10px;
-
-  overflow: hidden;
-  word-wrap: break-word;
-}
-
-.list-title {
-  font-family: "Inter", sans-serif;
-  font-weight: 300;
-  font-size: 1.5rem; // 1.75rem
-}
-
-
-
-#form1 {
-  /* visibility: hidden; */
-  display: none;
-}
-#tmr {
-  /* visibility: hidden; */
-  display: none;
-}
-
-#form2 {
-  display: none;
-}
-#tmr1 {
-  display: none;
 }
 
 
@@ -341,6 +250,7 @@ span {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 
 /* home page */
 /* buttons */
@@ -374,17 +284,10 @@ a button:active {
   transform: scale(0.92);
 }
 
-i {
-  font-size: 20px;
-  cursor: pointer;
-  /* transition: 0.2s; */
-}
 
 .select {
   cursor: default;
-  color: var(--w);
-  /* background-color: var(--w); */
-  /* padding-left: 15px; */
+
 }
 
 .hvr {
