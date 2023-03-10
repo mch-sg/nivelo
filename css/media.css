@@ -69,6 +69,18 @@
     height: 100%;
     font-size: 1.25rem;
   }
+
+  .nav_links li {
+    display: inline-block;
+    padding: 0px 10px;
+    transition: 0.2s;
+  }
+
+  .nav_links li a {
+    /* transition: all 0.2s ease 0s; */
+    font-size: 10;
+    transition: 0.2s;
+  }
 }
 
 @media only screen and (min-width: 2000px) {
