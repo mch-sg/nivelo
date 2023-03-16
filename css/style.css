@@ -11,12 +11,7 @@
   --hrc: #ffffff12;
   --loaderclr: #ffffff2c;
   --w: #EFEFEF;
-  --sekclr: #e2e2e2db;
-
-  /* --add: #c8b0dc; 
-  --dimclr: #9679a2;
-  --buttonhover: #b785ab; 
-  --hclr: #e1b1d6;  */
+  --sekclr: #fafafa;
 
   --minclr: #101010; 
   --bclr: #0000006f;
@@ -73,15 +68,12 @@
 
 
 
+
 /* ALL * */
 
 * {
-  /* margin-bottom: 5px; */
   text-decoration: none;
-  /* transition: 0.2s; */
 
-  -webkit-font-smoothing: antialiased !important;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 hr {
@@ -90,18 +82,16 @@ hr {
   margin-bottom: 75px;
 }
 
+
+
+
 /*  PRIMARY  */
 
 body {
   transition: 0.2s;
   font-family: "Raleway", "Inter", sans-serif;
-  font-variant-numeric: lining-nums;
-  font-feature-settings: "lnum";
 
   background-color: var(--b);
-  /* background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.dribbble.com%2Fusers%2F376806%2Fscreenshots%2F1516371%2Fgifdribble.gif&f=1&nofb=1&ipt=fbbcc0774b4560844a2fe87ab18680dbae08c5dac352f0e72efc5b61bb72a22e&ipo=images"); */
-  background-repeat: no-repeat;
-  /* filter: blur(1px); */
   background-size: cover;
   margin: 0;
   padding: 0;
@@ -114,7 +104,6 @@ body {
   flex-direction: column;
   display: flex;
 }
-
 
 h1 {
   color: var(--w);
@@ -162,23 +151,11 @@ p a:hover {
   opacity: 1;
 }
 
-div a {
-  font-size: 1rem;
-}
-
 a {
   color: var(--w);
   cursor: pointer;
 }
 
-.hovEl {
-  color: var(--add);
-  cursor: pointer;
-  transition: 0.2s;
-}
-.hovEl:hover {
-  color: var(--dimclr);
-}
 
 small {
   text-align: center;
@@ -197,6 +174,8 @@ header {
   text-align: center;
   align-items: center;
 }
+
+
 
 /*  CLASS ASSETS  */
 
@@ -220,25 +199,6 @@ form {
   transition: 0.2s;
 }
 
-/* .input {
-  font-family: "Inter", sans-serif;
-  font-weight: 300;
-  width: 90%;
-  border-radius: 10px;
-  color: var(--sekclr);
-  background-color: var(--minclr);
-  border: none;
-  font-size: 1.25rem;
-  padding: 1.35rem 1.5rem;
-  display: block;
-
-  transition: 0.2s;
-}
-*/
-
-span {
-  cursor: pointer;
-}
 
 
 
@@ -249,7 +209,6 @@ span {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
 
 /* home page */
 /* buttons */
@@ -265,12 +224,7 @@ a button {
   transition: 0.2s ease-in-out;
   color: var(--b);
 
-  /* box-shadow: 0 0px 10px var(--hclr); */
-  font-smooth: always;
-  -webkit-font-smoothing: antialiased;
   backface-visibility: hidden;
-  transform: translateZ(0);
-  translate3d( 0, 0, 0);
 }
 
 a button:hover {
@@ -283,10 +237,15 @@ a button:active {
   transform: scale(0.92);
 }
 
+i {
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
 .select {
   cursor: default;
-
+  color: var(--w);
 }
 
 .hvr {
@@ -296,5 +255,6 @@ a button:active {
 
 .hvr:hover {
   color: var(--dimclr);
-}
+
+
 

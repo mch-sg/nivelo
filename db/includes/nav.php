@@ -1,5 +1,5 @@
 <header id="header" class="head">
-    <a class="h-logo" href="/webportal">
+    <a class="h-logo" href="/">
         <!-- <img src="https://res.cloudinary.com/coolors/image/upload/t_60x60/v1636729140/live/custom-avatars/fzhn1oqool8tpb2am7hx.jpg"></img> -->
     image
     </a>
