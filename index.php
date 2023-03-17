@@ -25,7 +25,7 @@
         adfasdasd
         <br/><br/>
     </p> -->
-    <p class="copy">© Memento by <a href="https://" target="_blank"> Magnus Hvidtfeldt</a></p>
+    <p class="copy">© Webportal by <a href="https://" target="_blank"> Magnus Hvidtfeldt</a></p>
 
 </footer>
 

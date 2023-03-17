@@ -47,7 +47,7 @@
 <div id="preloader" class="loader"></div>
 <footer class="footer" style="position:fixed;">
 
-    <p class="copy">© Memento by <a href="https://" target="_blank"> Magnus Hvidtfeldt</a></p>
+    <p class="copy">© Webportal by <a href="https://" target="_blank"> Magnus Hvidtfeldt</a></p>
 
 </footer>
 
