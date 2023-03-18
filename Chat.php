@@ -15,9 +15,11 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 <body>
 
 <form method="POST" action="Page2.php">
-Send user a message: <input type="textarea" name="input" />
+Send user a message:  <textarea type="textarea" name="input" ></textarea>
+<!-- <input type="textarea" name="input" /> -->
 
 <input type="submit" value="Send" />
+
 </form>
 
 <br>
