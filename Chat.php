@@ -1,3 +1,4 @@
+
 <?php
 
 $serverName = "127.0.0.1:3306";
@@ -9,16 +10,35 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 ?>
 
 
-<!doctype html>
-
-<head></head>
+<?php
+    include_once 'db/includes/header.php';
+?>
+<title>Chatting</title>
+</head>
 <body>
 
-<form method="POST" action="Page2.php">
-Send user a message:  <textarea type="textarea" name="input" ></textarea>
-<!-- <input type="textarea" name="input" /> -->
+<?php
+    include_once 'db/includes/nav.php';
+?>
 
-<input type="submit" value="Send" />
+
+
+
+<section class="signup-form aalign">
+
+<div style="padding: 25px;font-size: 1.5rem;">
+    <div class="title sysText" style="text-align: center;">Chat</div>
+</div>
+
+<form class="form" method="POST" action="Page2.php" style="background-color: var(--b);border: none;">
+Send user a message: <input type="textarea" name="input" class="input3" autocomplete="off" placeholder="Send user a message..."/>
+<!-- <input type="textarea" name="input" />     <textarea type="textarea" id="message" name="message"> </textarea> -->
+
+<!-- <input type="submit" value="Send"/> -->
+
+<div class="modal-spc" style="text-align:center;">
+    <button class="modal-btn" type="submit" value="Send">Send</button>
+</div>
 
 </form>
 
@@ -26,6 +46,9 @@ Send user a message:  <textarea type="textarea" name="input" ></textarea>
 <br>
 <!-- <iframe src="Page1.php" width="100%" height="100%"></iframe> -->
 
+<div style="color:white;">
+<!-- <div class="title sysText" style="text-align: center;">Chat</div> -->
+<br><br>
 <?php
     // $sql = "SELECT 'message' FROM chat1";
     $sql = "SELECT * FROM Chat1";
@@ -40,5 +63,23 @@ Send user a message:  <textarea type="textarea" name="input" ></textarea>
     }
     $conn->close();
 ?>
+</div>
 
-</body>
+</section>
+
+
+
+<div id="preloader" class="loader"></div>
+<footer class="footer" style="position:fixed;">
+
+<p class="copy">© Webportal by <a href="https://" target="_blank"> Magnus Hvidtfeldt</a></p>
+
+</footer>
+
+
+
+<?php
+    include_once 'db/includes/footer.php';
+?>
+
+<link rel="stylesheet" href="css/palette-selector.css">

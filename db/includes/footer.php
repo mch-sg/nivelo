@@ -5,7 +5,7 @@
     window.addEventListener('load', function() {
         setTimeout(() => {
         document.querySelector('.loader').classList.add('loader--hidden');
-        }, 500)
+        }, 00)
 
         document.querySelector('.loader').addEventListener('transitionend', function() {
             document.querySelector('.loader').style.display = 'none';
