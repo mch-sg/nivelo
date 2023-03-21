@@ -56,6 +56,7 @@ Send user a message: <input type="textarea" name="input" class="input3" autocomp
 
     if($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
+            // echo "".$row["user_id"]. ": ";
             echo "".$row["message"]. "<br><br>";
         }
     } else {

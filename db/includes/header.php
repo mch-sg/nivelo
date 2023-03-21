@@ -1,5 +1,8 @@
 <?php
     session_start();
+
+    $_SESSION['user_id'] = $uid; // assuming $user_id is the ID of the logged in user
+
 ?>
 
 <!DOCTYPE html>
