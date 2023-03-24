@@ -37,7 +37,7 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 
 if(isset($_SESSION['useruid'])){
     echo "<form class='form' method='POST' action='Page2.php' style='background-color: var(--b);border: none;' >";
-    echo "Send en besked: <input type='textarea' name='input' class='input3' autocomplete='off' placeholder='Send en besked...'/>";
+    echo "<input type='textarea' name='input' class='input3' autocomplete='off' placeholder='Send en besked...'/>";
     echo "<div class='modal-spc' style='text-align:center;'>";
     echo "    <button class='modal-btn' type='submit' value='Send'>Send</button>";
     echo "</div>";

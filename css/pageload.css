@@ -2,12 +2,12 @@
 
 ::-moz-selection {
   /* Code for Firefox */
-  color: var(--hclr);
+  color: #8c8c8c;
   background: none;
 }
 
 ::selection {
-  color: var(--hclr);
+  color: #8c8c8c;
   background: none;
 }
 

@@ -190,7 +190,7 @@ header {
 form {
   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05); /* rgba(127, 127, 127, 0.075) */
   margin: auto;
-  width: 500px;
+  width: 600px;
   max-width: 100%;
   border: 1px solid var(--borderclr); /* 1px solid #0000000a */
   border-radius: 10px;

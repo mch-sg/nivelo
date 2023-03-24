@@ -19,7 +19,7 @@
         <div class="title sysText" style="text-align: center;">Log på</div>
     </div>
     <div class="modal-bodyi">
-        <form class="form" action="db/includes/login.inc.php" method="post" style="background-color: var(--b);border: none;">
+        <form class="form" action="db/includes/login.inc.php" method="post" style="background-color: var(--b);border: none;width: 500px;">
             <input class="input3" type="text" name="uid" placeholder="Brugernavn/Email..." style="margin-bottom:15px;">
             <input class="input3"  type="password" name="pwd" placeholder="Adgangskode..." style="margin-bottom:5px;">
 

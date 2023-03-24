@@ -16,7 +16,7 @@
         <div class="title sysText" style="text-align: center;">Tilmeld</div>
     </div>
     <div class="modal-bodyi">
-        <form class="form" action="db/includes/signup.inc.php" method="post" style="background-color: var(--b);border: none;">
+        <form class="form" action="db/includes/signup.inc.php" method="post" style="background-color: var(--b);border: none;width: 500px;">
             <input class="input3" type="text" name="name" placeholder="Fulde navn..." style="margin-bottom:15px;">
             <input class="input3"  type="text" name="email" placeholder="Email..." style="margin-bottom:15px;">
             <input class="input3"  type="text" name="uid" placeholder="Brugernavn..." style="margin-bottom:15px;">

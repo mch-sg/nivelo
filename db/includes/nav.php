@@ -1,9 +1,10 @@
 <header id="header" class="head">
-    <a class="h-logo" href="/">
+    <a class="h-logo pro" href="/" style="font-size: 18px; transition: 0.2s;">
         <!-- <img src="https://res.cloudinary.com/coolors/image/upload/t_60x60/v1636729140/live/custom-avatars/fzhn1oqool8tpb2am7hx.jpg"></img> -->
     Webportal
     </a>
 
+    
     <nav>
         <ul class="nav_links">
             <!-- <li>
@@ -12,7 +13,7 @@
                     <a id="p2" class="divb bi bi-chevron-down"></a>
                 </div>
             </li> -->
-            <li><a class="pro" href="/Chat.php">Chat</a></li>
+            <li><a class="pro" href="/chat-ui-prototype.php">Chat</a></li>
 
             <?php
                 if(isset($_SESSION["useruid"])){
