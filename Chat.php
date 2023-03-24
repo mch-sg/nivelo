@@ -44,7 +44,7 @@ if(isset($_SESSION['useruid'])){
     echo "</form>";
 }
 else{
-    echo "<p style='margin-top: 25px;'>Log på for at skrive!</p>";
+    echo "<p style='margin-top: 25px;'>Log på for at skrive og se beskeder!</p>";
 }
 
 ?>
@@ -73,7 +73,7 @@ Send user a message: <input type="textarea" name="input" class="input3" autocomp
     $sql = "SELECT * FROM Chat1";
     $result = $conn->query($sql); // mysqli_query($conn, $sql)
 
-    if($result->num_rows > 0) {
+    if($result->num_rows > 0 && isset($_SESSION['useruid'])) {
         while($row = $result->fetch_assoc()) {
             // echo "".$row["user_id"]. " " ."- " . $row["message"]. "<br><br>";
 
@@ -81,8 +81,10 @@ Send user a message: <input type="textarea" name="input" class="input3" autocomp
             // echo $date->format('Y-m-d');
             echo "".$row["user_id"]. " " ."(" . $date->format('M. d H:i'). ") " . "- " . $row["message"]. "<br><br>";
         }
+    } else if (!isset($_SESSION['useruid'])) {
+        echo "";
     } else {
-        echo "There are no messages here yet.";
+        echo "Der er ingen beskeder her endnu.";
     }
     $conn->close();
 ?>

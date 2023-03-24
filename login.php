@@ -49,11 +49,11 @@
 
 
 <div id="preloader" class="loader"></div>
-<footer class="footer" style="position:fixed;">
+<!-- <footer class="footer" style="position:fixed;">
 
     <p class="copy">© Webportal by <a href="https://" target="_blank"> Magnus Hvidtfeldt</a></p>
 
-</footer>
+</footer> -->
 
 
 
