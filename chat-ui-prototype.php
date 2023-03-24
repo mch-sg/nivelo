@@ -46,7 +46,7 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
             // echo "<a style='opacity:0.7'>".$row["user_id"]. " " ."(" . $date->format('H:i'). ") " . "- </a>";
             // echo ""$row["message"]. "<br><br>";
 
-            echo "<a style='opacity:0.60;pointer-events: none;'>".$row["user_id"]. " " ."(" . $date->format('H:i'). ") " . "-</a> " . $row["message"]. "<br><br>";
+            echo "<a style='color: #ff6e5ac2; opacity:1.00;pointer-events: none;'>".$row["user_id"]. "</a> " ."<a style='opacity:0.30;pointer-events: none;'>(" . $date->format('M. d \k\l. H:i'). ")</a> " . "-</a> " . $row["message"]. "<br><br>";
         }
     } else if (!isset($_SESSION['useruid'])) {
         echo "";

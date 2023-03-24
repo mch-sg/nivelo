@@ -59,7 +59,7 @@ cta {
   justify-content: flex-end;
   align-items: center;
   padding: 50px 40px;
-  height: 50px;
+  height: 100px;
   text-align: center;
   border-bottom: 1px solid var(--borderclr);
   vertical-align: middle;
