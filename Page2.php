@@ -1,15 +1,21 @@
 <?php
 
+session_start();
+
 $serverName = "127.0.0.1:3306";
 $dBUsername = "u463909974_exam";
 $dBPassword = "Ekg123321";
 $dBName = "u463909974_portal";
 
 $input = $_POST['input'];
+$name = $_SESSION['usersUid'];
 
 $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 
-$sql = "INSERT INTO Chat1 (message) VALUES ('$input')";
+// $sql = "INSERT INTO Chat1 (message) VALUES ('$input')";
+$sql = "INSERT INTO Chat1 (message, user_id) VALUES ('$input', '$name')";
+
+
 
 // $sql = "UPDATE 'Chat1' SET 'message' = '$input' WHERE 'chat1'.'id' = 1;";
 

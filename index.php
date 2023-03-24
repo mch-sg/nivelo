@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include_once 'db/includes/header.php';
 ?>
 <title>Home</title>

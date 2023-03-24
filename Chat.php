@@ -1,6 +1,8 @@
 
 <?php
 
+session_start();
+
 $serverName = "127.0.0.1:3306";
 $dBUsername = "u463909974_exam";
 $dBPassword = "Ekg123321";
@@ -19,6 +21,8 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 
 <?php
     include_once 'db/includes/nav.php';
+
+    echo $_SESSION['usersUid'];
 ?>
 
 
@@ -57,7 +61,8 @@ Send user a message: <input type="textarea" name="input" class="input3" autocomp
     if($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
             // echo "".$row["user_id"]. ": ";
-            echo "".$row["message"]. "<br><br>";
+            // echo "".$row["message"]. "<br><br>";
+            echo "".$row["usersUid"]. " " ."- " . $row["message"]. "<br><br>";
         }
     } else {
         echo "0 results";
@@ -65,6 +70,7 @@ Send user a message: <input type="textarea" name="input" class="input3" autocomp
     $conn->close();
 ?>
 </div>
+
 
 </section>
 
