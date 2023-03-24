@@ -8,7 +8,7 @@ $dBPassword = "Ekg123321";
 $dBName = "u463909974_portal";
 
 $input = $_POST['input'];
-$name = $_SESSION['usersUid'];
+$name = $_SESSION['name'];
 
 $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 

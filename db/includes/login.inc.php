@@ -16,7 +16,7 @@ if(isset($_POST['submit'])){
     }
 
     loginUser($conn, $username, $pwd);
-    $_SESSION['usersUid'] = $username;
+    $_SESSION['name'] = $username;
 
 }
 else{
