@@ -1,4 +1,8 @@
 <?php
+    session_start();
+?>
+
+<?php
 
 if(isset($_POST['submit'])){
 
@@ -16,7 +20,6 @@ if(isset($_POST['submit'])){
     }
 
     loginUser($conn, $username, $pwd);
-    $_SESSION['name'] = $username;
 
 }
 else{

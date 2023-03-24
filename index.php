@@ -15,7 +15,18 @@
 
 <main class="centerMain aalign">
     <!-- <p style="margin-bottom: -10px;">welcome to..</p> -->
-    <h1>Welcome!</h1>
+    <h1>Welcome, <?php echo $_SESSION["useruid"]; ?>!</h1>
+
+    <?php
+
+        // if(isset($_SESSION['name'])){
+        //     echo "<p style='margin-top: 25px;'>You are logged in!</p>";
+        // }
+        // else{
+        //     echo "<p style='margin-top: 25px;'>You are logged out!</p>";
+        // }
+    ?>
+
     <a href="https://"><button style="margin-top: 25px;">Try it today!</button></a>
 
 

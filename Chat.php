@@ -22,11 +22,6 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 <?php
     include_once 'db/includes/nav.php';
 
-    echo $_SESSION['name'];
-
-    console.log($_SESSION['name']);
-    // console.log($_SESSION['usersUid']);
-    console.log($username);
 ?>
 
 
@@ -66,7 +61,7 @@ Send user a message: <input type="textarea" name="input" class="input3" autocomp
         while($row = $result->fetch_assoc()) {
             // echo "".$row["user_id"]. ": ";
             // echo "".$row["message"]. "<br><br>";
-            echo "".$row["usersUid"]. " " ."- " . $row["message"]. "<br><br>";
+            echo "".$row["user_id"]. " " ."- " . $row["message"]. "<br><br>";
         }
     } else {
         echo "0 results";

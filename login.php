@@ -1,4 +1,8 @@
 <?php
+    session_start();
+?>
+
+<?php
     include_once 'db/includes/header.php';
 ?>
 <title>Log In</title>
