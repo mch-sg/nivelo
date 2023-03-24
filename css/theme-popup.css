@@ -222,7 +222,7 @@
   }
   
   .input3:focus {
-    background-color: #171717;
+    background-color: var(--focusclr);
   }
   
   .input3::placeholder {
@@ -248,7 +248,7 @@
   }
 
   .input5:focus {
-    background-color: #171717;
+    background-color: var(--focusclr);
   }
   
   .input5::placeholder {

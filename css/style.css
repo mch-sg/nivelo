@@ -6,16 +6,16 @@
   --fw: 300;
   --lihover: #19191a; 
   --lihover2:#0F0F10; 
-  --focusclr: #FFFFFF08;
+  --focusclr: #323232; // PRIOR #FFFFFF08
   --smallclr: #f5f5f555;
   --hrc: #ffffff12;
   --loaderclr: #ffffff2c;
   --w: #EFEFEF;
   --sekclr: #fafafa;
 
-  --minclr: #101010; 
+  --minclr: #171717; // PRIOR #101010
   --bclr: #0000006f;
-  --b: #020202;
+  --b: #090909; // PRIOR #020202
   --dim: #FFFFFF3C;
 }
 
