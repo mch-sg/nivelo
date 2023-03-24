@@ -23,6 +23,10 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
     include_once 'db/includes/nav.php';
 
     echo $_SESSION['usersUid'];
+
+    console.log($_SESSION['usersUid']);
+    // console.log($_SESSION['usersUid']);
+    console.log($username);
 ?>
 
 
