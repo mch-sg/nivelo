@@ -1,7 +1,7 @@
 <header id="header" class="head">
     <a class="h-logo" href="/">
         <!-- <img src="https://res.cloudinary.com/coolors/image/upload/t_60x60/v1636729140/live/custom-avatars/fzhn1oqool8tpb2am7hx.jpg"></img> -->
-    image
+    Webportal
     </a>
 
     <nav>
@@ -16,12 +16,12 @@
 
             <?php
                 if(isset($_SESSION["useruid"])){
-                    echo "<li><a class='pro' href='profile.php'>Profile</a></li>";
-                    echo "<li><a class='pro' href='db/includes/logout.inc.php'>Logout</a></li>";
+                    echo "<li><a class='pro' href='profile.php'>Profil</a></li>";
+                    echo "<li><a class='pro' href='db/includes/logout.inc.php'>Log ud</a></li>";
                 }
                 else{
-                    echo "<li><a class='pro' href='signup.php'>Sign Up</a></li>";
-                    echo "<li><a class='pro' href='login.php'>Login</a></li>";
+                    echo "<li><a class='pro' href='signup.php'>Tilmeld</a></li>";
+                    echo "<li><a class='pro' href='login.php'>Log på</a></li>";
                 }
             ?>
         </ul>

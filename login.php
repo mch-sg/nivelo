@@ -16,17 +16,17 @@
 
 <section class="signup-form aalign">
     <div style="padding: 25px;font-size: 1.5rem;">
-        <div class="title sysText" style="text-align: center;">Log in</div>
+        <div class="title sysText" style="text-align: center;">Log på</div>
     </div>
     <div class="modal-bodyi">
         <form class="form" action="db/includes/login.inc.php" method="post" style="background-color: var(--b);border: none;">
-            <input class="input3" type="text" name="uid" placeholder="Username/Email..." style="margin-bottom:15px;">
-            <input class="input3"  type="password" name="pwd" placeholder="Password..." style="margin-bottom:5px;">
+            <input class="input3" type="text" name="uid" placeholder="Brugernavn/Email..." style="margin-bottom:15px;">
+            <input class="input3"  type="password" name="pwd" placeholder="Adgangskode..." style="margin-bottom:5px;">
 
-            <small class="" style="font-weight: 300">Forgot password?</small>
+            <small class="" style="font-weight: 300">Glemt adgangskode?</small>
 
             <div class="modal-spc" style="text-align:center;">
-                <button class="modal-btn" type="submit" name="submit">Log in</button>
+                <button class="modal-btn" type="submit" name="submit">Log på</button>
             </div>
         </form>
 

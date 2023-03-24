@@ -15,7 +15,7 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 <?php
     include_once 'db/includes/header.php';
 ?>
-<title>Chatting</title>
+<title>Inboks</title>
 </head>
 <body>
 
@@ -30,7 +30,7 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 <section class="signup-form aalign">
 
 <div style="padding: 25px;font-size: 1.5rem;">
-    <div class="title sysText" style="text-align: center;">Chat</div>
+    <div class="title sysText" style="text-align: center;">Inboks</div>
 </div>
 
 <?php
@@ -49,21 +49,8 @@ else{
 
 ?>
 
-<!-- <form class="form" method="POST" action="Page2.php" style="background-color: var(--b);border: none;">
-Send user a message: <input type="textarea" name="input" class="input3" autocomplete="off" placeholder="Send user a message..."/>
-
-<div class="modal-spc" style="text-align:center;">
-    <button class="modal-btn" type="submit" value="Send">Send</button>
-</div>
-
-</form> -->
-
-<!-- <input type="textarea" name="input" />     <textarea type="textarea" id="message" name="message"> </textarea> -->
-<!-- <input type="submit" value="Send"/> -->
-
 <br>
 <br>
-<!-- <iframe src="Page1.php" width="100%" height="100%"></iframe> -->
 
 <div style="color:white;">
 <!-- <div class="title sysText" style="text-align: center;">Chat</div> -->
@@ -73,13 +60,17 @@ Send user a message: <input type="textarea" name="input" class="input3" autocomp
     $sql = "SELECT * FROM Chat1";
     $result = $conn->query($sql); // mysqli_query($conn, $sql)
 
-    if($result->num_rows > 0) {
+    if($result->num_rows > 0 && isset($_SESSION['useruid'])) {
+        if(isset($_SESSION['useruid'])){
+            echo "Messages: <br><br>";
+        }
         while($row = $result->fetch_assoc()) {
             // echo "".$row["user_id"]. " " ."- " . $row["message"]. "<br><br>";
 
-            $date = new DateTime($row['timestamp']) ;  
+            $date = new DateTime($row['timestamp']);  
             // echo $date->format('Y-m-d');
             echo "".$row["user_id"]. " " ."(" . $date->format('M. d H:i'). ") " . "- " . $row["message"]. "<br><br>";
+
         }
     } else {
         echo "There are no messages here yet.";

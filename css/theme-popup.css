@@ -122,7 +122,6 @@
     cursor: pointer;
     transition: 0.2s ease-in-out;
     color: var(--b);
-    margin-right: 0.5rem;
   
     font-smooth: always;
     -webkit-font-smoothing: antialiased;

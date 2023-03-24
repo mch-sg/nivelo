@@ -13,20 +13,20 @@
 
 <section class="signup-form aalign">
     <div style="padding: 25px;font-size: 1.5rem;">
-        <div class="title sysText" style="text-align: center;">Sign up</div>
+        <div class="title sysText" style="text-align: center;">Tilmeld</div>
     </div>
     <div class="modal-bodyi">
         <form class="form" action="db/includes/signup.inc.php" method="post" style="background-color: var(--b);border: none;">
-            <input class="input3" type="text" name="name" placeholder="Full name..." style="margin-bottom:15px;">
+            <input class="input3" type="text" name="name" placeholder="Fulde navn..." style="margin-bottom:15px;">
             <input class="input3"  type="text" name="email" placeholder="Email..." style="margin-bottom:15px;">
-            <input class="input3"  type="text" name="uid" placeholder="Username..." style="margin-bottom:15px;">
-            <input class="input3"  type="password" name="pwd" placeholder="Password..." style="margin-bottom:15px;">
-            <input class="input3"  type="password" name="pwdrepeat" placeholder="Repeat Password..." style="margin-bottom:5px;">
+            <input class="input3"  type="text" name="uid" placeholder="Brugernavn..." style="margin-bottom:15px;">
+            <input class="input3"  type="password" name="pwd" placeholder="Adgangskode..." style="margin-bottom:15px;">
+            <input class="input3"  type="password" name="pwdrepeat" placeholder="Gentag adgangskode..." style="margin-bottom:5px;">
             
-            <small class="" style="font-weight: 300">Forgot password?</small>
+            <small class="" style="font-weight: 300">Glemt adgangskode?</small>
 
             <div class="modal-spc" style="text-align:center;">
-                <button class="modal-btn" type="submit" name="submit">Sign up</button>
+                <button class="modal-btn" type="submit" name="submit">Tilmeld</button>
             </div>
         </form>
 
@@ -64,11 +64,11 @@
 
 
 <div id="preloader" class="loader"></div>
-<footer class="footer" style="position:fixed;">
+<!-- <footer class="footer" style="position:fixed;">
 
 <p class="copy">© Webportal by <a href="https://" target="_blank"> Magnus Hvidtfeldt</a></p>
 
-</footer>
+</footer> -->
 
 
 
