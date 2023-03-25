@@ -6,7 +6,7 @@
   --fw: 300;
   --lihover: #19191a; 
   --lihover2:#0F0F10; 
-  --focusclr: #323232; // PRIOR #FFFFFF08
+  --focusclr: #1D1D1D; // PRIOR #FFFFFF08
   --smallclr: #f5f5f555;
   --hrc: #ffffff12;
   --loaderclr: #ffffff2c;
@@ -89,7 +89,7 @@ hr {
 
 body {
   transition: 0.2s;
-  font-family: "Raleway", "Inter", sans-serif;
+  font-family: "Inter", sans-serif; /* Raleway */
 
   background-color: var(--b);
   background-size: cover;
@@ -190,8 +190,8 @@ header {
 form {
   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05); /* rgba(127, 127, 127, 0.075) */
   margin: auto;
-  width: 600px;
-  max-width: 100%;
+  /* width: 600px;
+  max-width: 100%; */
   border: 1px solid var(--borderclr); /* 1px solid #0000000a */
   border-radius: 10px;
   background-color: var(--minclr); // var(--sekclr);

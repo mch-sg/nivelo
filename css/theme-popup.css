@@ -117,7 +117,7 @@
     font-size: 18px;
     border: none;
     border-radius: 10px;
-    padding: 1rem 1.5rem;
+    padding: 1.25rem 1.5rem;
     background-color: var(--hclr);
     cursor: pointer;
     transition: 0.2s ease-in-out;
@@ -231,7 +231,12 @@
   
   
   .input5 {
-    width: 75%;
+    width: 89%; /* 75% */
+
+    float: left;
+    display: inline-block;
+
+
     height: 100%;
     border: none;
     outline: none;
@@ -241,9 +246,9 @@
     color: var(--w);
     font-family: "Inter", sans-serif;
     font-weight: 300;
-    font-size: 1.25rem;
+    font-size: 18px;
     padding: 1.25rem;
-    resize: vertical;  
+    resize: none;  
     transition: 0.2s;
   }
 

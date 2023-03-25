@@ -13,7 +13,7 @@
                     <a id="p2" class="divb bi bi-chevron-down"></a>
                 </div>
             </li> -->
-            <li><a class="pro" href="/chat-ui-prototype.php">Chat</a></li>
+            <li><a class="pro" href="/sidebar-prototype.php">Chat</a></li>
 
             <?php
                 if(isset($_SESSION["useruid"])){

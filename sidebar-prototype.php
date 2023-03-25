@@ -14,6 +14,7 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 
 <?php
     include_once 'db/includes/header.php';
+    
 ?>
 <title>Prot.Chatting</title>
 </head>
@@ -55,12 +56,11 @@ if(isset($_SESSION['useruid'])){
     <br><br>
     
     <div class='main-content'>
-    <section class='signup-form aalign main-content'>
     <div class='main-content-content chatbox-container'>
-    <div class='chatbox' style='color:white;width: 600px; white-space: normal; overflow: auto; word-wrap: break-word;'>
+    <div class='chatbox' style='font-weight: 200;color:white; white-space: normal; overflow: auto; word-wrap: break-word;'>
     
     ";
-
+    // <section class='signup-form aalign main-content'>
 }
 else{
 
@@ -87,7 +87,8 @@ else{
                         // echo "<a style='opacity:0.7'>".$row["user_id"]. " " ."(" . $date->format('H:i'). ") " . "- </a>";
                         // echo ""$row["message"]. "<br><br>";
 
-                        echo "<a style='color: #ff6e5ac2; opacity:1.00;pointer-events: none;'>".$row["user_id"]. "</a> " ."<a style='opacity:0.30;pointer-events: none;'>(" . $date->format('M. d \k\l. H:i'). "):</a> " . "</a>" . $row["message"]. "<br><br>";
+                        $msg = nl2br($row["message"]);
+                        echo "<a style='color: #ff6e5ac2; opacity:1.00;pointer-events: none;'>".$row["user_id"]. "</a> " ."<a style='opacity:0.30;pointer-events: none;'>(" . $date->format('M. d \k\l. H:i'). "):</a> " . "</a>" . $msg. "<br><br>";
                     }
                 } else if (!isset($_SESSION['useruid'])) {
                     echo "";
@@ -107,9 +108,9 @@ else{
         echo "<br><br>";
         echo "<div class='fixed-input main-content'>";
         echo "<form class='form' method='POST' action='Page2.php' style='background-color: var(--b);border: none;' >";
-        echo "<input type='textarea' name='input' class='input5' autocomplete='off' placeholder='Skriv en besked...'/>";
-        // echo "<textarea type='textarea' id='input' name='input' class='input5' autocomplete='off' placeholder='Skriv en besked...'></textarea>";
-        echo "    <button class='modal-btn' type='submit' value='Send' style='margin-left: 10px;padding: 1.25rem 2.75rem;border: 1px solid var(--borderclr);background: #ff462e;'>Send</button>";
+        // echo "<input type='textarea' name='input' class='input5' autocomplete='off' placeholder='Skriv en besked...'/>";
+        echo "<textarea type='textarea' id='input' name='input' class='input5' style='display:inline-block;height: 4rem' autocomplete='off' placeholder='Skriv en besked...'></textarea>";
+        echo "    <button class='modal-btn' type='submit' value='Send' style='margin-left: 1%;padding: 1.25rem 0rem;width: 10%;border: 1px solid var(--borderclr);background: #ff462e;'>Send</button>";
         echo "</form>";
         echo "</div>";
     }
