@@ -52,6 +52,7 @@ if(isset($_SESSION['useruid'])){
             $row2 = mysqli_fetch_assoc($result2);
             $user_from_id = $row2['user_from'];
             $user_to_id = $row2['user_to'];
+            
             if($uuid == $user_from_id || $uuid == $user_to_id) {
                 $chat_room_name = $row2['name'];
                 echo "

@@ -25,7 +25,6 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 $sql = "INSERT INTO chat_rooms (name, user_from, user_to) VALUES ('$chat_room_name', '$from', '$bruger')";
 
 
-
 // $sql = "UPDATE 'messages' SET 'message' = '$input' WHERE 'messages'.'id' = 1;";
 
 if (mysqli_query($conn, $sql)) {

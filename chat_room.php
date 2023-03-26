@@ -124,30 +124,38 @@ else{
                 $sql = "SELECT * FROM messages WHERE inboxid = '$chat_room_id'";
                 $result = mysqli_query($conn, $sql);
 
+                // $sql = "SELECT * FROM messages WHERE (user_id = $user_from_id AND user_to = $user_to_id) OR (user_id = $user_to_id AND user_to = $user_from_id) ORDER BY timestamp ASC";
+
                 
                 // $sql = "SELECT * FROM messages";
                 // $result = $conn->query($sql); // mysqli_query($conn, $sql)
 
-                if($result->num_rows > 0 && isset($_SESSION['useruid']) && $_SESSION['useruid'] == $user_from_id || $_SESSION['useruid'] == $user_to_id) {
-                    while($row = $result->fetch_assoc()) {
-                        // echo "".$row["user_id"]. " " ."- " . $row["message"]. "<br><br>";
+                if($result->num_rows > 0) {
+                    // if($row['user_id'] == $_SESSION['useruid'] || $row['user_to'] == $_SESSION['useruid'])
+                    if($uuid == $user_from_id || $uuid == $user_to_id){ /* $uuid = $user_from_id || $uuid = $user_to_id */
+                        while($row = $result->fetch_assoc()) {
+                            // echo "".$row["user_id"]. " " ."- " . $row["message"]. "<br><br>";
 
-                        $date = new DateTime($row['timestamp']) ;  
-                        // echo $date->format('Y-m-d');
-                        // echo "<a style='opacity:0.7'>".$row["user_id"]. " " ."(" . $date->format('H:i'). ") " . "- </a>";
-                        // echo ""$row["message"]. "<br><br>";
+                            $date = new DateTime($row['timestamp']) ;  
+                            // echo $date->format('Y-m-d');
+                            // echo "<a style='opacity:0.7'>".$row["user_id"]. " " ."(" . $date->format('H:i'). ") " . "- </a>";
+                            // echo ""$row["message"]. "<br><br>";
 
-                        $msg = nl2br($row["message"]);
-                        echo "<a style='color: #ff6e5ac2; opacity:1.00;pointer-events: none;'>".$row["user_id"]. "</a> " ."<a style='opacity:0.30;pointer-events: none;'>(" . $date->format('M. d \k\l. H:i'). "):</a> " . "</a>" . $msg. "<br><br>";
+                            $msg = nl2br($row["message"]);
+                            echo "<a style='color: #ff6e5ac2; opacity:1.00;pointer-events: none;'>".$row["user_id"]. "</a> " ."<a style='opacity:0.30;pointer-events: none;'>(" . $date->format('M. d \k\l. H:i'). "):</a> " . "</a>" . $msg. "<br><br>";
+                        } 
+                    } else {
+                        echo "Du har ikke adgang til denne chat.";
                     }
-                } else if (!isset($_SESSION['useruid'])) {
-                    echo "";
-                } else if ($_SESSION['useruid'] != $user_from_id || $_SESSION['useruid'] != $user_to_id) {
-                    // echo "Der er ingen beskeder her endnu.";
-                    echo "Du har ikke adgang til denne chat.";
                 } else {
                     echo "Der er ingen beskeder her endnu.";
                 }
+                // } else if (!isset($_SESSION['useruid'])) {
+                //     echo "";
+                // } else if ($_SESSION['useruid'] != $user_from_id || $_SESSION['useruid'] != $user_to_id) {
+                    // echo "Der er ingen beskeder her endnu.";
+                //     echo "Du har ikke adgang til denne chat.";
+
                 $conn->close();
             ?>
             </div>
