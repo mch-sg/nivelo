@@ -36,7 +36,7 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 <?php
 
 if(isset($_SESSION['useruid'])){
-    echo "<form class='form' method='POST' action='Page2.php' style='background-color: var(--b);border: none;' >";
+    echo "<form class='form' method='POST' action='message_submit.php' style='background-color: var(--b);border: none;' >";
     echo "<input type='textarea' name='input' class='input3' autocomplete='off' placeholder='Send en besked...'/>";
     echo "<div class='modal-spc' style='text-align:center;'>";
     echo "    <button class='modal-btn' type='submit' value='Send'>Send</button>";
@@ -49,7 +49,7 @@ else{
 
 ?>
 
-<!-- <form class="form" method="POST" action="Page2.php" style="background-color: var(--b);border: none;">
+<!-- <form class="form" method="POST" action="message_submit.php" style="background-color: var(--b);border: none;">
 Send user a message: <input type="textarea" name="input" class="input3" autocomplete="off" placeholder="Send user a message..."/>
 
 <div class="modal-spc" style="text-align:center;">
@@ -70,7 +70,7 @@ Send user a message: <input type="textarea" name="input" class="input3" autocomp
 <br><br>
 <?php
     // $sql = "SELECT 'message' FROM chat1";
-    $sql = "SELECT * FROM Chat1";
+    $sql = "SELECT * FROM messages";
     $result = $conn->query($sql); // mysqli_query($conn, $sql)
 
     if($result->num_rows > 0 && isset($_SESSION['useruid'])) {

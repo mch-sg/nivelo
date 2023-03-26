@@ -42,10 +42,10 @@ if(isset($_SESSION['useruid'])){
         </div>
 
         <div class='aalign'>
-            <a class='sid' style='list-style-type: none;' href='sidebar-prototype.php'>Alle<br><br></a>
-            <a class='sid' style='list-style-type: none;' href='newchat-test.php'>Ny Chat<br><br></a>
-            <a class='sid' style='list-style-type: none;' href='chat-ui-prototype.php'>Prototype<br><br></a>
-            <a class='sid' style='list-style-type: none;' href='Chat.php'>Original</a>
+        <a class='sid' style='list-style-type: none;' href='sidebar-prototype.php'>Alle<br><br></a>
+        <a class='sid' style='list-style-type: none;' href='newchat-test.php'>Ny Chat<br><br></a>
+        <a class='sid' style='list-style-type: none;' href='chat-ui-prototype.php'>Prototype<br><br></a>
+        <a class='sid' style='list-style-type: none;' href='Chat.php'>Original</a>
         </div>
     </div>
     </div>
@@ -77,10 +77,10 @@ else{
             <!-- <div class="title sysText" style="text-align: center;">Chat</div> -->
             <?php
                 // $sql = "SELECT 'message' FROM chat1";
-                $sql = "SELECT * FROM messages";
+                $sql = "SELECT * FROM Chat1";
                 $result = $conn->query($sql); // mysqli_query($conn, $sql)
 
-                if($result->num_rows > 0 && isset($_SESSION['useruid'])) {
+                if($result->num_rows < 0 && isset($_SESSION['useruid'])) {
                     while($row = $result->fetch_assoc()) {
                         // echo "".$row["user_id"]. " " ."- " . $row["message"]. "<br><br>";
 
@@ -109,7 +109,7 @@ else{
     if(isset($_SESSION['useruid'])){
         echo "<br><br>";
         echo "<div class='fixed-input main-content'>";
-        echo "<form class='form' method='POST' action='message_submit.php' style='background-color: var(--b);border: none;' >";
+        echo "<form class='form' method='POST' action='Page2.php' style='background-color: var(--b);border: none;' >";
         // echo "<input type='textarea' name='input' class='input5' autocomplete='off' placeholder='Skriv en besked...'/>";
         echo "<textarea type='textarea' id='input' name='input' class='input5' style='display:inline-block;height: 4rem' autocomplete='off' placeholder='Skriv en besked...'></textarea>";
         echo "    <button class='modal-btn' type='submit' value='Send' style='margin-left: 1%;padding: 1.25rem 0rem;width: 10%;border: 1px solid var(--borderclr);'>Send</button>"; /* background: #ff462e; */

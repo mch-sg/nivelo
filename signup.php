@@ -2,7 +2,7 @@
     session_start();
     include_once 'db/includes/header.php';
 ?>
-<title>Sign Up</title>
+<title>Tilmeld</title>
 </head>
 <body>
 

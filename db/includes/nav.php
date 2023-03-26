@@ -13,14 +13,19 @@
                     <a id="p2" class="divb bi bi-chevron-down"></a>
                 </div>
             </li> -->
-            <li><a class="pro" href="/sidebar-prototype.php">Chat</a></li>
+            
+            <!-- <li><a class="pro" href="/invite.php">Inviter</a></li>
+            <li><a class="pro" href="/sidebar-prototype.php">Chat</a></li> -->
 
             <?php
                 if(isset($_SESSION["useruid"])){
+                    echo "<li><a class='pro' href='invite.php'>Inviter</a></li>";
+                    echo "<li><a class='pro' href='/sidebar-prototype.php'>Chat</a></li>";
                     echo "<li><a class='pro' href='profile.php'>Profil</a></li>";
                     echo "<li><a class='pro' href='db/includes/logout.inc.php'>Log ud</a></li>";
                 }
                 else{
+                    echo "<li><a class='pro' href='/sidebar-prototype.php'>Chat</a></li>";
                     echo "<li><a class='pro' href='signup.php'>Tilmeld</a></li>";
                     echo "<li><a class='pro' href='login.php'>Log på</a></li>";
                 }

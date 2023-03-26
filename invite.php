@@ -5,7 +5,7 @@
 <?php
     include_once 'db/includes/header.php';
 ?>
-<title>Log På</title>
+<title>Inviter</title>
 </head>
 <body>
 
@@ -16,24 +16,27 @@
 
 <section class="signup-form aalign">
     <div style="padding: 25px;font-size: 1.5rem;">
-        <div class="title sysText" style="text-align: center;">Log på</div>
+        <div class="title sysText" style="text-align: center;">Inviter brugere</div>
     </div>
     <div class="modal-bodyi">
-        <form class="form" action="db/includes/login.inc.php" method="post" style="background-color: var(--b);border: none;width: 500px;">
-            <input class="input3" type="text" name="uid" placeholder="Brugernavn/Email..." style="margin-bottom:15px;">
-            <input class="input3"  type="password" name="pwd" placeholder="Adgangskode..." style="margin-bottom:5px;">
+        <form class="form" action="chat_submit.php" method="POST" style="background-color: var(--b);border: none;width: 500px;">
+            <input class="input3" type="text" name="bruger" id="bruger" placeholder="Skriv navn på bruger..." style="margin-bottom:15px;">
+            <input class="input3"  type="text" name="room_name" id="name" placeholder="Chatnavn..." style="margin-bottom:5px;">
+            <input type='hidden' name='user_from' value='<?php $_SESSION['useruid'] ?>'>
 
-            <small class="" style="font-weight: 300">Glemt adgangskode?</small>
+            <!-- <small class="" style="font-weight: 300">Glemt adgangskode?</small> -->
 
             <div class="modal-spc" style="text-align:center;">
-                <button class="modal-btn" type="submit" name="submit">Log på</button>
+                <button class="modal-btn" type="submit" name="submit">Lav chat</button>
             </div>
         </form>
-
-
     </div>
 
+
+    
     <?php
+    // INSERT INTO chat_room (name) VALUES ('My Chat Room');
+
         if(isset($_GET["error"])) {
             if($_GET["error"] == "emptyinput") {
                 echo "<p>Fill in all fields!</p>";

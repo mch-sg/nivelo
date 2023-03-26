@@ -34,7 +34,7 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 <br><br>
 <?php
     // $sql = "SELECT 'message' FROM chat1";
-    $sql = "SELECT * FROM Chat1";
+    $sql = "SELECT * FROM messages";
     $result = $conn->query($sql); // mysqli_query($conn, $sql)
 
     if($result->num_rows > 0 && isset($_SESSION['useruid'])) {
@@ -63,7 +63,7 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 
 if(isset($_SESSION['useruid'])){
     echo "<br><br>";
-    echo "<form class='form' method='POST' action='Page2.php' style='background-color: var(--b);border: none;' >";
+    echo "<form class='form' method='POST' action='message_submit.php' style='background-color: var(--b);border: none;' >";
     echo "<input type='textarea' name='input' class='input5' autocomplete='off' placeholder='Skriv en besked...'/>";
     // echo "<textarea type='textarea' id='input' name='input' class='input5' autocomplete='off' placeholder='Skriv en besked...'></textarea>";
     echo "    <button class='modal-btn' type='submit' value='Send' style='margin-left: 10px;padding: 1.25rem 2.75rem;border: 1px solid var(--borderclr);background: #ff462e;'>Send</button>";

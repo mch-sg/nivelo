@@ -16,13 +16,21 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
     include_once 'db/includes/header.php';
     
 ?>
-<title>Prot.Chatting</title>
+<title>Rooms</title>
 </head>
 <body>
 
 <?php
     include_once 'db/includes/nav.php';
 
+
+    $sql = "SELECT * FROM chat_rooms";
+    $result3 = mysqli_query($conn, $sql);
+
+    while($row = mysqli_fetch_assoc($result3)){
+        $user_from_id = $row['user_from'];
+        $user_to_id = $row['user_to'];
+    }
 ?>
 
 
@@ -30,10 +38,17 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 
 if(isset($_SESSION['useruid'])){
 
+    // $sql = "SELECT name FROM chat_rooms";
+    // $result = mysqli_query($conn, $sql);
+
+
+
+    $sql = "SELECT name FROM chat_rooms WHERE user_from = '$user_from_id' OR user_to = '$user_to_id'";
+    $result = mysqli_query($conn, $sql);
+
     echo "
     
     <div class='sidebar'>
-    <!-- Sidebar content goes here -->
 
     <div class='sidebar-content'>
 
@@ -41,7 +56,22 @@ if(isset($_SESSION['useruid'])){
             <a style='pointer-events:none'>Chatrum<br><br></a>
         </div>
 
-        <div class='aalign'>
+        <div class='aalign'>";
+
+        $uuid = $_SESSION['useruid'];
+        $sql = "SELECT usersUid FROM users WHERE usersUid = '$uuid'";
+        $result7 = mysqli_query($conn, $sql);
+
+        while($row = mysqli_fetch_assoc($result)){
+            if($_SESSION['useruid'] == $user_from_id || $_SESSION['useruid'] == $user_to_id) {
+                $chat_room_name = $row['name'];
+                echo "
+                <a href='chat_room.php?room=$chat_room_name' class='sid' style='list-style-type: none;'>$chat_room_name<br><br></a>
+                ";
+            }
+        }
+
+        echo "
             <a class='sid' style='list-style-type: none;' href='sidebar-prototype.php'>Alle<br><br></a>
             <a class='sid' style='list-style-type: none;' href='newchat-test.php'>Ny Chat<br><br></a>
             <a class='sid' style='list-style-type: none;' href='chat-ui-prototype.php'>Prototype<br><br></a>
@@ -51,8 +81,13 @@ if(isset($_SESSION['useruid'])){
     </div>
     
     ";
+}
+?>
 
+<?php
+//  && $_SESSION['useruid'] == $user_from_id || $_SESSION['useruid'] == $user_to_id
 
+if(isset($_SESSION['useruid'])){
     echo "
     
     <br><br>
@@ -77,10 +112,30 @@ else{
             <!-- <div class="title sysText" style="text-align: center;">Chat</div> -->
             <?php
                 // $sql = "SELECT 'message' FROM chat1";
-                $sql = "SELECT * FROM messages";
-                $result = $conn->query($sql); // mysqli_query($conn, $sql)
 
-                if($result->num_rows > 0 && isset($_SESSION['useruid'])) {
+                $chat_room_name = $_GET['room'];
+                echo "<h1 style='color: #949494C2; opacity:1.00;pointer-events: none;text-align:left;font-size:18px'>$chat_room_name<br><br><br></h1>";
+
+                $sql = "SELECT id FROM chat_rooms WHERE name = '$chat_room_name'";
+                $result = mysqli_query($conn, $sql);
+
+                if(mysqli_num_rows($result) == 0) {
+                    header("location: chat_room.php");
+                    exit();
+                }
+                $row = mysqli_fetch_assoc($result);
+                $chat_room_id = $row['id'];
+
+
+                // Load
+                $sql = "SELECT * FROM messages WHERE inboxid = '$chat_room_id'";
+                $result = mysqli_query($conn, $sql);
+
+                
+                // $sql = "SELECT * FROM messages";
+                // $result = $conn->query($sql); // mysqli_query($conn, $sql)
+
+                if($result->num_rows > 0 && isset($_SESSION['useruid']) && $_SESSION['useruid'] == $user_from_id || $_SESSION['useruid'] == $user_to_id) {
                     while($row = $result->fetch_assoc()) {
                         // echo "".$row["user_id"]. " " ."- " . $row["message"]. "<br><br>";
 
@@ -94,6 +149,8 @@ else{
                     }
                 } else if (!isset($_SESSION['useruid'])) {
                     echo "";
+                } else if ($_SESSION['useruid'] != $user_from_id || $_SESSION['useruid'] != $user_to_id) {
+                    echo "Der er ingen beskeder her endnu.";
                 } else {
                     echo "Der er ingen beskeder her endnu.";
                 }
@@ -106,23 +163,31 @@ else{
 
     <?php
 
-    if(isset($_SESSION['useruid'])){
+
+
+    if($_SESSION['useruid'] == $user_from_id || $_SESSION['useruid'] == $user_to_id){
         echo "<br><br>";
         echo "<div class='fixed-input main-content'>";
-        echo "<form class='form' method='POST' action='message_submit.php' style='background-color: var(--b);border: none;' >";
+        echo "<form class='form' method='POST' action='message_submit.php' style='background-color: var(--b);border: none;' >"; /* action='message_submit.php' */
         // echo "<input type='textarea' name='input' class='input5' autocomplete='off' placeholder='Skriv en besked...'/>";
         echo "<textarea type='textarea' id='input' name='input' class='input5' style='display:inline-block;height: 4rem' autocomplete='off' placeholder='Skriv en besked...'></textarea>";
+        echo "  <input type='hidden' name='chat_room_id' value='$chat_room_id'>";
+        echo "  <input type='hidden' name='chat_room_name' value='$chat_room_name'>";
         echo "    <button class='modal-btn' type='submit' value='Send' style='margin-left: 1%;padding: 1.25rem 0rem;width: 10%;border: 1px solid var(--borderclr);'>Send</button>"; /* background: #ff462e; */
         echo "</form>";
         echo "</div>";
     }
-    else{
+    else if (!isset($_SESSION['useruid'])) {
         echo "<div class='aalign'>";
         echo "<p style='margin-top: 25px;'>Log på for at skrive og se beskeder!</p>";
 
         echo "<div class='modal-spc' style='text-align:center;'>";
         echo "<a href='/login.php'><button>Log på</button></a>";
         echo "</div>";
+        echo "</div>";
+    } else if ($_SESSION['useruid'] != $user_from_id || $_SESSION['useruid'] != $user_to_id) {
+        echo "<div class='aalign'>";
+        echo "<p style='margin-top: 25px;'>Du har ikke adgang til denne chat!</p>";
         echo "</div>";
     }
 
