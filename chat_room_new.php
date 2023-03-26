@@ -29,7 +29,7 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 if(isset($_SESSION['useruid'])){
 
     $uuid = $_SESSION['useruid'];
-    $sql = "SELECT DISTINCT name FROM chat_rooms WHERE (user_from = '$uuid' OR user_to = '$uuid')";
+    $sql = "SELECT DISTINCT id FROM chat_rooms WHERE (user_from = '$uuid' OR user_to = '$uuid')";
     $result = mysqli_query($conn, $sql);
 
     echo "
@@ -46,16 +46,16 @@ if(isset($_SESSION['useruid'])){
 
 
         while($row = mysqli_fetch_assoc($result)){
-            $chat_room_name = $row['name'];
-            $sql = "SELECT id, user_from, user_to FROM chat_rooms WHERE name = '$chat_room_name'";
+            $chat_room_id = $row['id'];
+            $sql = "SELECT name, user_from, user_to FROM chat_rooms WHERE id = '$chat_room_id'";
             $result2 = mysqli_query($conn, $sql);
             $row2 = mysqli_fetch_assoc($result2);
             $user_from_id = $row2['user_from'];
             $user_to_id = $row2['user_to'];
             if($uuid == $user_from_id || $uuid == $user_to_id) {
-                $chat_room_id = $row2['id'];
+                $chat_room_name = $row2['name'];
                 echo "
-                <a href='chat_room.php?room=$chat_room_name' class='sid' style='list-style-type: none;'>$chat_room_name - $chat_room_id<br><br></a>
+                <a href='chat_room_new.php?room=$chat_room_id' class='sid' style='list-style-type: none;'>$chat_room_name - $chat_room_id<br><br></a>
                 ";
             }
         }
@@ -103,7 +103,8 @@ else{
             <?php
                 // $sql = "SELECT 'message' FROM chat1";
 
-                $chat_room_name = $_GET['room'];
+                // $chat_room_name = $_GET['room'];
+                $chat_room_id = $_GET['room'];
                 echo "<h1 style='color: #949494C2; opacity:1.00;pointer-events: none;text-align:left;font-size:18px'>$chat_room_name<br></h1>";
                 echo "<h1 style='color: #949494C2; opacity:1.00;pointer-events: none;text-align:left;font-size:18px'>$uuid<br></h1>";
 

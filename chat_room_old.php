@@ -1,3 +1,4 @@
+
 <?php
 
 session_start();
@@ -15,21 +16,53 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
     include_once 'db/includes/header.php';
     
 ?>
-<title>Chatrum</title>
+<title>Rooms</title>
 </head>
 <body>
 
 <?php
     include_once 'db/includes/nav.php';
 
+
+    $sql = "SELECT * FROM chat_rooms";
+    $result3 = mysqli_query($conn, $sql);
+
+    if($row = mysqli_fetch_assoc($result3)){
+        $user_from_id = $row['user_from'];
+        $user_to_id = $row['user_to'];
+        
+        $chat_room_name = $row['name'];
+        $chat_room_id = $row['id'];
+    }
+
+
+
+    $sql = "SELECT user_from, user_to FROM chat_rooms WHERE id = '$chat_room_id'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    $user_from_id = $row['user_from'];
+    $user_to_id = $row['user_to'];
+    
 ?>
+
 
 <?php
 
 if(isset($_SESSION['useruid'])){
 
+    // $sql = "SELECT name FROM chat_rooms";
+    // $result = mysqli_query($conn, $sql);
+
+
     $uuid = $_SESSION['useruid'];
-    $sql = "SELECT DISTINCT name FROM chat_rooms WHERE (user_from = '$uuid' OR user_to = '$uuid')";
+    $sql = "SELECT usersUid FROM users WHERE usersUid = '$uuid'";
+    $result7 = mysqli_query($conn, $sql);
+
+
+
+    // $sql = "SELECT name FROM chat_rooms WHERE user_from = '$user_from_id' OR user_to = '$user_to_id'";
+    $sql = "SELECT name FROM chat_rooms WHERE (user_from = '$user_from_id' AND user_to = '$user_to_id') OR (user_from = '$user_to_id' AND user_to = '$user_from_id') AND ('$uuid' IN (user_from, user_to))";
+
     $result = mysqli_query($conn, $sql);
 
     echo "
@@ -46,31 +79,24 @@ if(isset($_SESSION['useruid'])){
 
 
         while($row = mysqli_fetch_assoc($result)){
-            $chat_room_name = $row['name'];
-            $sql = "SELECT id, user_from, user_to FROM chat_rooms WHERE name = '$chat_room_name'";
-            $result2 = mysqli_query($conn, $sql);
-            $row2 = mysqli_fetch_assoc($result2);
-            $user_from_id = $row2['user_from'];
-            $user_to_id = $row2['user_to'];
-            if($uuid == $user_from_id || $uuid == $user_to_id) {
-                $chat_room_id = $row2['id'];
+            // if($_SESSION['useruid'] == $user_from_id || $_SESSION['useruid'] == $user_to_id) {
+                // $chat_room_name = $row['name'];
                 echo "
-                <a href='chat_room.php?room=$chat_room_name' class='sid' style='list-style-type: none;'>$chat_room_name - $chat_room_id<br><br></a>
+                <a href='chat_room.php?room=$chat_room_id' class='sid' style='list-style-type: none;'>$chat_room_name<br><br></a>
                 ";
-            }
+            // }
         }
 
         echo "
             <a class='sid' style='list-style-type: none;' href='sidebar-prototype.php'>Alle<br><br></a>
-
-            </div>
-            </div>
-            </div>
-            
-            ";
-            // <a class='sid' style='list-style-type: none;' href='newchat-test.php'>Ny Chat<br><br></a>
-            // <a class='sid' style='list-style-type: none;' href='chat-ui-prototype.php'>Prototype<br><br></a>
-            // <a class='sid' style='list-style-type: none;' href='Chat.php'>Original</a>
+            <a class='sid' style='list-style-type: none;' href='newchat-test.php'>Ny Chat<br><br></a>
+            <a class='sid' style='list-style-type: none;' href='chat-ui-prototype.php'>Prototype<br><br></a>
+            <a class='sid' style='list-style-type: none;' href='Chat.php'>Original</a>
+        </div>
+    </div>
+    </div>
+    
+    ";
 }
 ?>
 
@@ -103,22 +129,14 @@ else{
             <?php
                 // $sql = "SELECT 'message' FROM chat1";
 
-                $chat_room_name = $_GET['room'];
-                echo "<h1 style='color: #949494C2; opacity:1.00;pointer-events: none;text-align:left;font-size:18px'>$chat_room_name<br></h1>";
-                echo "<h1 style='color: #949494C2; opacity:1.00;pointer-events: none;text-align:left;font-size:18px'>$uuid<br></h1>";
-
-                $sql = "SELECT id FROM chat_rooms WHERE name = '$chat_room_name'";
-                $result = mysqli_query($conn, $sql);
-
-                if(mysqli_num_rows($result) == 0) {
-                    header("location: chat_room.php");
-                    exit();
-                }
-                $row = mysqli_fetch_assoc($result);
-                $chat_room_id = $row['id'];
-
+                // $chat_room_name = $_GET['room']; 
+                $chat_room_id = $_GET['id']; /* */
                 echo "<h1 style='color: #949494C2; opacity:1.00;pointer-events: none;text-align:left;font-size:18px'>$chat_room_id<br><br><br></h1>";
 
+                $sql = "SELECT name FROM chat_rooms WHERE id = '$chat_room_id'";
+                $result = mysqli_query($conn, $sql);
+                $row = mysqli_fetch_assoc($result);
+                $chat_room_name = $row['name'];
 
                 // Load
                 $sql = "SELECT * FROM messages WHERE inboxid = '$chat_room_id'";
@@ -128,7 +146,7 @@ else{
                 // $sql = "SELECT * FROM messages";
                 // $result = $conn->query($sql); // mysqli_query($conn, $sql)
 
-                if($result->num_rows > 0 && isset($_SESSION['useruid']) && $_SESSION['useruid'] == $user_from_id || $_SESSION['useruid'] == $user_to_id) {
+                if($result->num_rows > 0 && isset($_SESSION['useruid']) && $_SESSION['useruid'] == ($user_from_id) || $_SESSION['useruid'] == ($user_to_id)) {
                     while($row = $result->fetch_assoc()) {
                         // echo "".$row["user_id"]. " " ."- " . $row["message"]. "<br><br>";
 
@@ -143,8 +161,7 @@ else{
                 } else if (!isset($_SESSION['useruid'])) {
                     echo "";
                 } else if ($_SESSION['useruid'] != $user_from_id || $_SESSION['useruid'] != $user_to_id) {
-                    // echo "Der er ingen beskeder her endnu.";
-                    echo "Du har ikke adgang til denne chat.";
+                    echo "Der er ingen beskeder her endnu.";
                 } else {
                     echo "Der er ingen beskeder her endnu.";
                 }
@@ -181,7 +198,7 @@ else{
         echo "</div>";
     } else if ($_SESSION['useruid'] != $user_from_id || $_SESSION['useruid'] != $user_to_id) {
         echo "<div class='aalign'>";
-        // echo "<p style='margin-top: 25px;'>Du har ikke adgang til denne chat!</p>";
+        echo "<p style='margin-top: 25px;'>Du har ikke adgang til denne chat!</p>";
         echo "</div>";
     }
 
