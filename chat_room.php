@@ -132,6 +132,19 @@ else{
 
                 if($result->num_rows > 0) {
                     // if($row['user_id'] == $_SESSION['useruid'] || $row['user_to'] == $_SESSION['useruid'])
+
+                    $authorized = false;
+                    if (isset($_SESSION['useruid'])) {
+                        $session_user_id = $_SESSION['useruid'];
+                        if ($session_user_id == $user_from_id || $session_user_id == $user_to_id) {
+                            $authorized = true;
+                            echo "<a>Authorized: $user_from_id & $user_to_id <br></a>";
+                        }
+                    }
+                    if (!$authorized) {
+                        die("You are not authorized to view this page.");
+                    }
+
                     if($uuid == $user_from_id || $uuid == $user_to_id){ /* $uuid = $user_from_id || $uuid = $user_to_id */
                         while($row = $result->fetch_assoc()) {
                             // echo "".$row["user_id"]. " " ."- " . $row["message"]. "<br><br>";
