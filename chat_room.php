@@ -142,9 +142,7 @@ else{
                 $date = new DateTime($row['timestamp']); // Tidspunkt  
                 $msg = nl2br($row["message"]); // Splitter beskeder i multiline
 
-
                 // Sender farver
-                include_once 'db/includes/colorcode.php';
                 $sender_id = $row['user_id']; // Sender ID
                 $sql = "SELECT usersColor FROM users WHERE usersUid = '$sender_id'";
                 $result_color = mysqli_query($conn, $sql);
