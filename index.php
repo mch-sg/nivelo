@@ -25,7 +25,7 @@
         }
     ?>
 
-    <a href="/Chat.php"><button style="margin-top: 25px;">Prøv det!</button></a>
+    <a href="/chat_room.php"><button style="margin-top: 25px;">Prøv det!</button></a>
 
 
 </main>

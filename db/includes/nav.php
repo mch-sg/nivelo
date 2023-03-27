@@ -20,7 +20,7 @@
             <?php
                 if(isset($_SESSION["useruid"])){
                     echo "<li><a class='pro' href='invite.php'>Inviter</a></li>";
-                    echo "<li><a class='pro' href='/sidebar-prototype.php'>Chat</a></li>";
+                    echo "<li><a class='pro' href='/chat_room.php'>Chat</a></li>";
                     echo "<li><a class='pro' href='profile.php'>Profil</a></li>";
                     echo "<li><a class='pro' href='db/includes/logout.inc.php'>Log ud</a></li>";
                 }

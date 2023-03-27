@@ -36,25 +36,25 @@
     <?php
         if(isset($_GET["error"])) {
             if($_GET["error"] == "emptyinput") {
-                echo "<p>Fill in all fields!</p>";
+                echo "<p>Udfyld alle felter!</p>";
             }
             else if($_GET["error"] == "invaliduid") {
-                echo "<p>Choose a proper username!</p>";
+                echo "<p>Dette brugernavn er ikke tilgængeligt!</p>";
             }
             else if($_GET["error"] == "invalidemail") {
-                echo "<p>Choose a proper email!</p>";
+                echo "<p>Denne email er ikke tilgængelig!</p>";
             }
             else if($_GET["error"] == "passwordsdontmatch") {
-                echo "<p>Passwords don't match!</p>";
+                echo "<p>Adgangskoderne er ikke det samme!</p>";
             }
             else if($_GET["error"] == "stmtfailed") {
-                echo "<p>Something went wrong, try again!</p>";
+                echo "<p>Noget gik galt, prøv igen!</p>";
             }
             else if($_GET["error"] == "usernametaken") {
-                echo "<p>Username already taken!</p>";
+                echo "<p>Brugernavnet er allerede i brug!</p>";
             }
             else if($_GET["error"] == "none") {
-                echo "<p>You have signed up!</p>";
+                echo "<p>Du har nu tilmeldt dig!</p>";
             }
         }
     ?>

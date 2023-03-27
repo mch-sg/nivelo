@@ -31,7 +31,7 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 if(isset($_SESSION['useruid'])){
 
     $uuid = $_SESSION['useruid'];
-    $sql = "SELECT DISTINCT * FROM chat_rooms WHERE (user_from = '$uuid' OR user_to = '$uuid')";
+    $sql = "SELECT DISTINCT name FROM chat_rooms WHERE (user_from = '$uuid' OR user_to = '$uuid')";
     $result = mysqli_query($conn, $sql);
 
     echo "
@@ -44,9 +44,9 @@ if(isset($_SESSION['useruid'])){
             <a style='pointer-events:none'>Chatrum<br><br></a>
         </div>
 
-        <div class='aalign' style='width: 80%'>";
+        <div class='aalign'>";
 
-        // Fetch chat room blandt id og indsættes i chat_room
+
         while($row = mysqli_fetch_assoc($result)){
             $chat_room_name = $row['name'];
             $sql = "SELECT id, user_from, user_to FROM chat_rooms WHERE name = '$chat_room_name'";
@@ -57,23 +57,27 @@ if(isset($_SESSION['useruid'])){
             if($uuid == $user_from_id || $uuid == $user_to_id) {
                 $chat_room_id = $row2['id'];
                 echo "
-                <a href='chat_room.php?room=$chat_room_id' class='sid' style='list-style-type: none;'>$chat_room_name<br><br></a>
+                <a href='chat_room.php?room=$chat_room_name' class='sid' style='list-style-type: none;'>$chat_room_name<br><br></a>
                 ";
             }
         }
 
-        echo "<a class='sid' style='list-style-type: none;' href='invite.php'>+<br><br></a>
+        echo "
+            <a class='sid' style='list-style-type: none;' href='sidebar-prototype.php'>Alle<br><br></a>
+
             </div>
     </div>
     </div>
             
             ";
-            // <a class='sid' style='list-style-type: none;' href='sidebar-prototype.php'>Alle<br><br></a>
-            //
+            // <a class='sid' style='list-style-type: none;' href='newchat-test.php'>Ny Chat<br><br></a>
+            // <a class='sid' style='list-style-type: none;' href='chat-ui-prototype.php'>Prototype<br><br></a>
+            // <a class='sid' style='list-style-type: none;' href='Chat.php'>Original</a>
 }
 ?>
 
 <?php
+//  && $_SESSION['useruid'] == $user_from_id || $_SESSION['useruid'] == $user_to_id
 
 if(isset($_SESSION['useruid'])){
     echo "
@@ -95,18 +99,29 @@ else{
 
 <?php
 
-    $chat_room_id = $_GET['room'];
+    $chat_room_name = $_GET['room'];
+    echo "<h1 style='color: #949494C2; opacity:1.00;pointer-events: none;text-align:left;font-size:18px'>Chat: $chat_room_name<br></h1>";
+    echo "<h1 style='color: #949494C2; opacity:1.00;pointer-events: none;text-align:left;font-size:18px'>Bruger: $uuid<br></h1>";
 
-    $sql = "SELECT name, user_from, user_to FROM chat_rooms WHERE id = '$chat_room_id'";
+
+    $sql = "SELECT id, user_from, user_to FROM chat_rooms WHERE name = '$chat_room_name'";
     $result3 = mysqli_query($conn, $sql);
     $row3 = mysqli_fetch_assoc($result3);
     $user_from_id = $row3['user_from'];
     $user_to_id = $row3['user_to'];
-    $chat_room_name= $row3['name'];
 
-    // Udskriv informationer til debugging
-    echo "<h1 style='color: #949494C2; opacity:1.00;pointer-events: none;text-align:left;font-size:18px'>Chat: $chat_room_name<br></h1>";
-    echo "<h1 style='color: #949494C2; opacity:1.00;pointer-events: none;text-align:left;font-size:18px'>Bruger: $uuid<br></h1>";
+
+    $sql = "SELECT id FROM chat_rooms WHERE name = '$chat_room_name'";
+    $result = mysqli_query($conn, $sql);
+
+    if(mysqli_num_rows($result) == 0) {
+        header("location: chat_room.php");
+        exit();
+    }
+    $row = mysqli_fetch_assoc($result);
+    $chat_room_id = $row['id'];
+
+
 
     // Load MESSAGES
     $sql = "SELECT * FROM messages WHERE inboxid = '$chat_room_id'";
@@ -141,25 +156,18 @@ else{
 
                 $date = new DateTime($row['timestamp']); // Tidspunkt  
                 $msg = nl2br($row["message"]); // Splitter beskeder i multiline
-
-
-                // Sender farver
-                include_once 'db/includes/colorcode.php';
-                $sender_id = $row['user_id']; // Sender ID
-                $sql = "SELECT usersColor FROM users WHERE usersUid = '$sender_id'";
-                $result_color = mysqli_query($conn, $sql);
-                $row_color = mysqli_fetch_assoc($result_color);
-                $userColor = $row_color['usersColor'];
-
                 // Udskriver beskederne
-                echo "<a style='color: $userColor; opacity:1.00;pointer-events: none;'>".$row["user_id"]. "</a> " ."<a style='opacity:0.30;pointer-events: none;'>(" . $date->format('M. d \k\l. H:i'). "):</a> " . "</a>" . $msg. "<br><br>"; 
-                // #ff6e5ac2
+                echo "<a style='color: #ff6e5ac2; opacity:1.00;pointer-events: none;'>".$row["user_id"]. "</a> " ."<a style='opacity:0.30;pointer-events: none;'>(" . $date->format('M. d \k\l. H:i'). "):</a> " . "</a>" . $msg. "<br><br>"; 
             } 
         } else {
             // Hvis personen ikke matcher session $uuid med en fra chatten,
             // Skal den skrive, at du ikke har adgang
             echo "Du har ikke adgang til denne chat.";
         }
+    } else if ($uuid != $user_from_id || $uuid != $user_to_id) {
+        // Hvis der er 0 num_rows i message databasen, men brugeren stadig ikke
+        // Har adgang til chatten, så skal den vise, at du ikke har adgang
+        echo "Du har ikke adgang til denne chat.";
     } else {
         // Hvis der er 0 num_rows i message databasen, men at der stadig findes 
         // beskeder i databasen, skal den sige, at der ikke er nogen beskeder endnu.

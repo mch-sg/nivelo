@@ -21,7 +21,7 @@
     <div class="modal-bodyi">
         <form class="form" action="chat_submit.php" method="POST" style="background-color: var(--b);border: none;width: 500px;">
             <input class="input3" type="text" name="bruger" id="bruger" placeholder="Skriv navn på bruger..." style="margin-bottom:15px;">
-            <input class="input3"  type="text" name="room_name" id="name" placeholder="Chatnavn..." style="margin-bottom:5px;">
+            <input class="input3"  type="text" name="room_name" id="name" placeholder="Skriv navn på chatrum..." style="margin-bottom:5px;">
             <input type='hidden' name='user_from' value='<?php $_SESSION['useruid'] ?>'>
 
             <!-- <small class="" style="font-weight: 300">Glemt adgangskode?</small> -->

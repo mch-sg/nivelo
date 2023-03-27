@@ -30,7 +30,7 @@ $sql = "INSERT INTO messages (inboxid, user_id, message) VALUES ('$chat_room_id'
 
 if (mysqli_query($conn, $sql)) {
     // echo "New record created successfully";
-    header("location: chat_room.php?room=$chat_room_name");
+    header("location: chat_room.php?room=$chat_room_id");
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }

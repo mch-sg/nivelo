@@ -36,24 +36,17 @@
     <?php
         if(isset($_GET["error"])) {
             if($_GET["error"] == "emptyinput") {
-                echo "<p>Fill in all fields!</p>";
+                echo "<p>Udfyld alle felter!</p>";
             }
             else if($_GET["error"] == "wronglogin") {
-                echo "<p>Incorrect login!</p>";
+                echo "<p>Forkert login!</p>";
             }
         }
     ?>
 
 </section>
 
-
-
 <div id="preloader" class="loader"></div>
-<!-- <footer class="footer" style="position:fixed;">
-
-    <p class="copy">© Webportal by <a href="https://" target="_blank"> Magnus Hvidtfeldt</a></p>
-
-</footer> -->
 
 
 
