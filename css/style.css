@@ -106,7 +106,7 @@ body {
 }
 
 .startclr {
-  background-color:#58738a;
+  background-color:#919191; /* #58738a */  #919191
 
   font-family: "Inter", sans-serif;
   font-size: 18px;
@@ -123,7 +123,7 @@ body {
   translate3d( 0, 0, 0);
 }
 .startclr:hover {
-  background:#425A6F;
+  background:#6E6E6E; /* #425A6F */
 }
 
 h1 {

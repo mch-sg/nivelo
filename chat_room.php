@@ -13,9 +13,12 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 
 <?php
     include_once 'db/includes/header.php';
+
+    // Fetch data til ændring af chatnavnene
+    $chat_room_id = $_GET['room']; $sql = "SELECT name, user_from, user_to FROM chat_rooms WHERE id = '$chat_room_id'"; $result3 = mysqli_query($conn, $sql); $row3 = mysqli_fetch_assoc($result3); $user_from_id = $row3['user_from']; $user_to_id = $row3['user_to']; $chat_room_name= $row3['name']; $host = $_SERVER['SERVER_NAME']  . $_SERVER['REQUEST_URI'];
     
 ?>
-<title>Chatrum</title>
+<title><?php if($host != 'devmch.online/chat_room.php') { echo $chat_room_name; } else { echo "Chatrum"; } ?> - Nivelo</title>
 </head>
 <body>
 
@@ -41,7 +44,7 @@ if(isset($_SESSION['useruid'])){
     <div class='sidebar-content'>
 
         <div class='sidebar-header'>
-            <a style='pointer-events:none'>Chatrum<br><br></a>
+            <a style='pointer-events:none;opacity:0.35;font-size:13px;'>CHATRUM<br><br></a>
         </div>
 
         <div class='aalign' style='width: 80%'>";
@@ -62,7 +65,7 @@ if(isset($_SESSION['useruid'])){
             }
         }
 
-        echo "<a class='sid' style='list-style-type: none;' href='invite.php'>+<br><br></a>
+        echo "<a class='sid' style='list-style-type: none;opacity:0.35' href='invite.php'>+<br><br></a>
             </div>
     </div>
     </div>
@@ -104,8 +107,14 @@ else{
     $user_to_id = $row3['user_to'];
     $chat_room_name= $row3['name'];
 
+    // Preventer forsiden chat_room.php for at vise noget
+    $host = $_SERVER['SERVER_NAME']  . $_SERVER['REQUEST_URI'];
+    if($host == 'devmch.online/chat_room.php'){
+        echo "<h1 style='opacity:1.00;pointer-events: none;text-align:left;font-size:18px'>Vælg et rum for at begynde.<br></h1>";
+    }
+
     // Udskriv informationer til debugging
-    if(isset($_SESSION['useruid'])) {
+    if(isset($_SESSION['useruid']) && $host != 'devmch.online/chat_room.php') {
         echo "<h1 style='color: #949494C2; opacity:1.00;pointer-events: none;text-align:left;font-size:18px'>Chat: $chat_room_name<br></h1>";
         echo "<h1 style='color: #949494C2; opacity:1.00;pointer-events: none;text-align:left;font-size:18px'>Bruger: $uuid<br></h1>";
     }
@@ -115,7 +124,7 @@ else{
     $result = mysqli_query($conn, $sql);
 
     // Udskriv informationer til debugging
-    if(isset($_SESSION['useruid'])) {
+    if(isset($_SESSION['useruid']) && $host != 'devmch.online/chat_room.php') {
         echo "<h1 style='color: #949494C2; opacity:1.00;pointer-events: none;text-align:left;font-size:18px'>Authorized: $user_from_id & $user_to_id<br></h1>";
         echo "<h1 style='color: #949494C2; opacity:1.00;pointer-events: none;text-align:left;font-size:18px'>Room: $chat_room_id<br><br><br></h1>";
     }
@@ -134,12 +143,12 @@ else{
 
 
     // Udprinter messages fra prev. LOAD
-    if($result->num_rows > 0 && isset($_SESSION['useruid'])) {
+    if($result->num_rows > 0 && isset($_SESSION['useruid'])  && $host != 'devmch.online/chat_room.php') {
 
         // Verificere, at session bruger er den samme som en bruger fra chatten
         // ellers skal den ikke vise beskederne, men i stedet skrive, at de ikke 
         // har adgang til chatten.
-        if($uuid == $user_from_id || $uuid == $user_to_id){ /* $uuid = $user_from_id || $uuid = $user_to_id */
+        if($uuid == $user_from_id || $uuid == $user_to_id  && $host != 'devmch.online/chat_room.php'){ /* $uuid = $user_from_id || $uuid = $user_to_id */
             while($row = $result->fetch_assoc()) {
                 // echo "".$row["user_id"]. " " ."- " . $row["message"]. "<br><br>";
 
@@ -162,10 +171,22 @@ else{
             // Skal den skrive, at du ikke har adgang
             echo "Du har ikke adgang til denne chat.";
         }
-    } else {
+    } else if($result->num_rows == 0) {
         // Hvis der er 0 num_rows i message databasen, men at der stadig findes 
         // beskeder i databasen, skal den sige, at der ikke er nogen beskeder endnu.
-        echo "Der er ingen beskeder her endnu.";
+        echo "<p style='color:white'>Der er ingen beskeder her endnu.</p>";
+
+    } else if(!isset($_SESSION['useruid'])) {
+        // Hvis der er 0 num_rows i message databasen, men at der stadig findes 
+        // beskeder i databasen, skal den sige, at der ikke er nogen beskeder endnu.
+        // echo "<div class='aalign'>";
+        // echo "<p style='margin-top: 25px;'>Log på for at skrive og se beskeder!</p>";
+    
+        // echo "<div class='modal-spc' style='text-align:center;'>";
+        // echo "<a href='/login.php'><button>Log på</button></a>";
+        // echo "</div>";
+        // echo "</div>";
+
     }
 
     $conn->close();
@@ -182,19 +203,21 @@ else{
 
 
 
-if(isset($_SESSION['useruid']) && $_SESSION['useruid'] == $user_from_id || $_SESSION['useruid'] == $user_to_id){
-    echo "<br><br>";
-    echo "<div class='fixed-input main-content'>";
-    echo "<form class='form' method='POST' action='message_submit.php' style='background-color: var(--b);border: none;' >"; /* action='message_submit.php' */
-    // echo "<input type='textarea' name='input' class='input5' autocomplete='off' placeholder='Skriv en besked...'/>";
-    echo "<textarea type='textarea' id='input' name='input' class='input5' style='display:inline-block;height: 4rem' autocomplete='off' placeholder='Skriv en besked...'></textarea>";
-    echo "  <input type='hidden' name='chat_room_id' value='$chat_room_id'>";
-    echo "  <input type='hidden' name='chat_room_name' value='$chat_room_name'>";
-    echo "    <button class='modal-btn' type='submit' value='Send' style='margin-left: 1%;padding: 1.25rem 0rem;width: 10%;border: 1px solid var(--borderclr);'>Send</button>"; /* background: #ff462e; */
-    echo "</form>";
-    echo "</div>";
+if(isset($_SESSION['useruid'])){
+    if($_SESSION['useruid'] == $user_from_id || $_SESSION['useruid'] == $user_to_id) {
+        echo "<br><br>";
+        echo "<div class='fixed-input main-content'>";
+        echo "<form class='form' method='POST' action='message_submit.php' style='background-color: var(--b);border: none;' >"; /* action='message_submit.php' */
+        // echo "<input type='textarea' name='input' class='input5' autocomplete='off' placeholder='Skriv en besked...'/>";
+        echo "<textarea type='textarea' id='input' name='input' class='input5' style='display:inline-block;height: 4rem' autocomplete='off' placeholder='Skriv en besked...'></textarea>";
+        echo "  <input type='hidden' name='chat_room_id' value='$chat_room_id'>";
+        echo "  <input type='hidden' name='chat_room_name' value='$chat_room_name'>";
+        echo "    <button class='modal-btn' type='submit' value='Send' style='margin-left: 1%;padding: 1.25rem 0rem;width: 10%;border: 1px solid var(--borderclr);'>Send</button>"; /* background: #ff462e; */
+        echo "</form>";
+        echo "</div>";
+    }
 }
-else if (!isset($_SESSION['useruid'])) {
+else {
     echo "<div class='aalign'>";
     echo "<p style='margin-top: 25px;'>Log på for at skrive og se beskeder!</p>";
 
@@ -203,6 +226,8 @@ else if (!isset($_SESSION['useruid'])) {
     echo "</div>";
     echo "</div>";
 } 
+
+
 
 ?>
 
@@ -217,3 +242,11 @@ else if (!isset($_SESSION['useruid'])) {
 ?>
 
 <link rel="stylesheet" href="css/palette-selector.css">
+
+<?
+$pageContents = ob_get_contents (); // Get all the page's HTML into a string
+ob_end_clean (); // Wipe the buffer
+
+// Replace <!--TITLE--> with $pageTitle variable contents, and print the HTML
+echo str_replace ('Chatrum - Nivelo', $pageTitle, $pageContents);
+?>

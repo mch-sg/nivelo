@@ -108,27 +108,49 @@
   }
   
   
+.modal-btn-header {
+  font-family: "Inter", sans-serif;
+  border: none;
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  background-color: var(--hclr);
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  color: var(--b);
+
+  -webkit-font-smoothing: antialiased;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  background-color: #919191; /* #58738a */
+}
+.modal-btn-header:hover {
+  background:#6E6E6E; /* #425A6F */
+  transform: scale(0.99);
+}
+.modal-btn-header:active {
+  /* background-color: #735d78; */
+  transform: scale(0.92);
+}
   
   
   
-  
-  .modal-btn {
-    font-family: "Inter", sans-serif;
-    font-size: 18px;
-    border: none;
-    border-radius: 10px;
-    padding: 1.25rem 1.5rem;
-    background-color: var(--hclr);
-    cursor: pointer;
-    transition: 0.2s ease-in-out;
-    color: var(--b);
-  
-    font-smooth: always;
-    -webkit-font-smoothing: antialiased;
-    backface-visibility: hidden;
-    transform: translateZ(0);
-    translate3d( 0, 0, 0);
-  }
+.modal-btn {
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  background-color: var(--hclr);
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  color: var(--b);
+
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  translate3d( 0, 0, 0);
+}
   
   .modal-btn:hover {
     background-color: var(--buttonhover);
