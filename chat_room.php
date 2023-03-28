@@ -105,16 +105,20 @@ else{
     $chat_room_name= $row3['name'];
 
     // Udskriv informationer til debugging
-    echo "<h1 style='color: #949494C2; opacity:1.00;pointer-events: none;text-align:left;font-size:18px'>Chat: $chat_room_name<br></h1>";
-    echo "<h1 style='color: #949494C2; opacity:1.00;pointer-events: none;text-align:left;font-size:18px'>Bruger: $uuid<br></h1>";
+    if(isset($_SESSION['useruid'])) {
+        echo "<h1 style='color: #949494C2; opacity:1.00;pointer-events: none;text-align:left;font-size:18px'>Chat: $chat_room_name<br></h1>";
+        echo "<h1 style='color: #949494C2; opacity:1.00;pointer-events: none;text-align:left;font-size:18px'>Bruger: $uuid<br></h1>";
+    }
 
     // Load MESSAGES
     $sql = "SELECT * FROM messages WHERE inboxid = '$chat_room_id'";
     $result = mysqli_query($conn, $sql);
 
     // Udskriv informationer til debugging
-    echo "<h1 style='color: #949494C2; opacity:1.00;pointer-events: none;text-align:left;font-size:18px'>Authorized: $user_from_id & $user_to_id<br></h1>";
-    echo "<h1 style='color: #949494C2; opacity:1.00;pointer-events: none;text-align:left;font-size:18px'>Room: $chat_room_id<br><br><br></h1>";
+    if(isset($_SESSION['useruid'])) {
+        echo "<h1 style='color: #949494C2; opacity:1.00;pointer-events: none;text-align:left;font-size:18px'>Authorized: $user_from_id & $user_to_id<br></h1>";
+        echo "<h1 style='color: #949494C2; opacity:1.00;pointer-events: none;text-align:left;font-size:18px'>Room: $chat_room_id<br><br><br></h1>";
+    }
 
     // Autoriser til debug
     $authorized = false;
@@ -130,7 +134,7 @@ else{
 
 
     // Udprinter messages fra prev. LOAD
-    if($result->num_rows > 0) {
+    if($result->num_rows > 0 && isset($_SESSION['useruid'])) {
 
         // Verificere, at session bruger er den samme som en bruger fra chatten
         // ellers skal den ikke vise beskederne, men i stedet skrive, at de ikke 
@@ -178,7 +182,7 @@ else{
 
 
 
-if($_SESSION['useruid'] == $user_from_id || $_SESSION['useruid'] == $user_to_id){
+if(isset($_SESSION['useruid']) && $_SESSION['useruid'] == $user_from_id || $_SESSION['useruid'] == $user_to_id){
     echo "<br><br>";
     echo "<div class='fixed-input main-content'>";
     echo "<form class='form' method='POST' action='message_submit.php' style='background-color: var(--b);border: none;' >"; /* action='message_submit.php' */
@@ -198,11 +202,7 @@ else if (!isset($_SESSION['useruid'])) {
     echo "<a href='/login.php'><button>Log på</button></a>";
     echo "</div>";
     echo "</div>";
-} else if ($_SESSION['useruid'] != $user_from_id || $_SESSION['useruid'] != $user_to_id) {
-    echo "<div class='aalign'>";
-    // echo "<p style='margin-top: 25px;'>Du har ikke adgang til denne chat!</p>";
-    echo "</div>";
-}
+} 
 
 ?>
 

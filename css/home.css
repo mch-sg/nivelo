@@ -34,7 +34,7 @@ small {
 }
 
 main {
-  padding: 0 40px;
+  /* padding: 0 40px; */
 }
 
 footer {
@@ -78,6 +78,14 @@ cta {
 
 .h-logo {
   margin-right: auto;
+}
+
+.hv {
+  cursor: pointer;
+  transition: 0.2s;
+}
+.hv:hover {
+  opacity: 0.5;
 }
 
 .logo {

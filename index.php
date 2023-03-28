@@ -2,7 +2,7 @@
     session_start();
     include_once 'db/includes/header.php';
 ?>
-<title>Hjem</title>
+<title>Hjem - Nivelo</title>
 </head>
 
 <body> 
@@ -13,19 +13,24 @@
     include_once 'db/includes/nav.php';
 ?>
 
-<main class="centerMain aalign">
+<main class="aalign" style="transform: translate(-70%, -50%);">
     <!-- <h1>Velkommen, <?php echo $_SESSION["useruid"]; ?>!</h1> -->
 
     <?php
         if(isset($_SESSION['useruid'])){
-            echo "<h1>Velkommen, {$_SESSION['useruid']}!</h1>";
+            // echo "<h1 style='text-align: left;align-items: left;'>Velkommen hos Nivelo, {$_SESSION['useruid']}</h1>";
+            echo "<h1 style='text-align: left;align-items: left;padding-right:15%'>Kommuniker med Nivelo, en digital chatportal</h1>";
+            echo "<p style='margin-top:35px;text-align:left;opacity:0.5;font-weight:200;width:60%;line-height:auto;'>Udvid talen med Nivelo. Hos os kan du frit kommunikere med dine udlånte selvstændige og mere.</p>";
+
         }
         else{
-            echo "<h1>Velkommen!</h1>";
+            echo "<h1 style='text-align: left;align-items: left;padding-right:15%'>Kommuniker med Nivelo, en digital chatportal</h1>";
+            echo "<p style='margin-top:35px;text-align:left;opacity:0.5;font-weight:200;width:60%;line-height:auto;'>Udvid talen med Nivelo. Hos os kan du frit kommunikere med dine udlånte selvstændige og mere.</p>";
+
         }
     ?>
 
-    <a href="/chat_room.php"><button style="margin-top: 25px;">Prøv det!</button></a>
+    <a href="/signup.php"><button class="startclr" style="margin-top: 75px;">Kom i gang</button></a>
 
 
 </main>

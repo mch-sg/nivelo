@@ -15,7 +15,7 @@
 
   --minclr: #171717; // PRIOR #101010
   --bclr: #0000006f;
-  --b: #090909; // PRIOR #020202
+  --b: #0d0d0d; // PRIOR #020202 - PRIOR 2 #090909
   --dim: #FFFFFF3C;
 }
 
@@ -105,11 +105,32 @@ body {
   display: flex;
 }
 
+.startclr {
+  background-color:#58738a;
+
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  translate3d( 0, 0, 0);
+}
+.startclr:hover {
+  background:#425A6F;
+}
+
 h1 {
   color: var(--w);
   text-align: center;
   align-items: center;
-  font-weight: 400;
+  font-weight: 300;
   font-size: 65px;
   color: var(--hclr);
   padding-top: 5px;

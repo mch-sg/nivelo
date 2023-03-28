@@ -1,7 +1,10 @@
 <header id="header" class="head">
     <a class="h-logo pro" href="/" style="font-size: 18px; transition: 0.2s;">
         <!-- <img src="https://res.cloudinary.com/coolors/image/upload/t_60x60/v1636729140/live/custom-avatars/fzhn1oqool8tpb2am7hx.jpg"></img> -->
-    Webportal
+        <div class="hv">
+            <img src="/assets/nivelo-2.svg" width="100px"></img>
+        </div>
+    <!-- Webportal -->
     </a>
 
     
@@ -25,7 +28,7 @@
                     echo "<li><a class='pro' href='db/includes/logout.inc.php'>Log ud</a></li>";
                 }
                 else{
-                    echo "<li><a class='pro' href='/sidebar-prototype.php'>Chat</a></li>";
+                    echo "<li><a class='pro' href='/chat_room.php'>Chat</a></li>";
                     echo "<li><a class='pro' href='signup.php'>Tilmeld</a></li>";
                     echo "<li><a class='pro' href='login.php'>Log på</a></li>";
                 }

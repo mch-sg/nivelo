@@ -2,7 +2,7 @@
     session_start();
     include_once 'db/includes/header.php';
 ?>
-<title>Tilmeld</title>
+<title>Tilmeld - Nivelo</title>
 </head>
 <body>
 

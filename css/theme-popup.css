@@ -37,7 +37,7 @@
   
   .title {
     font-size: 1.25rem;
-    font-weight: 500;
+    font-weight: 300;
     color: var(--sekclr);
   }
   
@@ -142,7 +142,7 @@
   
   .modal-spc {
     margin: 0.5rem 0;
-    margin-top: 3rem;
+    margin-top: 2rem;
   }
   
   #input3 {
