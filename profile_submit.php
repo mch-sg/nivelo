@@ -10,11 +10,22 @@ $dBName = "u463909974_portal";
 
 $name = $_SESSION["useruid"];
 $color = $_POST['color'];
+$emailchange = $_POST['mailchange'];
+$namechange = $_POST['namechange'];
 
 $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 
-
+if($color != '') {
 $sql = "UPDATE users SET usersColor = '$color' WHERE usersUid = '$name'";
+}
+
+if($emailchange != '') {
+$sql = "UPDATE users SET usersEmail = '$emailchange' WHERE usersUid = '$name'";
+}
+
+if($namechange != '') {
+$sql = "UPDATE users SET usersName = '$namechange' WHERE usersUid = '$name'";
+}
 
 
 

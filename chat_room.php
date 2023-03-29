@@ -109,14 +109,14 @@ else{
 
     // Preventer forsiden chat_room.php for at vise noget
     $host = $_SERVER['SERVER_NAME']  . $_SERVER['REQUEST_URI'];
-    if($host == 'devmch.online/chat_room.php'){
+    if($host == 'devmch.online/chat_room.php' && $_SESSION['useruid']){
         echo "<h1 style='opacity:1.00;pointer-events: none;text-align:left;font-size:18px'>Vælg et rum for at begynde.<br></h1>";
     }
 
     // Udskriv informationer til debugging
     if(isset($_SESSION['useruid']) && $host != 'devmch.online/chat_room.php') {
-        echo "<h1 style='color: #949494C2; opacity:1.00;pointer-events: none;text-align:left;font-size:18px'>Chat: $chat_room_name<br></h1>";
-        echo "<h1 style='color: #949494C2; opacity:1.00;pointer-events: none;text-align:left;font-size:18px'>Bruger: $uuid<br></h1>";
+        echo "<h1 style='color: #fff; opacity:0.25;font-weight:200;pointer-events: none;text-align:left;font-size:18px'>Chat: $chat_room_name<br></h1>";
+        echo "<h1 style='color: #fff; opacity:0.25;font-weight:200;pointer-events: none;text-align:left;font-size:18px'>Bruger: $uuid<br></h1>";
     }
 
     // Load MESSAGES
@@ -125,8 +125,8 @@ else{
 
     // Udskriv informationer til debugging
     if(isset($_SESSION['useruid']) && $host != 'devmch.online/chat_room.php') {
-        echo "<h1 style='color: #949494C2; opacity:1.00;pointer-events: none;text-align:left;font-size:18px'>Authorized: $user_from_id & $user_to_id<br></h1>";
-        echo "<h1 style='color: #949494C2; opacity:1.00;pointer-events: none;text-align:left;font-size:18px'>Room: $chat_room_id<br><br><br></h1>";
+        echo "<h1 style='color: #fff; opacity:0.25;font-weight:200;pointer-events: none;text-align:left;font-size:18px'>Authorized: $user_from_id & $user_to_id<br></h1>";
+        echo "<h1 style='color: #fff; opacity:0.25;font-weight:200;pointer-events: none;text-align:left;font-size:18px'>Room: $chat_room_id<br><br><br></h1>";
     }
 
     // Autoriser til debug
@@ -152,6 +152,7 @@ else{
             while($row = $result->fetch_assoc()) {
                 // echo "".$row["user_id"]. " " ."- " . $row["message"]. "<br><br>";
 
+                date_default_timezone_set("Europe/Copenhagen");
                 $date = new DateTime($row['timestamp']); // Tidspunkt  
                 $msg = nl2br($row["message"]); // Splitter beskeder i multiline
 
@@ -163,8 +164,10 @@ else{
                 $userColor = $row_color['usersColor'];
 
                 // Udskriver beskederne
-                echo "<a style='color: $userColor; opacity:1.00;pointer-events: none;'>".$row["user_id"]. "</a> " ."<a style='opacity:0.30;pointer-events: none;'>(" . $date->format('M. d \k\l. H:i'). "):</a> " . "</a>" . $msg. "<br><br>"; 
-                // #ff6e5ac2
+                echo "<a style='color: $userColor; opacity:1.00;pointer-events: none;'>".$row["user_id"]. "</a> " ."<a style='opacity:0.15;pointer-events: none;font-weight:200'>" . $date->format('d/m H:i'). "</a> " . " " . $msg. "<br><br>"; 
+                // echo "<a style='opacity:0.15;pointer-events: none;font-weight:200'>" . $date->format('d/m/y H:i'). "</a> " ."<a style='color: $userColor; opacity:1.00;pointer-events: none;'>".$row["user_id"]. "</a>" . "   " . $msg. "<br><br>";
+                
+                // echo "<a style='color: $userColor; opacity:1.00;pointer-events: none;'>".$row["user_id"]. "</a> " ."<a style='opacity:0.30;pointer-events: none;'>(" . $date->format('M. d \k\l. H:i'). ")</a> " . "</a>" . $msg. "<br><br>"; 
             } 
         } else {
             // Hvis personen ikke matcher session $uuid med en fra chatten,
