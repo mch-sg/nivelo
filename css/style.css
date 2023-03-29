@@ -2,23 +2,22 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Raleway:wght@300;400;500;600&display=swap");
 
- :root {
+:root {
   --fw: 300;
-  --lihover: #19191a; 
-  --lihover2:#0F0F10; 
-  --focusclr: #1D1D1D; /* PRIOR #FFFFFF08 */
+  --lihover: #19191a;
+  --lihover2: #0f0f10;
+  --focusclr: #1d1d1d; /* PRIOR #FFFFFF08 */
   --smallclr: #f5f5f555;
   --hrc: #ffffff12;
   --loaderclr: #ffffff2c;
-  --w: #EFEFEF;
+  --w: #efefef;
   --sekclr: #fafafa;
 
   --minclr: #171717; /* PRIOR #101010 */
   --bclr: #0000006f;
   --b: #121212; /* PRIOR #020202 - PRIOR2 #090909 - PRIOR3 #0d0d0d */
-  --dim: #FFFFFF3C;
+  --dim: #ffffff3c;
 }
-
 
 /*  PRELOADER  */
 #preloader {
@@ -66,14 +65,10 @@
   visibility: hidden;
 }
 
-
-
-
 /* ALL * */
 
 * {
   text-decoration: none;
-
 }
 
 hr {
@@ -81,9 +76,6 @@ hr {
   width: 100%;
   margin-bottom: 75px;
 }
-
-
-
 
 /*  PRIMARY  */
 
@@ -106,7 +98,7 @@ body {
 }
 
 .startclr {
-  background-color:#919191; /* #58738a #919191 */  
+  background-color: #919191; /* #58738a #919191 */
 
   font-family: "Inter", sans-serif;
   font-size: 18px;
@@ -122,7 +114,7 @@ body {
   transform: translateZ(0);
 }
 .startclr:hover {
-  background:#6E6E6E; /* #425A6F */
+  background: #6e6e6e; /* #425A6F */
 }
 
 h1 {
@@ -141,7 +133,7 @@ p {
   align-items: center; */
   font-weight: 400;
   font-size: 17px;
-  color: var(--sekclr); 
+  color: var(--sekclr);
   transition: 0.2s;
 }
 
@@ -176,7 +168,6 @@ a {
   cursor: pointer;
 }
 
-
 small {
   text-align: center;
   margin-top: 3rem;
@@ -194,8 +185,6 @@ header {
   text-align: center;
   align-items: center;
 }
-
-
 
 /*  CLASS ASSETS  */
 
@@ -218,9 +207,6 @@ form {
 
   transition: 0.2s;
 }
-
-
-
 
 .aalign {
   margin: 0;
@@ -276,5 +262,3 @@ i {
 .hvr:hover {
   color: var(--dimclr);
 }
-
-
