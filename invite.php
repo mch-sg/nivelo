@@ -5,7 +5,7 @@
 <?php
     include_once 'db/includes/header.php';
 ?>
-<title>Inviter</title>
+<title>Inviter - Nivelo</title>
 </head>
 <body>
 

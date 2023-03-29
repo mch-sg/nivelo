@@ -47,7 +47,7 @@ if(isset($_SESSION['useruid'])){
             <a style='pointer-events:none;opacity:0.35;font-size:13px;'>CHATRUM<br><br></a>
         </div>
 
-        <div class='aalign' style='width: 80%'>";
+        <div class='aalign' style='text-align:left;font-weight:300;'>"; /* width: 80% */
 
         // Fetch chat room blandt id og indsættes i chat_room
         while($row = mysqli_fetch_assoc($result)){
@@ -65,14 +65,14 @@ if(isset($_SESSION['useruid'])){
             }
         }
 
-        echo "<a class='sid' style='list-style-type: none;opacity:0.35' href='invite.php'>+<br><br></a>
+        echo "
             </div>
     </div>
     </div>
             
             ";
             // <a class='sid' style='list-style-type: none;' href='sidebar-prototype.php'>Alle<br><br></a>
-            //
+            // <a class='sid' style='list-style-type: none;opacity:0.35' href='invite.php'>+<br><br></a>
 }
 ?>
 

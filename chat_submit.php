@@ -24,12 +24,11 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 // Insert the new room into the database
 $sql = "INSERT INTO chat_rooms (name, user_from, user_to) VALUES ('$chat_room_name', '$from', '$bruger')";
 
-
 // $sql = "UPDATE 'messages' SET 'message' = '$input' WHERE 'messages'.'id' = 1;";
 
 if (mysqli_query($conn, $sql)) {
     // echo "New record created successfully";
-    header("location: chat_room.php?room=$chat_room_name");
+    header("location: chat_room.php");
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
