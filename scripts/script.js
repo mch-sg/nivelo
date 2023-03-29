@@ -168,3 +168,14 @@ function clickPress2(event) {
 
 document.getElementById('input3').focus();
 document.getElementById('input4').focus();
+
+
+// Enter key to submit form
+// 
+document.getElementById("messageid").addEventListener("keydown", function(event) {
+    if (event.key === "Enter" && !event.shiftKey) {
+      event.preventDefault();
+      this.form.submit();
+    }
+  });
+

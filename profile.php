@@ -43,7 +43,13 @@
             
             if (isset($_GET['message'])) {
                 $message = $_GET['message'];
-                echo '<div style="color: #a2c275;font-size:18px;margin-top:50px;text-align:center">' . $message . '</div>';
+                if($message == "Opdateret!"){
+                    echo '<div style="color: #a2c275;font-size:18px;margin-top:50px;text-align:center">' . $message . '</div>';
+                }
+                else {
+                    echo '<div style="color: #C27575;font-size:18px;margin-top:50px;text-align:center">' . $message . '</div>';
+
+                }
                 // #a2c275 - #818181
             }
 
@@ -60,7 +66,7 @@
             echo "<p style='margin-top: 25px;'>Du har ikke adgang! Log på for at se din profil.</p>";
         
             echo "<div class='modal-spc' style='text-align:center;'>";
-            echo "<a href='/login.php'><button>Log på</button></a>";
+            echo "<a href='/login.php'><button class='modal-btn'>Log på</button></a>";
             echo "</div>";
             echo "</div>";
         }

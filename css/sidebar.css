@@ -19,7 +19,7 @@
 }
 
 .main-content {
-  margin-left: 22.5%; // 150px - 90px - 400px
+  margin-left: 22.25%; // 150px - 90px - 400px - 22.5%
 }
 
 .sidebar-header {
@@ -90,11 +90,11 @@
   }
 
   .main-content {
-    width: calc(100% - 25%); /* 350px - 200px - 450px */
+    width: calc(100% - 24.5%); /* 350px - 200px - 450px */
     float: left;
   }
 
   .fixed-input {
-    width: calc(100% - 25%); /* 350px - 200px - 450px */
+    width: calc(100% - 24.5%); /* 350px - 200px - 450px */
   }
 }

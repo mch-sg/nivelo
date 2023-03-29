@@ -42,7 +42,7 @@
   }
   
   .sysText {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
   
   .modal-header .title,
@@ -111,7 +111,7 @@
 .modal-btn-header {
   font-family: "Inter", sans-serif;
   border: none;
-  border-radius: 10px;
+  border-radius: 7px;
   padding: 1rem 1.25rem;
   background-color: var(--hclr);
   cursor: pointer;
@@ -121,15 +121,15 @@
   -webkit-font-smoothing: antialiased;
   backface-visibility: hidden;
   transform: translateZ(0);
-  background-color: #919191; /* #58738a */
+  background-color: var(--butClr); /* #58738a - #919191 */
 }
 .modal-btn-header:hover {
-  background:#6E6E6E; /* #425A6F */
-  transform: scale(0.99);
+  background:var(--butClrHvr); /* #425A6F - #6E6E6E*/
+  /* transform: scale(0.99); */
 }
 .modal-btn-header:active {
   /* background-color: #735d78; */
-  transform: scale(0.92);
+  transform: scale(0.95);
 }
   
   
@@ -138,7 +138,7 @@
   font-family: "Inter", sans-serif;
   font-size: 18px;
   border: none;
-  border-radius: 10px;
+  border-radius: 7px;
   padding: 1.25rem 1.5rem;
   background-color: var(--hclr);
   cursor: pointer;
@@ -154,12 +154,12 @@
   
   .modal-btn:hover {
     background-color: var(--buttonhover);
-    transform: scale(0.99);
+    /* transform: scale(0.99); */
   }
   
   .modal-btn:active {
     /* background-color: #735d78; */
-    transform: scale(0.92);
+    transform: scale(0.95);
   }
   
   .modal-spc {

@@ -19,6 +19,7 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
     
 ?>
 <title><?php if($host != 'devmch.online/chat_room.php') { echo $chat_room_name; } else { echo "Chatrum"; } ?> - Nivelo</title>
+<script src="/scripts/script.js"></script>
 </head>
 <body>
 
@@ -179,18 +180,7 @@ else{
         // beskeder i databasen, skal den sige, at der ikke er nogen beskeder endnu.
         echo "<p style='color:white'>Der er ingen beskeder her endnu.</p>";
 
-    } else if(!isset($_SESSION['useruid'])) {
-        // Hvis der er 0 num_rows i message databasen, men at der stadig findes 
-        // beskeder i databasen, skal den sige, at der ikke er nogen beskeder endnu.
-        // echo "<div class='aalign'>";
-        // echo "<p style='margin-top: 25px;'>Log på for at skrive og se beskeder!</p>";
-    
-        // echo "<div class='modal-spc' style='text-align:center;'>";
-        // echo "<a href='/login.php'><button>Log på</button></a>";
-        // echo "</div>";
-        // echo "</div>";
-
-    }
+    } 
 
     $conn->close();
 ?>
@@ -212,7 +202,7 @@ if(isset($_SESSION['useruid'])){
         echo "<div class='fixed-input main-content'>";
         echo "<form class='form' method='POST' action='message_submit.php' style='background-color: var(--b);border: none;' >"; /* action='message_submit.php' */
         // echo "<input type='textarea' name='input' class='input5' autocomplete='off' placeholder='Skriv en besked...'/>";
-        echo "<textarea type='textarea' id='input' name='input' class='input5' style='display:inline-block;height: 4rem' autocomplete='off' placeholder='Skriv en besked...'></textarea>";
+        echo "<textarea type='textarea' id='messageid' name='input' class='input5' style='display:inline-block;height: 4rem' autocomplete='off' placeholder='Skriv en besked...'></textarea>";
         echo "  <input type='hidden' name='chat_room_id' value='$chat_room_id'>";
         echo "  <input type='hidden' name='chat_room_name' value='$chat_room_name'>";
         echo "    <button class='modal-btn' type='submit' value='Send' style='margin-left: 1%;padding: 1.25rem 0rem;width: 10%;border: 1px solid var(--borderclr);'>Send</button>"; /* background: #ff462e; */
@@ -225,7 +215,7 @@ else {
     echo "<p style='margin-top: 25px;'>Log på for at skrive og se beskeder!</p>";
 
     echo "<div class='modal-spc' style='text-align:center;'>";
-    echo "<a href='/login.php'><button>Log på</button></a>";
+    echo "<a href='/login.php'><button class='modal-btn'>Log på</button></a>";
     echo "</div>";
     echo "</div>";
 } 
@@ -245,11 +235,3 @@ else {
 ?>
 
 <link rel="stylesheet" href="css/palette-selector.css">
-
-<?
-$pageContents = ob_get_contents (); // Get all the page's HTML into a string
-ob_end_clean (); // Wipe the buffer
-
-// Replace <!--TITLE--> with $pageTitle variable contents, and print the HTML
-echo str_replace ('Chatrum - Nivelo', $pageTitle, $pageContents);
-?>

@@ -38,10 +38,10 @@
     <?php
         if(isset($_GET["error"])) {
             if($_GET["error"] == "emptyinput") {
-                echo "<p>Udfyld alle felter!</p>";
+                echo "<p style='margin-top:5px;text-align:center'>Udfyld alle felter!</p>";
             }
             else if($_GET["error"] == "wronglogin") {
-                echo "<p>Forkert login!</p>";
+                echo "<p style='margin-top:5px;text-align:center'>Forkert login!</p>";
             }
         }
     ?>

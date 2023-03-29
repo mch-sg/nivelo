@@ -32,8 +32,11 @@ $sql = "UPDATE users SET usersName = '$namechange' WHERE usersUid = '$name'";
 if (mysqli_query($conn, $sql)) {
     $messagePROFILE = "Opdateret!";
     header("location: profile.php?message=" . urlencode($messagePROFILE));
+} else if($color == '' && $emailchange == '' && $namechange == '') {
+    $messagePROFILE = "Indtast en værdi!";
+    header("location: profile.php?message=" . urlencode($messagePROFILE));
 } else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-}
+    $messagePROFILE = "Fejl!";
+    header("location: profile.php?message=" . urlencode($messagePROFILE));}
 
 ?>

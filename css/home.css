@@ -3,7 +3,7 @@
 
   --add: #cececed2;
   --dimclr: #949494;
-  --buttonhover: #c4c4c4; /* #919191 */
+  --buttonhover: #aaaaaa; /* #919191 */
   --hclr: #e5e5e5;
 
   /*   
@@ -58,7 +58,7 @@ cta {
 
   justify-content: flex-end;
   align-items: center;
-  padding: 50px 40px;
+  padding: 0 25px 0 25px;
   height: 100px;
   text-align: center;
   border-bottom: 1px solid var(--borderclr);

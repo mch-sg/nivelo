@@ -13,20 +13,20 @@
     include_once 'db/includes/nav.php';
 ?>
 
-<main class="aalign" style="transform: translate(-70%, -50%);">
+<main class="aalign overflow-hidden" style="transform: translate(-70%, -50%);">
     <!-- <h1>Velkommen, <?php echo $_SESSION["useruid"]; ?>!</h1> -->
 
     <?php
         if(isset($_SESSION['useruid'])){
             // echo "<h1 style='text-align: left;align-items: left;'>Velkommen hos Nivelo, {$_SESSION['useruid']}</h1>";
             echo "<h1 style='text-align: left;align-items: left;padding-right:15%'>Kommuniker med Nivelo, en digital chatportal</h1>";
-            echo "<p style='margin-top:35px;text-align:left;opacity:0.5;font-weight:200;width:70%;line-height:1.4;'>Udvid talen med Nivelo. Hos os kan du frit kommunikere med dine udlånte selvstændige. Vi tilbyder en enkel og effektiv måde for brugere at kommunikere, dele feedback og holde sig organiseret i løbet af deres projekter.</p>";
+            echo "<p style='margin-top:35px;text-align:left;color: #7a7a7a;font-weight:200;width:70%;line-height:1.4;'>Udvid talen med Nivelo. Hos os kan du frit kommunikere med dine udlånte selvstændige. Vi tilbyder en enkel og effektiv måde for brugere at kommunikere, dele feedback og holde sig organiseret i løbet af deres projekter.</p>";
             echo "<a href='/chat_room.php'><button class='startclr' style='margin-top: 75px;'>Kom i gang</button></a>";
         }
         else{
-            echo "<h1 style='text-align: left;align-items: left;padding-right:15%'>Kommuniker med Nivelo, en digital chatportal</h1>";
-            echo "<p style='margin-top:35px;text-align:left;opacity:0.5;font-weight:200;width:70%;line-height:1.4;'>Udvid talen med Nivelo. Hos os kan du frit kommunikere med dine udlånte selvstændige. Vi tilbyder en enkel og effektiv måde for brugere at kommunikere, dele feedback og holde sig organiseret i løbet af deres projekter.</p>";
-            echo "<a href='/signup.php'><button class='startclr' style='margin-top: 75px;'>Kom i gang</button></a>";
+            echo "<h1 class='drop-in' style='text-align: left;align-items: left;padding-right:15%'>Kommuniker med Nivelo, en digital chatportal</h1>";
+            echo "<p class='drop-in-2' style='margin-top:35px;text-align:left;color: #7a7a7a;font-weight:200;width:70%;line-height:1.4;'>Udvid talen med Nivelo. Hos os kan du frit kommunikere med dine udlånte selvstændige. Vi tilbyder en enkel og effektiv måde for brugere at kommunikere, dele feedback og holde sig organiseret i løbet af deres projekter.</p>";
+            echo "<a href='/signup.php'><button class='startclr drop-in-3' style='margin-top: 75px;'>Kom i gang</button></a>";
 
         }
     ?>
