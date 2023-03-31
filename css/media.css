@@ -19,6 +19,14 @@
     font-size: 14px;
   }
 
+  .nav_links {
+    display: none;
+  }
+  #p2 {
+    float: right;
+    display: block;
+  }
+
   .container {
     width: 350px;
     /* max-width: 100%; */

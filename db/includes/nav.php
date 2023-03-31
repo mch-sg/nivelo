@@ -26,6 +26,7 @@
                     echo "<li><a class='pro' style='vertical-align: middle;' href='/chat_room.php'>Chatrum</a></li>";
                     echo "<li style='vertical-align: middle;text-align: center;border-left: 1px solid var(--borderclr); height: 35px; margin: 0 0 0 20px;'></li>";
                     echo "<li><a class='pro' style='vertical-align: middle;' href='profile.php'>Profil</a>";
+
                     // echo "<a id='p2' class='divb bi bi-chevron-down'> </a></li>";
                     // echo "<li><a class='modal-btn-header' href='/db/includes/logout.inc.php' style='vertical-align: middle;'>Log ud</a></li>";
                     // echo "<li><a class='pro' href='db/includes/logout.inc.php'>Log ud</a></li>";
@@ -37,6 +38,9 @@
                     echo "<li style='vertical-align: middle;text-align: center;border-left: 1px solid var(--borderclr); height: 35px; margin: 0 0 0 20px;'></li>";
                     echo "<li><a class='pro' style='vertical-align: middle;' href='login.php'>Log på</a></li>";
                     echo "<li><a class='modal-btn-header' href='signup.php' style='vertical-align: middle;'>Tilmeld</a></li>";
+                    
+                    echo "<a href='javascript:void(0);' onclick='myFunction()' id='p2' class='divb bi bi-chevron-down'> </a></li>";
+                
                 }
             ?>
         </ul>
