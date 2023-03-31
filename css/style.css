@@ -13,8 +13,8 @@
   --w: #efefef;
   --sekclr: #fafafa;
 
-  --butClr: #728da3; /* PRIOR1 #58738a */
-  --butClrHvr: #425a6f;
+  --butClr: #86a2b8; /* PRIOR1 #58738a - PRIOR2 #728da3*/
+  --butClrHvr: #5d7991; /* PRIOR1 #425a6f */
 
   --minclr: #171717; /* PRIOR #101010 */
   --bclr: #0000006f;
