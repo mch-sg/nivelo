@@ -5,7 +5,7 @@
 <?php
     include_once 'db/includes/header.php';
 ?>
-<title>Log På - Nivelo</title>
+<title>Log på - Nivelo</title>
 </head>
 <body>
 
@@ -14,7 +14,7 @@
 ?>
 
 
-<section class="signup-form aalign">
+<section style="margin-top: 75px;">
     <div style="padding: 25px;font-size: 1.5rem;">
         <div class="title sysText" style="text-align: center;">Log på</div>
     </div>

@@ -13,8 +13,7 @@
     include_once 'db/includes/nav.php';
 ?>
 
-<main class="aalign overflow-hidden" style="transform: translate(-60%, -50%);width:60%;"> <!-- -70%, -50% -->
-    <!-- <h1>Velkommen, <?php echo $_SESSION["useruid"]; ?>!</h1> -->
+<main class="overflow-hidden" style="position: absolute;margin-top: 10%;margin-left: 10%;width: 60%;"> <!-- transform: translate(-60%, -50%);width:60%; -->
 
     <?php
         if(isset($_SESSION['useruid'])){

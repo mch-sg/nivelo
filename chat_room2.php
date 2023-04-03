@@ -32,7 +32,7 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 
 <?php
 
-
+if(isset($_SESSION['useruid'])){
 
     $uuid = $_SESSION['useruid'];
     $sql = "SELECT DISTINCT * FROM chat_rooms WHERE (user_from = '$uuid' OR user_to = '$uuid')";
@@ -74,24 +74,26 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
             ";
             // <a class='sid' style='list-style-type: none;' href='sidebar-prototype.php'>Alle<br><br></a>
             // <a class='sid' style='list-style-type: none;opacity:0.35' href='invite.php'>+<br><br></a>
-
+}
 ?>
 
 <?php
 
-
+if(isset($_SESSION['useruid'])){
     echo "
     
     <br><br>
     
-    <div class='main-content' style='height:72vh'>
+    <div class='main-content fixed-input-main'>
     <div class='chatbox-container'>
     <div class='chatbox' style='font-weight: 300;color:white; white-space: normal; overflow: auto; word-wrap: break-word;'>
     
     ";
     // <section class='signup-form aalign main-content'>
+}
+else{
 
-
+}
 
 ?>
 
@@ -142,12 +144,12 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 
 
     // Udprinter messages fra prev. LOAD
-    if($result->num_rows > 0 && $host != 'devmch.online/chat_room.php') {
+    if($result->num_rows > 0 && isset($_SESSION['useruid'])  && $host != 'devmch.online/chat_room.php') {
 
         // Verificere, at session bruger er den samme som en bruger fra chatten
         // ellers skal den ikke vise beskederne, men i stedet skrive, at de ikke 
         // har adgang til chatten.
-        if($uuid == $user_from_id || $uuid == $user_to_id  && $host != 'devmch.online/chat_room.php'){ /* $uuid = $user_from_id || $uuid = $user_to_id */
+        if($uuid == $user_from_id || $uuid == $user_to_id){ /* $uuid = $user_from_id || $uuid = $user_to_id */
             while($row = $result->fetch_assoc()) {
                 // echo "".$row["user_id"]. " " ."- " . $row["message"]. "<br><br>";
 
@@ -186,6 +188,9 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 
 </div>
 </div>
+</section>
+
+
 
 <?php
 
@@ -193,8 +198,8 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 
 if(isset($_SESSION['useruid'])){
     if($_SESSION['useruid'] == $user_from_id || $_SESSION['useruid'] == $user_to_id) {
-        // echo "<br><br>";
-        echo "<div class='main-content' style='margin:0 0 20px 0;width:100%'>";
+        echo "<br><br>";
+        echo "<div class='fixed-input main-content'>";
         echo "<form class='form' method='POST' action='message_submit.php' style='background-color: var(--b);border: none;' >"; /* action='message_submit.php' */
         // echo "<input type='textarea' name='input' class='input5' autocomplete='off' placeholder='Skriv en besked...'/>";
         echo "<textarea type='textarea' id='messageid' name='input' class='input5' style='display:inline-block;height: 4rem' autocomplete='off' placeholder='Skriv en besked...'></textarea>";
@@ -219,8 +224,6 @@ else {
 
 ?>
 
-
-</section>
 
 
 </div>
