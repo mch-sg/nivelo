@@ -32,7 +32,7 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 
 <?php
 
-
+if(isset($_SESSION['useruid'])){
 
     $uuid = $_SESSION['useruid'];
     $sql = "SELECT DISTINCT * FROM chat_rooms WHERE (user_from = '$uuid' OR user_to = '$uuid')";
@@ -74,12 +74,12 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
             ";
             // <a class='sid' style='list-style-type: none;' href='sidebar-prototype.php'>Alle<br><br></a>
             // <a class='sid' style='list-style-type: none;opacity:0.35' href='invite.php'>+<br><br></a>
-
+}
 ?>
 
 <?php
 
-
+if(isset($_SESSION['useruid'])){
     echo "
     
     <br><br>
@@ -90,8 +90,10 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
     
     ";
     // <section class='signup-form aalign main-content'>
+}
+else{
 
-
+}
 
 ?>
 
@@ -142,7 +144,7 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 
 
     // Udprinter messages fra prev. LOAD
-    if($result->num_rows > 0 && $host != 'devmch.online/chat_room.php') {
+    if($result->num_rows > 0 && isset($_SESSION['useruid'])  && $host != 'devmch.online/chat_room.php') {
 
         // Verificere, at session bruger er den samme som en bruger fra chatten
         // ellers skal den ikke vise beskederne, men i stedet skrive, at de ikke 
