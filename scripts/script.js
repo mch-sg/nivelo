@@ -177,5 +177,14 @@ document.getElementById("messageid").addEventListener("keydown", function(event)
       event.preventDefault();
       this.form.submit();
     }
-  });
+});
 
+
+function scrollChatboxToBottom() {
+const chatbox = document.getElementById('chatbox');
+chatbox.scrollTop = chatbox.scrollHeight;
+}
+
+window.onload = scrollChatboxToBottom();
+
+  

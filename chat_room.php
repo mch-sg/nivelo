@@ -1,5 +1,7 @@
 <?php
 
+// Selv-lavet kode (ll. 1-37)
+// !
 session_start();
 
 $serverName = "127.0.0.1:3306";
@@ -15,8 +17,7 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
     include_once 'db/includes/header.php';
 
     // Fetch data til ændring af chatnavnene
-    $chat_room_id = $_GET['room']; $sql = "SELECT name, user_from, user_to FROM chat_rooms WHERE id = '$chat_room_id'"; $result3 = mysqli_query($conn, $sql); $row3 = mysqli_fetch_assoc($result3); $user_from_id = $row3['user_from']; $user_to_id = $row3['user_to']; $chat_room_name= $row3['name']; $host = $_SERVER['SERVER_NAME']  . $_SERVER['REQUEST_URI'];
-    
+    $chat_room_id = $_GET['room']; $sql = "SELECT name, user_from, user_to FROM chat_rooms WHERE id = '$chat_room_id'"; $result3 = mysqli_query($conn, $sql); $row3 = mysqli_fetch_assoc($result3); $user_from_id = $row3['user_from']; $user_to_id = $row3['user_to']; $chat_room_name= $row3['name']; $host = $_SERVER['SERVER_NAME']  . $_SERVER['REQUEST_URI'];  
 ?>
 <title><?php if($host != 'devmch.online/chat_room.php') { echo $chat_room_name; } else { echo "Chatrum"; } ?> - Nivelo</title>
 <script src="/scripts/script.js"></script>
@@ -34,6 +35,8 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 
 if(isset($_SESSION['useruid'])){
 
+    // Lånt kode (ll. 40-69)
+    // !
     $uuid = $_SESSION['useruid'];
     $sql = "SELECT DISTINCT * FROM chat_rooms WHERE (user_from = '$uuid' OR user_to = '$uuid')";
     $result = mysqli_query($conn, $sql);
@@ -66,19 +69,18 @@ if(isset($_SESSION['useruid'])){
             }
         }
 
+        // Selv-lavet kode (ll. 70-115)
+        // !
         echo "
             </div>
+        </div>
     </div>
-    </div>
-            
             ";
-            // <a class='sid' style='list-style-type: none;' href='sidebar-prototype.php'>Alle<br><br></a>
             // <a class='sid' style='list-style-type: none;opacity:0.35' href='invite.php'>+<br><br></a>
 }
 ?>
 
 <?php
-
 if(isset($_SESSION['useruid'])){
     echo "
     
@@ -86,7 +88,7 @@ if(isset($_SESSION['useruid'])){
     
     <div class='main-content' style='position: relative;'>
     <div class='chatbox-container chat-scale'>
-    <div class='chatbox' style='font-weight: 300;color:white; white-space: normal; overflow: auto; word-wrap: break-word;'>
+    <div class='chatbox' id='chatbox' style='font-weight: 300;color:white; white-space: normal; overflow: auto; word-wrap: break-word;'>
     
     ";
     // <section class='signup-form aalign main-content'>
@@ -106,14 +108,18 @@ else{
     $row3 = mysqli_fetch_assoc($result3);
     $user_from_id = $row3['user_from'];
     $user_to_id = $row3['user_to'];
-    $chat_room_name= $row3['name'];
+    $chat_room_name = $row3['name'];
 
+    // Lånt kode (ll. 116-119)
+    // !
     // Preventer forsiden chat_room.php for at vise noget
     $host = $_SERVER['SERVER_NAME']  . $_SERVER['REQUEST_URI'];
     if($host == 'devmch.online/chat_room.php' && $_SESSION['useruid']){
         echo "<h1 style='opacity:1.00;pointer-events: none;text-align:left;font-size:18px'>Vælg et rum for at begynde.<br></h1>";
     }
 
+    // Selv-lavet kode (ll. 124 - +-resten)
+    // !
     // Udskriv informationer til debugging
     if(isset($_SESSION['useruid']) && $host != 'devmch.online/chat_room.php') {
         echo "<h1 style='color: #fff; opacity:0.25;font-weight:200;pointer-events: none;text-align:left;font-size:18px'>Chat: $chat_room_name<br></h1>";
@@ -130,32 +136,19 @@ else{
         echo "<h1 style='color: #fff; opacity:0.25;font-weight:200;pointer-events: none;text-align:left;font-size:18px'>Room: $chat_room_id<br><br><br></h1>";
     }
 
-    // Autoriser til debug
-    $authorized = false;
-    if (isset($_SESSION['useruid'])) {
-        $session_user_id = $_SESSION['useruid'];
-        if ($session_user_id == $user_from_id || $session_user_id == $user_to_id) {
-            $authorized = true;
-        }
-    }
-    // if (!$authorized) {
-    //     die("You are not authorized to view this page.");
-    // }
-
-
     // Udprinter messages fra prev. LOAD
     if($result->num_rows > 0 && isset($_SESSION['useruid'])  && $host != 'devmch.online/chat_room.php') {
 
         // Verificere, at session bruger er den samme som en bruger fra chatten
         // ellers skal den ikke vise beskederne, men i stedet skrive, at de ikke 
         // har adgang til chatten.
-        if($uuid == $user_from_id || $uuid == $user_to_id  && $host != 'devmch.online/chat_room.php'){ /* $uuid = $user_from_id || $uuid = $user_to_id */
+        if($uuid == $user_from_id || $uuid == $user_to_id){
             while($row = $result->fetch_assoc()) {
                 // echo "".$row["user_id"]. " " ."- " . $row["message"]. "<br><br>";
 
                 date_default_timezone_set("Europe/Copenhagen");
-                $date = new DateTime($row['timestamp']); // Tidspunkt  
-                $msg = nl2br($row["message"]); // Splitter beskeder i multiline
+                $date = new DateTime($row['timestamp']); // Tidspunkt  // ! Lånt linjekode
+                $msg = nl2br($row["message"]); // Splitter beskeder i multiline // ! Lånt linjekode
 
                 // Sender farver
                 $sender_id = $row['user_id']; // Sender ID
@@ -185,16 +178,11 @@ else{
     $conn->close();
 ?>
 
-
 </div>
 </div>
 </section>
 
-
-
 <?php
-
-
 
 if(isset($_SESSION['useruid'])){
     if($_SESSION['useruid'] == $user_from_id || $_SESSION['useruid'] == $user_to_id) {
@@ -220,15 +208,10 @@ else {
     echo "</div>";
 } 
 
-
-
 ?>
-
-
 
 </div>
 <div id="preloader" class="loader"></div>
-
 
 <?php
     include_once 'db/includes/footer.php';
