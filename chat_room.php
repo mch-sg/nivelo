@@ -84,8 +84,8 @@ if(isset($_SESSION['useruid'])){
     
     <br><br>
     
-    <div class='main-content'>
-    <div class='main-content-content chatbox-container'>
+    <div class='main-content' style='position: relative;'>
+    <div class='chatbox-container chat-scale'>
     <div class='chatbox' style='font-weight: 300;color:white; white-space: normal; overflow: auto; word-wrap: break-word;'>
     
     ";
