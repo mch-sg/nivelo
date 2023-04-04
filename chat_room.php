@@ -1,7 +1,7 @@
 <?php
 
-// Selv-lavet kode (ll. 1-37)
-// !
+// * Selv-lavet kode (ll. 1-37)
+// *
 session_start();
 
 $serverName = "127.0.0.1:3306";
@@ -35,7 +35,7 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 
 if(isset($_SESSION['useruid'])){
 
-    // Lånt kode (ll. 40-69)
+    // ! Lånt kode (ll. 40-69)
     // !
     $uuid = $_SESSION['useruid'];
     $sql = "SELECT DISTINCT * FROM chat_rooms WHERE (user_from = '$uuid' OR user_to = '$uuid')";
@@ -69,8 +69,8 @@ if(isset($_SESSION['useruid'])){
             }
         }
 
-        // Selv-lavet kode (ll. 70-115)
-        // !
+        // * Selv-lavet kode (ll. 70-115)
+        // *
         echo "
             </div>
         </div>
@@ -87,7 +87,7 @@ if(isset($_SESSION['useruid'])){
     <br><br>
     
     <div class='main-content' style='position: relative;'>
-    <div class='chatbox-container chat-scale'>
+    <div class='chatbox-container chat-scale'> // ! Lånt chat-scale css
     <div class='chatbox' id='chatbox' style='font-weight: 300;color:white; white-space: normal; overflow: auto; word-wrap: break-word;'>
     
     ";
@@ -101,6 +101,8 @@ else{
 
 <?php
 
+    // ! Lånt kode (ll. 106-119)
+    // !
     $chat_room_id = $_GET['room'];
 
     $sql = "SELECT name, user_from, user_to FROM chat_rooms WHERE id = '$chat_room_id'";
@@ -110,16 +112,14 @@ else{
     $user_to_id = $row3['user_to'];
     $chat_room_name = $row3['name'];
 
-    // Lånt kode (ll. 116-119)
-    // !
     // Preventer forsiden chat_room.php for at vise noget
     $host = $_SERVER['SERVER_NAME']  . $_SERVER['REQUEST_URI'];
     if($host == 'devmch.online/chat_room.php' && $_SESSION['useruid']){
         echo "<h1 style='opacity:1.00;pointer-events: none;text-align:left;font-size:18px'>Vælg et rum for at begynde.<br></h1>";
     }
 
-    // Selv-lavet kode (ll. 124 - +-resten)
-    // !
+    // * Selv-lavet kode (ll. 124 - +-resten)
+    // *
     // Udskriv informationer til debugging
     if(isset($_SESSION['useruid']) && $host != 'devmch.online/chat_room.php') {
         echo "<h1 style='color: #fff; opacity:0.25;font-weight:200;pointer-events: none;text-align:left;font-size:18px'>Chat: $chat_room_name<br></h1>";
@@ -187,7 +187,7 @@ else{
 if(isset($_SESSION['useruid'])){
     if($_SESSION['useruid'] == $user_from_id || $_SESSION['useruid'] == $user_to_id) {
         echo "<br><br>";
-        echo "<div class='fixed-input main-content'>";
+        echo "<div class='fixed-input main-content'>"; // ! Lånt fixed-input css
         echo "<form class='form' method='POST' action='message_submit.php' style='background-color: var(--b);border: none;' >"; /* action='message_submit.php' */
         // echo "<input type='textarea' name='input' class='input5' autocomplete='off' placeholder='Skriv en besked...'/>";
         echo "<textarea type='textarea' id='messageid' name='input' class='input5' style='display:inline-block;height: 4rem' autocomplete='off' placeholder='Skriv en besked...'></textarea>";
