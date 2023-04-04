@@ -22,36 +22,51 @@
 
             <?php
                 if(isset($_SESSION["useruid"])){
+                    echo "<a href='javascript:void(0);' onclick='myFunction()' id='p2' class='icon divb bi bi-chevron-down'> </a></li>";
+                    
+                    echo "<div class='disc' id='navlink' style='z-index: 1000;'>";
                     echo "<li><a class='pro' style='vertical-align: middle;' href='invite.php'>Inviter</a></li>";
                     echo "<li><a class='pro' style='vertical-align: middle;' href='/chat_room.php'>Chatrum</a></li>";
-                    echo "<li style='vertical-align: middle;text-align: center;border-left: 1px solid var(--borderclr); height: 35px; margin: 0 0 0 20px;'></li>";
-                    echo "<li><a class='pro' style='vertical-align: middle;' href='profile.php'>Profil</a>";
+                    echo "<li id='brd2' class='brd' style='vertical-align: middle;text-align: center;border-left: 1px solid var(--borderclr); height: 35px; margin: 0 0 0 20px;'></li>";
+                    echo "<li><a class='pro' style='vertical-align: middle;' href='profile.php'>Profil</a> </div>";
 
-                    // echo "<a id='p2' class='divb bi bi-chevron-down'> </a></li>";
                     // echo "<li><a class='modal-btn-header' href='/db/includes/logout.inc.php' style='vertical-align: middle;'>Log ud</a></li>";
                     // echo "<li><a class='pro' href='db/includes/logout.inc.php'>Log ud</a></li>";
                 }
-                else{
+                else {
+                    echo "<a href='javascript:void(0);' onclick='myFunction()' id='p2' class='icon divb bi bi-chevron-down'> </a></li>";
+
+                    echo "<div class='disc' id='navlink' style='z-index: 1000;'>";
                     echo "<li><a class='pro' style='vertical-align: middle;' href='/about.php'>Opdag</a></li>";
                     echo "<li><a class='pro' style='vertical-align: middle;' href='/chat_room.php'>Chatrum</a></li>";
                     // echo "<li><a class='pro' style='vertical-align: middle;' href='/pro.php'>Gå Pro</a></li>";
-                    echo "<li style='vertical-align: middle;text-align: center;border-left: 1px solid var(--borderclr); height: 35px; margin: 0 0 0 20px;'></li>";
+                    echo "<li id='brd2' class='brd' style='vertical-align: middle;text-align: center;border-left: 1px solid var(--borderclr); height: 35px; margin: 0 0 0 20px;'></li>";
                     echo "<li><a class='pro' style='vertical-align: middle;' href='login.php'>Log på</a></li>";
-                    echo "<li><a class='modal-btn-header' href='signup.php' style='vertical-align: middle;'>Tilmeld</a></li>";
+                    echo "<li><a class='modal-btn-header' href='signup.php' style='vertical-align: middle;'>Tilmeld</a></li> </div>";
                     
-                    echo "<a href='javascript:void(0);' onclick='myFunction()' id='p2' class='divb bi bi-chevron-down'> </a></li>";
-                
                 }
             ?>
         </ul>
     </nav>
 
 
-    <!-- <a href="#" class="cta">
-    <div class="profilepicture">
-        <img src="https://res.cloudinary.com/coolors/image/upload/t_60x60/v1636729140/live/custom-avatars/fzhn1oqool8tpb2am7hx.jpg"></img>
-        </div>
-    </a> -->
+<script>
+function myFunction() {
+  var x = document.getElementById("navlink");
+  if (x.className === "disc") {
+    x.className += " responsive";
+  } else {
+    x.className = "disc";
+  }
+
+  var y = document.getElementById("brd2");
+  if (y.className === "brd") {
+    y.className += " disp";
+  } else {
+    y.className = "brd";
+  }
+}
+</script>
 
 
 </header>
