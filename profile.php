@@ -1,5 +1,5 @@
 <?php
-    session_start();
+session_start();
 ?>
 
 <?php
@@ -53,7 +53,8 @@
                 // #a2c275 - #818181
             }
 
-            echo "<div style='text-align:center;margin-top:35px;opacity:0.4;font-weight:300'><a class='pro' href='db/includes/logout.inc.php'>Log ud</a></div>
+            echo "<div style='text-align:center;margin-top:35px;opacity:0.4;font-weight:300'><a class='pro' onclick='deleteAllCookies()'>Slet cookies</a></div>";
+            echo "<div style='text-align:center;margin-top:15px;opacity:0.4;font-weight:300'><a class='pro' href='db/includes/logout.inc.php'>Log ud</a></div>
             
             </div>
             </div>

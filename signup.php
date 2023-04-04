@@ -1,5 +1,5 @@
 <?php
-    session_start();
+session_start();
     include_once 'db/includes/header.php';
 ?>
 <title>Tilmeld - Nivelo</title>

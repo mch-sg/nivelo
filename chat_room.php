@@ -4,6 +4,7 @@
 // *
 session_start();
 
+
 $serverName = "127.0.0.1:3306";
 $dBUsername = "u463909974_exam";
 $dBPassword = "Ekg123321";
@@ -88,7 +89,7 @@ if(isset($_SESSION['useruid'])){
     
     <div class='main-content' style='position: relative;'>
     <div class='chatbox-container chat-scale'>"; // ! Lånt chat-scale css
-    echo "<div class='chatbox' id='chatbox' style='font-weight: 300;color:white; white-space: normal; overflow: auto; word-wrap: break-word;'>
+    echo "<div class='chatbox' id='chatbox' style='font-weight: 200;color:white; white-space: normal; overflow: auto; word-wrap: break-word;'>
     
     ";
     // <section class='signup-form aalign main-content'>
@@ -158,7 +159,7 @@ else{
                 $userColor = $row_color['usersColor'];
 
                 // Udskriver beskederne
-                echo "<a style='color: $userColor; opacity:1.00;pointer-events: none;'>".$row["user_id"]. "</a> " ."<a style='opacity:0.15;pointer-events: none;font-weight:200'>" . $date->format('d/m H:i'). "</a> " . " " . $msg. "<br><br>"; 
+                echo "<a style='color: $userColor; font-weight:200;pointer-events: none;'>".$row["user_id"]. "</a> " ."<a style='opacity:0.15;pointer-events: none;font-weight:200'>" . $date->format('d/m H:i'). "</a> " . " " . $msg. "<br><br>"; 
                 // echo "<a style='opacity:0.15;pointer-events: none;font-weight:200'>" . $date->format('d/m/y H:i'). "</a> " ."<a style='color: $userColor; opacity:1.00;pointer-events: none;'>".$row["user_id"]. "</a>" . "   " . $msg. "<br><br>";
                 
                 // echo "<a style='color: $userColor; opacity:1.00;pointer-events: none;'>".$row["user_id"]. "</a> " ."<a style='opacity:0.30;pointer-events: none;'>(" . $date->format('M. d \k\l. H:i'). ")</a> " . "</a>" . $msg. "<br><br>"; 
@@ -193,7 +194,7 @@ if(isset($_SESSION['useruid'])){
         echo "<textarea type='textarea' id='messageid' name='input' class='input5' style='display:inline-block;height: 4rem' autocomplete='off' placeholder='Skriv en besked...'></textarea>";
         echo "  <input type='hidden' name='chat_room_id' value='$chat_room_id'>";
         echo "  <input type='hidden' name='chat_room_name' value='$chat_room_name'>";
-        echo "    <button class='modal-btn' type='submit' value='Send' style='margin-left: 1%;padding: 1.25rem 0rem;width: 10%;border: 1px solid var(--borderclr);'>Send</button>"; /* background: #ff462e; */
+        echo "    <button class='modal-btn sendbtn' type='submit' value='Send' style='margin-left: 1%;padding: 1.25rem 0rem;border: 1px solid var(--borderclr);'>Send</button>"; /* background: #ff462e; */
         echo "</form>";
         echo "</div>";
     }
