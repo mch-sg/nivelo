@@ -25,6 +25,7 @@ try {
     include_once 'db/includes/header.php';
 
     // Fetch data til ændring af chatnavnene
+
     $ranid = $_GET['room'];
     $stmt = $conn->prepare("SELECT id, name, user_from, user_to FROM chat_rooms WHERE uuid = :uuid");
     $stmt->bindParam(':uuid', $ranid);
@@ -133,7 +134,7 @@ if(isset($_SESSION['useruid']) && $_SESSION['useruid'] == $user_from_id || $_SES
 // !
 // Preventer forsiden chat_room.php for at vise noget
 if($host == 'devmch.online/chat_room_s.php' && $_SESSION['useruid']){
-    echo "Vælg et rum for at begynde, eller <a class='creat' href='/invite.php'> opret et nyt.</a><br>";
+    echo "Vælg et rum for at begynde, eller <a class='creat' href='/invite.php'> lav et nyt.</a><br>";
 }
 
 // * Selv-lavet kode (ll. 124 - +-resten)
@@ -234,7 +235,6 @@ else {
     echo "</div>";
 } 
 
-$conn->close();
 
 ?>
 
@@ -243,6 +243,8 @@ $conn->close();
 
 <?php
     include_once 'db/includes/footer.php';
+
+    $conn->close();
 ?>
 
 <link rel="stylesheet" href="css/palette-selector.css">

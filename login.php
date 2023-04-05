@@ -45,6 +45,12 @@ session_start();
                 echo "<p style='margin-top:5px;text-align:center'>Forkert login!</p>";
             }
         }
+
+        if(isset($_GET["newpwd"])) {
+            if($_GET["newpwd"] == "passwordupdated") {
+                echo "<p style='margin-top:5px;text-align:center'>Din adgangskode er blevet ændret!</p>";
+            }
+        }
     ?>
 
 </section>

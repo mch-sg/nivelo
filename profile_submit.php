@@ -30,20 +30,20 @@ $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 
 if($color != '') {
 $sql = "UPDATE users SET usersColor = '$color' WHERE usersUid = '$name'";
-$expire = time() + 60 * 60 * 24 * 30; // 30 days
-setcookie("u_profile_color_set", "true", $expire, "/");
+$expire = time() + 3600; // 1 hr
+setcookie("prf_clr", "true", $expire, "/");
 }
 
 if($emailchange != '') {
 $sql = "UPDATE users SET usersEmail = '$emailchange' WHERE usersUid = '$name'";
-$expire = time() + 60 * 60 * 24 * 30; // 30 days
-setcookie("u_profile_email_set", "true", $expire, "/");
+$expire = time() + 3600; // 1 hr
+setcookie("prf_eml", "true", $expire, "/");
 }
 
 if($namechange != '') {
 $sql = "UPDATE users SET usersName = '$namechange' WHERE usersUid = '$name'";
-$expire = time() + 60 * 60 * 24 * 30; // 30 days
-setcookie("u_profile_name_set", "true", $expire, "/");
+$expire = time() + 3600; // 1 hr
+setcookie("prf_nm", "true", $expire, "/");
 }
 
 
