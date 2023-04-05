@@ -13,18 +13,37 @@ $color = $_POST['color'];
 $emailchange = $_POST['mailchange'];
 $namechange = $_POST['namechange'];
 
+// Autoriser bruger
+$authorized = false;
+if (isset($_SESSION['useruid'])) {
+    $session_user_id = $_SESSION['useruid'];
+    if ($session_user_id == $user_from_id || $session_user_id == $user_to_id) {
+        $authorized = true;
+    }
+}
+if (!$authorized) {
+    die("You are not authorized to view this page.");
+}
+
+
 $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 
 if($color != '') {
 $sql = "UPDATE users SET usersColor = '$color' WHERE usersUid = '$name'";
+$expire = time() + 60 * 60 * 24 * 30; // 30 days
+setcookie("u_profile_color_set", "true", $expire, "/");
 }
 
 if($emailchange != '') {
 $sql = "UPDATE users SET usersEmail = '$emailchange' WHERE usersUid = '$name'";
+$expire = time() + 60 * 60 * 24 * 30; // 30 days
+setcookie("u_profile_email_set", "true", $expire, "/");
 }
 
 if($namechange != '') {
 $sql = "UPDATE users SET usersName = '$namechange' WHERE usersUid = '$name'";
+$expire = time() + 60 * 60 * 24 * 30; // 30 days
+setcookie("u_profile_name_set", "true", $expire, "/");
 }
 
 

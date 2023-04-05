@@ -11,6 +11,14 @@ if (!$conn) {
     die("Connection failed: ".mysqli_connect_error());
 }
 
+
+// try {
+//     $conn = new PDO("mysql:host=$serverName;dbname=$dBName", $dBUsername, $dBPassword);
+// } catch(PDOException $e) {
+//     // Handle any database connection errors
+//     die("Database connection failed: " . $e->getMessage());
+// }
+
 /*
 
 $serverName = "localhost";

@@ -30,11 +30,19 @@
 
 .sid {
   font-size: 18px;
-  transition: 0.2s;
+  transition: 0.15s ease;
 }
 
 .sid:hover {
-  transition: 0.2s;
+  color: var(--dimclr);
+}
+
+.creat {
+  opacity: 0.5;
+  transition: 0.15s ease;
+}
+
+.creat:hover {
   color: var(--dimclr);
 }
 

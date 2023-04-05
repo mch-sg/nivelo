@@ -1,6 +1,23 @@
 <?php
     session_start();
+  
+    // Check if the token cookie has expired
+    if (!isset($_COOKIE["login_token"]) && time() < $_COOKIE["login_token"]) {
+        // Destroy the session and unset the token cookie
 
+        session_regenerate_id(true);
+        
+        session_start();
+        session_unset();
+        session_destroy();
+        
+        setcookie("user", "", time() - 3600, "/");
+        setcookie("login_token", "", time() - 3600, "/");
+
+        // Redirect the user to the login page
+        header("Location: ../../login.php");
+        exit;
+    }
 
     $_SESSION['user_id'] = $uid; // assuming $user_id is the ID of the logged in user
 

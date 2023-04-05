@@ -15,14 +15,27 @@ $input = $_POST['input'];
 $chat_room_name = $_POST['room_name'];
 $bruger = $_POST['bruger'];
 $from = $_SESSION['useruid'];
+$chat_id = uniqid();
+
+
+// Autoriser bruger
+$authorized = false;
+if (isset($_SESSION['useruid'])) {
+    $session_user_id = $_SESSION['useruid'];
+    if ($session_user_id == $user_from_id || $session_user_id == $user_to_id) {
+        $authorized = true;
+    }
+}
+if (!$authorized) {
+    die("You are not authorized to view this page.");
+}
+
 
 $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 
-// echo "chat_room_id: $chat_room_id";
-
 
 // Insert the new room into the database
-$sql = "INSERT INTO chat_rooms (name, user_from, user_to) VALUES ('$chat_room_name', '$from', '$bruger')";
+$sql = "INSERT INTO chat_rooms (name, user_from, user_to, uuid) VALUES ('$chat_room_name', '$from', '$bruger', '$chat_id');";
 
 // $sql = "UPDATE 'messages' SET 'message' = '$input' WHERE 'messages'.'id' = 1;";
 

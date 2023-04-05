@@ -12,6 +12,7 @@ const closeModalButtons = document.querySelectorAll('[data-close-button]')
 const acceptModalButtons = document.querySelectorAll('[data-accept-button]')
 const rejectModalButtons = document.querySelectorAll('[data-reject-button]')
 const overlay = document.getElementById('overlay')
+const overlay1 = document.getElementById('overlay1')
 
 
 if(!localStorage.getItem('seenCookie')) {
@@ -39,6 +40,7 @@ if(!localStorage.getItem('seenCookie')) {
         const modals = document.querySelectorAll('.modal.active')
         modals.forEach(modal => {
             closeModal(modal)
+            localStorage.setItem('cookieStatus', 'accepted');
         })
     })
 
@@ -52,6 +54,41 @@ if(!localStorage.getItem('seenCookie')) {
 
     localStorage.setItem('seenCookie', '1');
 }
+
+
+
+if(document.cookie.replace(/(?:(?:^|.*;\s*)visited\s*\=\s*([^;]*).*$)|^.*$/, "$1") === "true" && !localStorage.getItem('modals') && localStorage.getItem('cookieStatus') === 'accepted') {
+  localStorage.setItem('modals', '1');
+  if(localStorage.getItem('modals') === '1') {
+    document.getElementById('modal1').classList.add('active');
+    document.getElementById('overlay1').classList.add('active');
+
+    acceptModalButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const modal = button.closest('.modal')
+        closeModal(modal)
+          })
+      })
+
+      overlay1.addEventListener('click', () => {
+          const modals = document.querySelectorAll('.modal.active')
+          modals.forEach(modal => {
+              closeModal(modal)
+          })
+      })
+
+      function closeModal(modal) {
+          if (modal == null) return
+          modal.classList.remove('active');
+          overlay1.classList.remove('active');
+      }
+    }
+}
+
+
+var currentDate = new Date();
+var expirationDate = new Date(currentDate.getTime() + (365 * 24 * 60 * 60 * 1000));
+document.cookie = "visited=true;expires=" + expirationDate.toUTCString() + ";path=/";
 
 
 

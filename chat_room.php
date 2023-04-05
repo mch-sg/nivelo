@@ -57,13 +57,14 @@ if(isset($_SESSION['useruid'])){
         // Fetch chat room blandt id og indsættes i chat_room
         while($row = mysqli_fetch_assoc($result)){
             $chat_room_name = $row['name'];
-            $sql = "SELECT id, user_from, user_to FROM chat_rooms WHERE name = '$chat_room_name'";
+            $sql = "SELECT id, user_from, user_to, uuid FROM chat_rooms WHERE name = '$chat_room_name'";
             $result2 = mysqli_query($conn, $sql);
             $row2 = mysqli_fetch_assoc($result2);
             $user_from_id = $row2['user_from'];
             $user_to_id = $row2['user_to'];
             if($uuid == $user_from_id || $uuid == $user_to_id) {
                 $chat_room_id = $row2['id'];
+                $ranid = $row2['uuid'];
                 echo "
                 <a href='chat_room.php?room=$chat_room_id' class='sid' style='list-style-type: none;'>$chat_room_name<br><br></a>
                 ";
@@ -159,7 +160,7 @@ else{
                 $userColor = $row_color['usersColor'];
 
                 // Udskriver beskederne
-                echo "<a style='color: $userColor; font-weight:200;pointer-events: none;'>".$row["user_id"]. "</a> " ."<a style='opacity:0.15;pointer-events: none;font-weight:200'>" . $date->format('d/m H:i'). "</a> " . " " . $msg. "<br><br>"; 
+                echo "<a style='color: $userColor; font-weight:300;pointer-events: none;'>".$row["user_id"]. "</a> " ."<a style='opacity:0.15;pointer-events: none;font-weight:200'>" . $date->format('d/m H:i'). "</a> " . " " . $msg. "<br><br>"; 
                 // echo "<a style='opacity:0.15;pointer-events: none;font-weight:200'>" . $date->format('d/m/y H:i'). "</a> " ."<a style='color: $userColor; opacity:1.00;pointer-events: none;'>".$row["user_id"]. "</a>" . "   " . $msg. "<br><br>";
                 
                 // echo "<a style='color: $userColor; opacity:1.00;pointer-events: none;'>".$row["user_id"]. "</a> " ."<a style='opacity:0.30;pointer-events: none;'>(" . $date->format('M. d \k\l. H:i'). ")</a> " . "</a>" . $msg. "<br><br>"; 
@@ -172,7 +173,7 @@ else{
     } else if($result->num_rows == 0) {
         // Hvis der er 0 num_rows i message databasen, men at der stadig findes 
         // beskeder i databasen, skal den sige, at der ikke er nogen beskeder endnu.
-        echo "<p style='color:white'>Der er ingen beskeder her endnu.</p>";
+        echo "<p style='color:white;font-weight:300'>Der er ingen beskeder her endnu.</p>";
 
     } 
 
@@ -194,7 +195,7 @@ if(isset($_SESSION['useruid'])){
         echo "<textarea type='textarea' id='messageid' name='input' class='input5' style='display:inline-block;height: 4rem' autocomplete='off' placeholder='Skriv en besked...'></textarea>";
         echo "  <input type='hidden' name='chat_room_id' value='$chat_room_id'>";
         echo "  <input type='hidden' name='chat_room_name' value='$chat_room_name'>";
-        echo "    <button class='modal-btn sendbtn' type='submit' value='Send' style='margin-left: 1%;padding: 1.25rem 0rem;border: 1px solid var(--borderclr);'>Send</button>"; /* background: #ff462e; */
+        echo "    <button class='modal-btn sendbtn startclr' type='submit' value='Send' style='margin-left: 1%;padding: 1.25rem 0rem;border: 1px solid var(--borderclr);'>Send</button>"; /* background: #ff462e; */
         echo "</form>";
         echo "</div>";
     }

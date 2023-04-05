@@ -144,13 +144,13 @@
   .nav_links li {
     display: inline-block;
     padding: 0px 10px;
-    transition: 0.2s;
+    transition: 0.15s ease;
   }
 
   .nav_links li a {
     /* transition: all 0.2s ease 0s; */
     font-size: 10;
-    transition: 0.2s;
+    transition: 0.15s ease;
   }
 
   /* * 
@@ -291,6 +291,10 @@
   .pad {
     padding-right: 20%;
   }
+
+  .pad-xl {
+    padding-right: 10%;
+  }
 }
 
 @media only screen and (min-width: 2000px) {
@@ -349,5 +353,9 @@
 
   .wid {
     margin-top: 35px;
+  }
+
+  .logScale {
+    margin-top: 50px;
   }
 }

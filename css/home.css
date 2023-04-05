@@ -2,7 +2,7 @@
   --borderclr: #ffffff11;
 
   --add: #cececed2;
-  --dimclr: #949494;
+  --dimclr: #acacac; /* #949494 */
   --buttonhover: #aaaaaa; /* #919191 */
 
   /*   
@@ -81,7 +81,7 @@ cta {
 
 .hv {
   cursor: pointer;
-  transition: 0.2s;
+  transition: 0.15s ease;
 }
 .hv:hover {
   opacity: 0.5;
@@ -92,30 +92,30 @@ cta {
   margin-right: auto;
   width: 165px;
   height: auto;
-  transition: 0.2s;
+  transition: 0.15s ease;
 }
 
 .logo:hover {
   opacity: 0.7;
-  transition: 0.2s;
+  transition: 0.15s ease;
 }
 
 .nav_links {
   list-style: none;
   vertical-align: middle;
-  transition: 0.2s;
+  transition: 0.15s ease;
 }
 
 .nav_links li {
   display: inline-block;
   padding: 0px 15px;
-  transition: 0.2s;
+  transition: 0.15s ease;
 }
 
 .nav_links li a {
   /* transition: all 0.2s ease 0s; */
   font-size: 18px;
-  transition: 0.2s;
+  transition: 0.15s ease;
 }
 
 .diva:hover {
@@ -134,11 +134,10 @@ cta {
 }
 
 .pro {
-  transition: 0.2s;
+  transition: 0.15s ease;
 }
 
 .pro:hover {
-  transition: 0.2s;
   color: var(--dimclr);
 }
 
@@ -171,5 +170,5 @@ cta {
 
 .pro {
   /* color: var(--hclr); */
-  transition: 0.2s;
+  transition: 0.15s ease;
 }

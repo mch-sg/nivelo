@@ -17,7 +17,7 @@ session_start();
         <?php
         if(isset($_SESSION['useruid'])){
             echo "
-            <section style='margin-top: 75px;'>
+            <section class='logScale'> <!-- style='margin-top: 75px;' -->
 
 
     <div style='padding: 25px;font-size: 1.5rem;'>
@@ -26,21 +26,27 @@ session_start();
             <h1 style='font-size:30px;margin-bottom:35px'>{$_SESSION["username"]}</h1>
             
             <div class='modal-bodyi'>
-            <form class='form' action='profile_submit.php' method='POST' style='background-color: var(--b);border: none;width: 500px;'>
-                <label class='label' for='color' style='color: #818181;font-size: 18px;text-align:left'>Skift Chatfarve</label>
-                <input minlength='7' maxlength='7' pattern='^#.*$' class='input3' type='text' name='color' id='color' placeholder='F.eks. #b392ac' style='margin-bottom:30px;margin-top:15px'>
+            <form class='form' action='profile_submit.php' method='POST' style='background-color: var(--b);border: none;width: 450px;'>
+                <!-- <label class='label' for='color' style='color: #414141;font-size: 15px;text-align:left'>Skift Chatfarve</label> -->
+                <input minlength='7' maxlength='7' pattern='^#.*$' class='input3' type='text' name='color' id='color' placeholder='Skift Chatfarve (#b392ac)' style='margin-bottom:20px'>
 
-                <label class='label' for='namechange' style='color: #818181;font-size: 18px;text-align:left;'>Skift Navn</label>
-                <input class='input3' type='text' name='namechange' id='namechange' placeholder='John Wellert Doe...' style='margin-bottom:30px;margin-top:15px'>
+                <!-- <label class='label' for='namechange' style='color: #414141;font-size: 15px;text-align:left;'>Skift Navn</label> -->
+                <input class='input3' type='text' name='namechange' autocomplete='off'  id='namechange' placeholder='Skift Fulde Navn' style='margin-bottom:20px'>
 
-                <label class='label' for='mailchange' style='color: #818181;font-size: 18px;text-align:left;'>Skift Email</label>
-                <input class='input3' type='text' name='mailchange' id='mailchange' placeholder='johndoe@gmail.com...' style='margin-bottom:15px;margin-top:15px'>
+                <!-- <label class='label' for='mailchange' style='color: #414141;font-size: 15px;text-align:left;'>Skift Email</label> -->
+                <input class='input3' type='text' name='mailchange' id='mailchange' placeholder='Skift Email' style='margin-bottom:20px'>
     
                 <div class='modal-spc' style='text-align:center;'>
-                    <button class='modal-btn' type='submit' name='submit'>Opdater ændringer</button>
+                    <button class='modal-btn startclr' type='submit' name='submit'>Opdater</button>
                 </div>
-            </form>";
+            </form>
             
+            <!-- <div style='color:white;text-align:center'>Lys/mørk</div> -->";
+            
+            // $expire = time() + 60 * 60 * 24 * 365; // 1 yr 60 * 60 * 24 * 365
+            // setcookie("theme_preference", "Dark", $expire, "/");
+            // setcookie("chat_hex", $userColor, $expire, "/");
+
             if (isset($_GET['message'])) {
                 $message = $_GET['message'];
                 if($message == "Opdateret!"){
@@ -53,8 +59,8 @@ session_start();
                 // #a2c275 - #818181
             }
 
-            echo "<div style='text-align:center;margin-top:35px;opacity:0.4;font-weight:300'><a class='pro' onclick='deleteAllCookies()'>Slet cookies</a></div>";
-            echo "<div style='text-align:center;margin-top:15px;opacity:0.4;font-weight:300'><a class='pro' href='db/includes/logout.inc.php'>Log ud</a></div>
+            // echo "<div style='text-align:center;margin-top:55px;opacity:0.2;font-weight:300'><a class='pro' onclick='deleteAllCookies()'>Slet cookies<br></a></div>";
+            echo "<div style='text-align:center;margin-top:45px;opacity:0.2;font-weight:300'><a class='pro' href='db/includes/logout.inc.php'>Log ud</a></div>
             
             </div>
             </div>

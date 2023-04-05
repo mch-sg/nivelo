@@ -16,23 +16,23 @@ session_start();
 <?php
 if(isset($_SESSION['useruid'])){
 echo "
-<section style='margin-top: 75px;'>
+<section class='logScale'> <!-- style='margin-top: 75px;' -->
     <div style='padding: 25px;font-size: 1.5rem;'>
-        <div class='title sysText' style='text-align: center;'>Lav et nyt chatrum</div>
+        <div class='title sysText' style='text-align: center;'>Opret nyt chatrum</div>
     </div>
     <div class='modal-bodyi'>
-        <form class='form' action='chat_submit.php' method='POST' style='background-color: var(--b);border: none;width: 500px;'>
-        <label class='label' for='bruger' style='color: #818181;font-size: 18px;'>Brugernavnet på den inviterede</label>
-        <input class='input3' type='text' required name='bruger' id='bruger' placeholder='mhvidtfeldt...' style='margin-bottom:30px;margin-top:15px'>
+        <form class='form' action='chat_submit.php' method='POST' style='background-color: var(--b);border: none;width: 450px;'>
+        <!-- <label class='label' for='bruger' style='color: #818181;font-size: 18px;'>Brugernavnet på den inviterede</label> -->
+        <input class='input3' type='text' required name='bruger' id='bruger' placeholder='Brugernavn (inviterede bruger)' style='margin-bottom:20px'>
         
-        <label class='label' for='room_name' style='color: #818181;font-size: 18px'>Chatnavn</label>
-        <input class='input3'  type='text' required name='room_name' id='name' placeholder='Feedback til Logo...' style='margin-bottom:5px;margin-top:15px'>
+        <!-- <label class='label' for='room_name' style='color: #818181;font-size: 18px'>Chatnavn</label> -->
+        <input class='input3' autocomplete='off' type='text' required name='room_name' id='name' placeholder='Chatnavn' style='margin-bottom:5px'>
             <input type='hidden' name='user_from' value='{$_SESSION['useruid']}'>
 
             <!-- <small class=' style='font-weight: 300'>Glemt adgangskode?</small> -->
 
             <div class='modal-spc' style='text-align:center;'>
-                <button class='modal-btn' type='submit' name='submit'>Lav chat</button>
+                <button class='modal-btn startclr' type='submit' name='submit'>Lav chat</button>
             </div>
         </form>
     </div>";

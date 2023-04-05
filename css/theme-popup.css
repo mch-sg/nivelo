@@ -9,7 +9,7 @@
   transition: opacity 0.2s, visibility 0.2s;
   /* transition: 0.2s ease-in-out; */
   /* border: 1px solid black; */
-  border-radius: 8px;
+  border-radius: 10px;
   z-index: 1000;
   background-color: var(--minclr);
   color: var(--w);
@@ -38,7 +38,7 @@
 
 .title {
   /* font-size: 1.25rem; */
-  font-weight: 600;
+  font-weight: 500;
   color: var(--sekclr);
 }
 
@@ -47,11 +47,12 @@
   line-height: 1.5;
   font-size: 1rem;
   font-weight: 300;
-  color: var(--w);
+  color: var(--modaltext);
 }
 
 .sysText {
   font-size: 1.75rem;
+  font-weight: 300;
 }
 
 .modal-header .title,
@@ -71,13 +72,13 @@
 
 .close-button:hover {
   /* color: var(--dimclr); */
-  opacity: 0.7;
+  opacity: 0.5;
 }
 
 .modal-body {
   font-family: "Inter", sans-serif;
   font-size: 1.25rem;
-  padding: 5px 25px 25px 25px;
+  padding: 15px 25px 25px 25px;
   background-color: var(--minclr);
   border-radius: 8px;
   /* display: flex; */
@@ -87,8 +88,7 @@
 .modal-bodyi {
   font-family: "Inter", sans-serif;
   font-size: 1.25rem;
-  padding: 25px;
-  background-color: var(--b);
+  padding-top: 10px;
 }
 
 #overlay {
@@ -119,6 +119,34 @@
   pointer-events: all;
 }
 
+#overlay1 {
+  transition: opacity 0.2s, visibility 0.2s;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+  padding: 0;
+  margin: 0;
+
+  top: 0;
+  left: 0;
+
+  visibility: hidden;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+#overlay1.active {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: all;
+}
+
 .modal-btn-header {
   font-family: "Inter", sans-serif;
   border: none;
@@ -126,7 +154,7 @@
   padding: 1rem 1.25rem;
   background-color: var(--hclr);
   cursor: pointer;
-  transition: 0.2s ease-in-out;
+  transition: 0.15s ease-in-out;
   color: var(--b);
 
   -webkit-font-smoothing: antialiased;
@@ -147,11 +175,11 @@
   font-family: "Inter", sans-serif;
   font-size: 18px;
   border: none;
-  border-radius: 7px;
+  border-radius: 10px;
   padding: 1.25rem 1.5rem;
-  background-color: var(--hclr);
+  /* background-color: var(--hclr); */
   cursor: pointer;
-  transition: 0.2s ease-in-out;
+  transition: 0.15s ease-in-out;
   color: var(--b);
 
   font-smooth: always;
@@ -161,7 +189,7 @@
 }
 
 .modal-btn:hover {
-  background-color: var(--buttonhover);
+  /* background-color: var(--buttonhover); */
   /* transform: scale(0.99); */
 }
 
@@ -175,32 +203,6 @@
   margin-top: 2rem;
 }
 
-#input3 {
-  width: 96%;
-  height: 100%;
-  border: none;
-  outline: none;
-  background-color: var(--minclr);
-  border: 1px solid var(--borderclr);
-  border-radius: 7px;
-  color: var(--w);
-  font-family: "Inter", sans-serif;
-  font-weight: 300;
-  font-size: 1.25rem;
-  padding: 1rem;
-  resize: none;
-
-  transition: 0.2s;
-}
-
-#input3:focus {
-  background-color: var(--focusclr);
-}
-
-#input3::placeholder {
-  color: var(--loaderclr);
-}
-
 #input4 {
   width: 96%;
   height: 100%;
@@ -208,15 +210,15 @@
   outline: none;
   background-color: var(--minclr);
   border: 1px solid var(--borderclr);
-  border-radius: 7px;
+  border-radius: 10px;
   color: var(--w);
   font-family: "Inter", sans-serif;
   font-weight: 300;
-  font-size: 1.25rem;
+  font-size: 18px;
   padding: 1rem;
   resize: none;
 
-  transition: 0.2s;
+  transition: 0.15s ease;
 }
 
 #input4:focus {
@@ -224,7 +226,7 @@
 }
 
 #input4::placeholder {
-  color: var(--loaderclr);
+  color: var(--inputplaceholder);
 }
 
 .input3 {
@@ -234,22 +236,23 @@
   outline: none;
   background-color: var(--minclr);
   border: 1px solid var(--borderclr);
-  border-radius: 7px;
+  border-radius: 10px;
   color: var(--w);
   font-family: "Inter", sans-serif;
   font-weight: 300;
-  font-size: 1.25rem;
+  font-size: 18px;
   padding: 1.25rem;
   resize: none;
-  transition: 0.2s;
+  transition: 0.15s ease;
 }
 
 .input3:focus {
-  background-color: var(--focusclr);
+  /* background-color: var(--focusclr); */
+  border: 1px solid var(--butClr);
 }
 
 .input3::placeholder {
-  color: var(--loaderclr);
+  color: var(--inputplaceholder);
 }
 
 .input5 {
@@ -263,35 +266,30 @@
   outline: none;
   background-color: var(--minclr);
   border: 1px solid var(--borderclr);
-  border-radius: 7px;
+  border-radius: 10px;
   color: var(--w);
   font-family: "Inter", sans-serif;
   font-weight: 300;
   font-size: 18px;
   padding: 1.25rem;
   resize: none;
-  transition: 0.2s;
+  transition: 0.15s ease;
 }
 
 .input5:focus {
-  background-color: var(--focusclr);
+  /* background-color: var(--focusclr); */
+  border: 1px solid var(--butClr);
 }
 
 .input5::placeholder {
-  color: var(--loaderclr);
+  color: var(--inputplaceholder);
 }
 
 input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
 textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus,
-select:-webkit-autofill,
-select:-webkit-autofill:hover,
-select:-webkit-autofill:focus {
+select:-webkit-autofill {
   caret-color: var(--sekclr);
-  border: 1px solid var(--hclr);
+  border: 1px solid var(--butClr);
   -webkit-text-fill-color: var(--hclr);
   transition: background-color 5000s ease-in-out 0s;
 }
