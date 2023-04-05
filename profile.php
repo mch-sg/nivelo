@@ -1,14 +1,6 @@
 <?php
 session_start();
 
-// Initialize the counter to 0 if it doesn't exist
-if (!isset($_COOKIE['prf_c'])) {
-    setcookie('prf_c', 0, time() + (86400 * 30)); // 30 days
-}
-
-// Increment the counter by 1 and update the cookie
-$prf_c = $_COOKIE['prf_c'] + 1;
-setcookie('prf_c', $prf_c, time() + (86400 * 30)); // 30 days
 ?>
 
 <?php
@@ -51,10 +43,6 @@ setcookie('prf_c', $prf_c, time() + (86400 * 30)); // 30 days
             </form>
             
             <!-- <div style='color:white;text-align:center'>Lys/mørk</div> -->";
-            
-            // $expire = time() + 60 * 60 * 24 * 365; // 1 yr 60 * 60 * 24 * 365
-            // setcookie("theme_preference", "Dark", $expire, "/");
-            // setcookie("chat_hex", $userColor, $expire, "/");
 
             if (isset($_GET['message'])) {
                 $message = $_GET['message'];

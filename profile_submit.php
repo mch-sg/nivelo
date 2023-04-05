@@ -17,33 +17,26 @@ $namechange = $_POST['namechange'];
 $authorized = false;
 if (isset($_SESSION['useruid'])) {
     $session_user_id = $_SESSION['useruid'];
-    if ($session_user_id == $user_from_id || $session_user_id == $user_to_id) {
-        $authorized = true;
-    }
+    $authorized = true;
 }
 if (!$authorized) {
     die("You are not authorized to view this page.");
 }
 
 
+
 $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
 
 if($color != '') {
 $sql = "UPDATE users SET usersColor = '$color' WHERE usersUid = '$name'";
-$expire = time() + 3600; // 1 hr
-setcookie("prf_clr", "true", $expire, "/");
 }
 
 if($emailchange != '') {
 $sql = "UPDATE users SET usersEmail = '$emailchange' WHERE usersUid = '$name'";
-$expire = time() + 3600; // 1 hr
-setcookie("prf_eml", "true", $expire, "/");
 }
 
 if($namechange != '') {
 $sql = "UPDATE users SET usersName = '$namechange' WHERE usersUid = '$name'";
-$expire = time() + 3600; // 1 hr
-setcookie("prf_nm", "true", $expire, "/");
 }
 
 

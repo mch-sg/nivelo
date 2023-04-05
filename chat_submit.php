@@ -22,9 +22,7 @@ $chat_id = uniqid();
 $authorized = false;
 if (isset($_SESSION['useruid'])) {
     $session_user_id = $_SESSION['useruid'];
-    if ($session_user_id == $user_from_id || $session_user_id == $user_to_id) {
-        $authorized = true;
-    }
+    $authorized = true;
 }
 if (!$authorized) {
     die("You are not authorized to view this page.");
