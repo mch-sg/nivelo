@@ -1,32 +1,6 @@
 /* modals */
 /*  */
 
-.modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: opacity 0.2s, visibility 0.2s;
-  /* transition: 0.1s ease ease-in-out; */
-  /* border: 1px solid black; */
-  border-radius: 10px;
-  z-index: 1000;
-  background-color: var(--minclr);
-  color: var(--w);
-  width: 800px;
-  max-width: 75%;
-  text-align: left;
-
-  visibility: hidden;
-  opacity: 0;
-}
-
-.modal.active {
-  visibility: visible;
-  opacity: 1;
-  transform: translate(-50%, -50%);
-}
-
 .modal-header {
   padding: 25px 25px 0 25px;
   display: flex;
@@ -89,62 +63,6 @@
   font-family: "Inter", sans-serif;
   font-size: 1.25rem;
   padding-top: 10px;
-}
-
-#overlay {
-  transition: opacity 0.2s, visibility 0.2s;
-  opacity: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  pointer-events: none;
-
-  height: 100%;
-  width: 100%;
-  position: fixed;
-  z-index: 100;
-  padding: 0;
-  margin: 0;
-
-  top: 0;
-  left: 0;
-
-  visibility: hidden;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-}
-
-#overlay.active {
-  visibility: visible;
-  opacity: 1;
-  pointer-events: all;
-}
-
-#overlay1 {
-  transition: opacity 0.2s, visibility 0.2s;
-  opacity: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  pointer-events: none;
-
-  height: 100%;
-  width: 100%;
-  position: fixed;
-  z-index: 100;
-  padding: 0;
-  margin: 0;
-
-  top: 0;
-  left: 0;
-
-  visibility: hidden;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-}
-
-#overlay1.active {
-  visibility: visible;
-  opacity: 1;
-  pointer-events: all;
 }
 
 .modal-btn-header {

@@ -125,18 +125,6 @@ function loginUser($conn, $username, $pwd) {
         $expire = time() + 60 * 60 * 24 * 365; // 30 days
         setcookie("user", $uidExists["usersUid"], $expire, "/");
 
-        function str_rand(int $length = 20){ // 64 = 32
-            $length = ($length < 4) ? 4 : $length;
-            return bin2hex(random_bytes(($length-($length%2))/2));
-        }
-
-        $expire = time() + 60 * 60 * 24 * 365; // 1 yr 60 * 60 * 24 * 365
-        $desired_length = 30;
-        $unique = uniqid();
-        $random = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $desired_length);
-
-        setcookie("login_token", $random, $expire, "/");
-
         header("location: ../../");
         exit();
     }
