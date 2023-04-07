@@ -28,25 +28,19 @@ session_start();
             
             <div class='modal-bodyi'>
             <form class='form' action='profile_submit.php' method='POST' style='background-color: var(--b);border: none;width: 450px;'>
-                <!-- <label class='label' for='color' style='color: #414141;font-size: 15px;text-align:left'>Skift Chatfarve</label> -->
                 <input minlength='7' maxlength='7' pattern='^#.*$' class='input3' type='text' name='color' id='color' placeholder='Skift Chatfarve (#b392ac)' style='margin-bottom:20px'>
-
-                <!-- <label class='label' for='namechange' style='color: #414141;font-size: 15px;text-align:left;'>Skift Navn</label> -->
                 <input class='input3' type='text' name='namechange' autocomplete='off'  id='namechange' placeholder='Skift Fulde Navn' style='margin-bottom:20px'>
-
-                <!-- <label class='label' for='mailchange' style='color: #414141;font-size: 15px;text-align:left;'>Skift Email</label> -->
                 <input class='input3' type='text' name='mailchange' id='mailchange' placeholder='Skift Email' style='margin-bottom:20px'>
     
-                <div class='modal-spc' style='text-align:center;'>
-                    <button class='modal-btn startclr' type='submit' name='submit'>Opdater</button>
+                <div class='' style='text-align:center'>
+                    <button class='modal-btn startclr' type='submit' name='submit' style='width:100%;margin-top:3px'>Opdater</button>
                 </div>
-            </form>
-            
-            <!-- <div style='color:white;text-align:center'>Lys/mørk</div> -->";
+            </form>";
 
             if (isset($_GET['message'])) {
-                $message = $_GET['message'];
-                if($message == "Opdateret!"){
+                $message = htmlspecialchars($_GET['message'], ENT_QUOTES, 'UTF-8');
+                $allowed_messages = array('Opdateret!');
+                if (in_array($message, $allowed_messages)) {
                     echo '<div style="color: #a2c275;font-size:18px;margin-top:50px;text-align:center">' . $message . '</div>';
                 }
                 else {
@@ -57,7 +51,7 @@ session_start();
             }
 
             // echo "<div style='text-align:center;margin-top:55px;opacity:0.2;font-weight:300'><a class='pro' onclick='deleteAllCookies()'>Slet cookies<br></a></div>";
-            echo "<div style='text-align:center;margin-top:45px;opacity:0.2;font-weight:300'><a class='pro' href='db/includes/logout.inc.php'>Log ud</a></div>
+            echo "<div style='text-align:center;margin-top:30px;opacity:0.25;font-weight:300'><a class='hv' href='db/includes/logout.inc.php'>Log ud</a></div>
             
             </div>
             </div>

@@ -27,13 +27,13 @@ echo "
         <input class='input3' type='text' required name='bruger' id='bruger' placeholder='Brugernavn (inviterede bruger)' style='margin-bottom:20px'>
         
         <!-- <label class='label' for='room_name' style='color: #818181;font-size: 18px'>Chatnavn</label> -->
-        <input class='input3' autocomplete='off' type='text' required name='room_name' id='name' placeholder='Chatnavn' style='margin-bottom:5px'>
+        <input class='input3' autocomplete='off' type='text' required name='room_name' id='name' placeholder='Chatnavn' style='margin-bottom:20px'>
             <input type='hidden' name='user_from' value='{$_SESSION['useruid']}'>
 
             <!-- <small class=' style='font-weight: 300'>Glemt adgangskode?</small> -->
 
-            <div class='modal-spc' style='text-align:center;'>
-                <button class='modal-btn startclr' type='submit' name='submit'>Lav chat</button>
+            <div class='' style='text-align:center;'>
+                <button class='modal-btn startclr' type='submit' name='submit' style='width:100%;margin-top:3px;''>Lav chat</button>
             </div>
         </form>
     </div>";

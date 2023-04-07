@@ -34,8 +34,8 @@ session_start();
             
             <!-- <small class="" style="font-weight: 300">Glemt adgangskode?</small> -->
 
-            <div class="modal-spc" style="text-align:center;">
-                <button class="modal-btn startclr" type="submit" name="submit">Lav din nye konto</button>
+            <div class="" style="text-align:center">
+                <button class="modal-btn startclr" type="submit" name="submit" style="width:100%;margin-top:3px;">Lav din nye konto</button>
             </div>
             <!-- <p style='margin-top:50px;text-align:center;font-weight:300;font-size:17px;'>Har du allerede en konto? <a href="/login.php"> Log på</a></p> -->
         </form>

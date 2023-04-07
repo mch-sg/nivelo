@@ -38,7 +38,6 @@
                     echo "<a href='javascript:void(0);' onclick='myFunction()' id='p2' class='icon divb bi bi-chevron-down'> </a></li>";
 
                     echo "<div class='disc' id='navlink' style='z-index: 1000;'>";
-                    echo "<li><a class='pro nlink' style='vertical-align: middle;' href='/about.php'>Opdag</a></li>";
                     echo "<li><a class='pro nlink' style='vertical-align: middle;' href='/chat_room.php'>Chatrum</a></li>";
                     // echo "<li><a class='pro' style='vertical-align: middle;' href='/pro.php'>Gå Pro</a></li>";
                     echo "<li id='brd2' class='brd' style='vertical-align: middle;text-align: center;border-left: 1px solid var(--borderclr); height: 35px; margin: 0 0 0 20px;'></li>";
