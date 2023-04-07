@@ -21,7 +21,7 @@ try {
 include_once 'db/includes/header.php';
 
 // Fetch data til ændring af chatnavnene
-$ranid = htmlspecialchars(basename($_SERVER['REQUEST_URI']), ENT_QUOTES);
+$ranid = htmlspecialchars($_GET['room'], ENT_QUOTES);
 $stmt = $conn->prepare("SELECT id, name, user_from, user_to FROM chat_rooms WHERE uuid = :uuid");
 $stmt->bindParam(':uuid', $ranid);
 $stmt->execute();
@@ -34,7 +34,7 @@ $chat_room_name = $row3['name'];
 $host = $_SERVER['SERVER_NAME']  . $_SERVER['REQUEST_URI'];
 
 ?>
-<title><?php if($host !== 'devmch.online/chat_room.php' && isset($chat_room_name)) { echo htmlspecialchars($chat_room_name, ENT_QUOTES); } else { echo "Chatrum"; } ?> - Nivelo</title>
+<title><?php if($host != 'devmch.online/chat_room.php' && isset($chat_room_name)) { echo htmlspecialchars($chat_room_name, ENT_QUOTES); } else { echo "Chatrum"; } ?> - Nivelo</title>
 <script src="/scripts/script.js"></script>
 </head>
 <body>

@@ -5,7 +5,7 @@
 <title>Hjem - Nivelo</title>
 </head>
 
-<body style="background-image: url('/assets/img.png'); background-repeat: no-repeat;background-attachment: fixed; background-size: cover;"> 
+<body> 
 
 <?php
 

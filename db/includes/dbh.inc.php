@@ -12,12 +12,12 @@ if (!$conn) {
 }
 
 
-// try {
-//     $conn = new PDO("mysql:host=$serverName;dbname=$dBName", $dBUsername, $dBPassword);
-// } catch(PDOException $e) {
-//     // Handle any database connection errors
-//     die("Database connection failed: " . $e->getMessage());
-// }
+/* try {
+     $conn = new PDO("mysql:host=$serverName;dbname=$dBName", $dBUsername, $dBPassword);
+ } catch(PDOException $e) {
+     // Handle any database connection errors
+     die("Database connection failed: " . $e->getMessage());
+ }
 
 /*
 
@@ -26,9 +26,6 @@ $dBUsername = "root";
 $dBPassword = "";
 $dBName = "phptest";
 
-*/
-
-/*
 
 $serverName = "127.0.0.1:3306";
 $dBUsername = "u463909974_exam";
