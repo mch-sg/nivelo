@@ -19,7 +19,7 @@
         echo "<li><a class='pro nlink' style='vertical-align: middle;' href='invite.php'>Opret nyt rum</a></li>";
         echo "<li><a class='pro nlink' style='vertical-align: middle;' href='/chat_room.php'>Chatrum</a></li>";
         echo "<li id='brd2' class='brd' style='vertical-align: middle;text-align: center;border-left: 1px solid var(--borderclr); height: 35px; margin: 0 0 0 20px;'></li>";
-        echo "<li><a class='pro nlink' style='vertical-align: middle;' href='profile.php'>{$_SESSION["useruid"]}</a> </div>";
+        echo "<li><a class='pro nlink' style='vertical-align: middle;' href='profile.php'>Konto </a><a style='vertical-align: middle;pointer-events:none;opacity:0.25'>({$_SESSION["useruid"]})</a> ";
 
       }
       else {

@@ -131,9 +131,8 @@ if($host == 'devmch.online/chat_room.php' && $_SESSION['useruid']){
     echo "Vælg et rum for at begynde, eller <a class='creat' href='/invite.php'> lav et nyt.</a><br>";
 }
 
-// * Selv-lavet kode (ll. 124 - +-resten)
+// * Selv-lavet kode
 // *
-
 $stmt2 = $conn->prepare("SELECT * FROM messages WHERE inboxid = :inboxid");
 $stmt2->bindParam(':inboxid', $chat_room_id);
 $stmt2->execute();
@@ -185,7 +184,7 @@ if(count($rows) > 0 && $host != 'devmch.online/chat_room.php') {
 
             // Udskriver beskederne
             // echo "<a style='color: $userColor; font-weight:300;pointer-events: none;'>".$row["user_id"]. "</a> " ."<a style='opacity:0.15;pointer-events: none;font-weight:200'>" . $date->format('d/m H:i'). "</a> " . " " . $msg. "<br><br>"; 
-            echo "<div style='line-height: 1.5;'><a style='color: $userColor; font-weight:300;pointer-events: none;'>".$row["user_id"]. "</a> " ."<a style='opacity:0.15;pointer-events: none;font-weight:200'>" . $date->format('d/m H:i'). "</a> " . " <div style='display: inline-grid;margin-bottom: 15px;'>" . $msg. "</div><br></div>";
+            echo "<div class='chattext' style='line-height: 1.5;'><a style='color: $userColor; font-weight:300;pointer-events: none;'>".$row["user_id"]. "</a> " ."<a style='opacity:0.15;pointer-events: none;font-weight:200'>" . $date->format('d/m H:i'). "</a> " . " <div style='display: inline-grid;margin-bottom: 15px;'>" . $msg. "</div><br></div>";
         }
     } 
 } else if(count($rows) == 0 && $host != 'devmch.online/chat_room.php') {
@@ -203,10 +202,39 @@ echo "
 
 if($_SESSION['useruid'] == $user_from_id || $_SESSION['useruid'] == $user_to_id) {
     echo "<br><br>";
-    echo "<div class='fixed-input main-content'>"; // ! Lånt fixed-input css
+
+echo "<div class='fixed-input main-content'>"; // ! Lånt fixed-input css
     echo "<form class='form' method='POST' action='message_submit.php' style='background-color: var(--b);border: none;' >"; /* action='message_submit.php' */
     // echo "<input type='textarea' name='input' class='input5' autocomplete='off' placeholder='Skriv en besked...'/>";
-    echo "<textarea type='textarea' id='messageid' name='input' class='input5' style='display:inline-block;height: 4rem' autocomplete='off' placeholder='Skriv en besked...'></textarea>";
+    // echo "<input type='textarea' name='input' class='input5' autocomplete='off' placeholder='Skriv en besked...'/>";
+    
+
+    echo "<div class='fixed-input main-content' style='width:4%'>
+
+    <form action='upload.php' method='post' enctype='multipart/form-data' style='background:none;border:none;box-shadow:none;margin:0'>
+
+    <label for='files' class='startclr' style='
+        text-align:center;
+        color: #ffffff40;
+        border: 1px solid var(--borderclr);
+        background: var(--minclr);
+        display: block;
+    '>
+    
+    <i class='bi bi-upload' style='
+        /* text-align: center; */
+        font-size: 17px;
+        align-items: flex-end;
+    '></i>
+    
+    </label>
+    <input id='files' style='visibility:hidden;display: none;' type='file'>
+
+    </form></div>
+    ";
+
+
+    echo "<textarea type='textarea' id='messageid' name='input' class='input5' style='display:inline-block;height: 4rem;margin-left: 6%;' autocomplete='off' placeholder='Skriv en besked...'></textarea>";
     echo "  <input type='hidden' name='chat_room_id' value='$chat_room_id'>";
     echo "  <input type='hidden' name='chatToken' value='$ranid'>";
     echo "  <input type='hidden' name='chat_room_name' value='$chat_room_name'>";

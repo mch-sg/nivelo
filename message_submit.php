@@ -33,19 +33,25 @@ if (!$authorized) {
     die("You are not authorized to view this page.");
 }
 
-
 // $sql = "INSERT INTO messages (inboxid, user_id, message) VALUES ('$chat_room_id', '$name', '$input')";
 
-$stmt = $conn->prepare("INSERT INTO messages (inboxid, user_id, message) VALUES (:inboxid, :user_id, :message)");
-$stmt->bindParam(':inboxid', $chat_room_id);
-$stmt->bindParam(':user_id', $name);
-$stmt->bindParam(':message', $input);
+if(!empty($input)) {
+    $stmt = $conn->prepare("INSERT INTO messages (inboxid, user_id, message) VALUES (:inboxid, :user_id, :message)");
+    $stmt->bindParam(':inboxid', $chat_room_id);
+    $stmt->bindParam(':user_id', $name);
+    $stmt->bindParam(':message', $input);
 
-if ($stmt->execute()) {
-    // echo "New record created successfully";
-    header("location: chat_room.php?room=$chatToken");
+    if ($stmt->execute()) {
+        // echo "New record created successfully";
+        header("location: chat_room.php?room=$chatToken");
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+
 } else {
-    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    header("location: chat_room.php?room=$chatToken");
 }
+
+
 
 ?>

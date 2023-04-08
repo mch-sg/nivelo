@@ -330,3 +330,13 @@ i {
   position: fixed;
   width: 100%;
 }
+
+.chatlink {
+  color: var(--butClr);
+  /* text-decoration: underline; */
+  transition: 0.1s ease-in-out;
+}
+
+.chatlink:hover {
+  color: var(--butClrHvr);
+}
