@@ -230,6 +230,7 @@ else {
 
 </div>
 <div id="preloader" class="loader"></div>
+<script src="/scripts/chat.js"></script>
 
 <?php
     include_once 'db/includes/footer.php';
