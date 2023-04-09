@@ -82,8 +82,10 @@ function createUser($conn, $name, $email, $username, $pwd) {
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 
+    loginUser($conn, $username, $pwd);
+
     // header("location: ../../signup.php?error=none");
-    header("location: ../../index.php?error=none");
+    header("location: ../../chat_room.php");
     exit();
 }
 

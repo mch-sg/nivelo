@@ -64,7 +64,7 @@ session_start();
             echo "<p style='margin-top: 25px;'>Du har ikke adgang! Log på for at se din profil.</p>";
         
             echo "<div class='modal-spc' style='text-align:center;'>";
-            echo "<a href='/login.php'><button class='modal-btn'>Log på</button></a>";
+            echo "<a href='/login.php'><button class='modal-btn startclr'>Log på</button></a>";
             echo "</div>";
             echo "</div>";
         }
