@@ -11,13 +11,6 @@ textarea.addEventListener("keydown", function(event) {
     }
     if (event.key === "Enter" && event.shiftKey) {
       var scrollTop = this.scrollTop;
-
-      var start = this.selectionStart;
-      var end = this.selectionEnd;
-      var value = this.value;
-      this.value = value.substring(0, start) + "\n" + value.substring(end);
-      this.selectionStart = this.selectionEnd = start + 1;
-
       this.scrollTop = scrollTop;
     }
 });

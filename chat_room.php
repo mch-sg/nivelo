@@ -180,7 +180,7 @@ if(count($rows) > 0 && $host != 'devmch.online/chat_room.php') {
             $userColor = htmlspecialchars($row_color['usersColor']);
 
             // Udskriver beskederne
-            echo "<div style='line-height: 1.5;'><a style='color: $userColor; font-weight:300;pointer-events: none;'>".$row["user_id"]. "</a> " ."<a style='opacity:0.15;pointer-events: none;font-weight:200'>" . $date->format('d/m H:i'). "</a> " . " <div style='display: inline-grid;margin-bottom: 15px;'>" . $msg. "</div><br></div>";
+            echo "<div style='line-height: 1.5;'><a style='color: $userColor; font-weight:300;pointer-events: none;'>".$row["user_id"]. "</a> " ."<a style='opacity:0.15;pointer-events: none;font-weight:200'>" . $date->format('d/m'). "</a> " . " <div style='display: inline-grid;margin-bottom: 15px;'>" . $msg. "</div><br></div>";
         }
     } 
 } else if(count($rows) == 0 && $host != 'devmch.online/chat_room.php') {
@@ -209,7 +209,7 @@ if($_SESSION['useruid'] == $user_from_id || $_SESSION['useruid'] == $user_to_id)
     echo "    
     <button type='submit' id='msgbtn' value='Send' style='border:none;background:none'>
     
-    <i id='iconbtn' class='fa-regular fa-paper-plane-top fa-xl icon-placement' style='
+    <i id='iconbtn' class='fa-regular fa-paper-plane fa-xl icon-placement' style='
         font-weight:900;
         float: right;
         position: absolute;

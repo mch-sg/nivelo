@@ -284,22 +284,6 @@
 }
 
 @media only screen and (min-width: 2000px) {
-  /* ? 
-  ?
-  ? FOR REGULAR CSS
-  ?
-  ? */
-
-  .input {
-    width: 92%;
-  }
-
-  /* * 
-  *
-  * FOR SIDEBAR CSS
-  *
-  * */
-
   .pad {
     padding-right: 40%;
   }
@@ -310,12 +294,6 @@
 }
 
 @media only screen and (min-width: 3000px) {
-  /* * 
-  *
-  * FOR SIDEBAR CSS
-  *
-  * */
-
   .pad {
     padding-right: 55%;
   }
@@ -334,12 +312,6 @@
 }
 
 @media only screen and (max-height: 775px) {
-  /* * 
-  *
-  * FOR SIDEBAR CSS
-  *
-  * */
-
   .wid {
     margin-top: 35px;
   }
