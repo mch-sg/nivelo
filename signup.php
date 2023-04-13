@@ -11,7 +11,7 @@ session_start();
 ?>
 
 
-<section class='logScale'> <!-- style='margin-top: 75px;' -->
+<section class='logScale'>
     <div style="padding: 25px;font-size: 1.5rem;">
         <div class="title sysText" style="text-align: center;">Tilmeld</div>
     </div>
