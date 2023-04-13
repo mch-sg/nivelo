@@ -84,7 +84,6 @@ function createUser($conn, $name, $email, $username, $pwd) {
 
     loginUser($conn, $username, $pwd);
 
-    // header("location: ../../signup.php?error=none");
     header("location: ../../chat_room.php");
     exit();
 }
@@ -123,9 +122,6 @@ function loginUser($conn, $username, $pwd) {
         $_SESSION["userid"] = $uidExists["usersId"];
         $_SESSION["username"] = $uidExists["usersName"];
         $_SESSION["useruid"] = $uidExists["usersUid"];
-
-        $expire = time() + 60 * 60 * 24 * 365; // 30 days
-        setcookie("user", $uidExists["usersUid"], $expire, "/");
 
         header("location: ../../");
         exit();

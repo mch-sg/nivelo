@@ -13,8 +13,9 @@
   --w: #efefef;
   --sekclr: #fafafa;
 
-  --inputplaceholder: #ffffff2b;
+  --inputplaceholder: #646464;
   --modaltext: #7b7b7b; /* #acacac */
+  --dimclr2: #939393;
 
   --hclr: #fdfdfd;
   --spinclr: #86a2b8;
@@ -22,9 +23,9 @@
   --butClr: #86a2b8; /* PRIOR1 #58738a - PRIOR2 #728da3*/
   --butClrHvr: #668299; /* PRIOR1 #425a6f */
 
-  --minclr: #171717; /* PRIOR #101010 */
+  --minclr: #171717;
   --bclr: #0000006f;
-  --b: #121212; /* PRIOR #020202 - PRIOR2 #090909 - PRIOR3 #0d0d0d */
+  --b: #121212;
   --dim: #ffffff3c;
 }
 
@@ -50,15 +51,13 @@
 .loader::after {
   content: "";
   display: block;
-  /* 
-  W: 85px
-  H: 85px */
+
   width: 50px;
   height: 50px;
   border: 3px solid var(--loaderclr);
   border-top-color: var(--spinclr);
   border-radius: 50%;
-  /* background: #fff; */
+
   margin: 8px;
   animation: loading 0.5s infinite linear;
 }
@@ -77,22 +76,16 @@
   visibility: hidden;
 }
 
-/* ALL * */
+/* ALL */
 
 * {
   text-decoration: none;
 }
 
-hr {
-  border: 1px solid var(--hrc);
-  width: 100%;
-  margin-bottom: 75px;
-}
-
 /*  PRIMARY  */
 
 body {
-  transition: 0.15s ease-in-out;
+  transition: 0.1s ease-in-out-in-out;
   font-family: "Inter", sans-serif; /* Raleway */
 
   background-color: var(--b);
@@ -101,21 +94,13 @@ body {
   padding: 0;
 }
 
-.centerMain {
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  flex-direction: column;
-  display: flex;
-}
-
 .startclr {
   background-color: var(--butClr); /* #58738a - #919191 */
 
   font-family: "Inter", sans-serif;
   font-size: 18px;
   border: none;
-  border-radius: 7px;
+  border-radius: 10px;
   padding: 1.25rem 1.5rem;
   cursor: pointer;
   transition: 0.1s ease-in-out;
@@ -129,6 +114,10 @@ body {
   background-color: var(--butClrHvr); /* #425A6F - #6e6e6e*/
 }
 
+.startclr:active {
+  transform: scale(0.98);
+}
+
 h1 {
   color: var(--w);
   text-align: center;
@@ -139,14 +128,10 @@ h1 {
   padding-top: 5px;
 }
 
-h2,
 p {
-  /* text-align: center;
-  align-items: center; */
-  /* font-weight: 400; */
   font-size: 17px;
   color: var(--sekclr);
-  transition: 0.15s ease-in-out;
+  transition: 0.1s ease-in-out-in-out;
 }
 
 h1 a {
@@ -157,17 +142,17 @@ h1 a {
   font-size: 65px;
   color: var(--hclr);
   padding-top: 5px;
-  transition: 0.15s ease-in-out;
+  transition: 0.1s ease-in-out-in-out;
 }
+
 h1 a:hover {
   color: var(--buttonhover);
-  /* opacity: 0.5; */
 }
 
 p a {
   color: var(--add);
   cursor: pointer;
-  transition: 0.15s ease-in-out;
+  transition: 0.1s ease-in-out-in-out;
 }
 
 p a:hover {
@@ -178,15 +163,6 @@ p a:hover {
 a {
   color: var(--w);
   cursor: pointer;
-}
-
-small {
-  text-align: center;
-  margin-top: 3rem;
-  font-weight: 500;
-  font-size: 12px;
-  color: var(--smallclr);
-  transition: 0.15s ease-in-out;
 }
 
 main {
@@ -200,24 +176,14 @@ header {
 
 /*  CLASS ASSETS  */
 
-.container {
-  margin-top: 75px;
-  color: var(--bclr);
-  width: 500px;
-  max-width: 100%;
-  transition: 0.15s ease-in-out;
-}
-
 form {
   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05); /* rgba(127, 127, 127, 0.075) */
   margin: auto;
-  /* width: 600px;
-  max-width: 100%; */
+
   border: 1px solid var(--borderclr); /* 1px solid #0000000a */
   border-radius: 10px;
   background-color: var(--minclr);
-
-  transition: 0.15s ease-in-out;
+  transition: 0.1s ease-in-out-in-out;
 }
 
 .aalign {
@@ -231,50 +197,11 @@ form {
 /* home page */
 /* buttons */
 
-a button {
-  font-family: "Inter", sans-serif;
-  font-size: 17px;
-  border: none;
-  border-radius: 8px;
-  padding: 1rem 1.5rem;
-  background-color: var(--hclr);
-  cursor: pointer;
-  transition: 0.1s ease-in-out;
-  color: var(--b);
-
-  backface-visibility: hidden;
-}
-
-a button:hover {
-  /* background-color: var(--buttonhover); */
-  /* transform: scale(0.99); */
-}
-
 i {
   font-size: 20px;
   cursor: pointer;
-  transition: 0.15s ease-in-out;
 }
 
-.select {
-  cursor: default;
-  color: var(--w);
-}
-
-.hvr {
-  cursor: pointer;
-  /* color: var(--dim); */
-}
-
-.navbar li.divider {
-  vertical-align: middle;
-  text-align: center;
-  border-left: 1px solid var(--borderclr);
-  height: 35px;
-  margin: 0 0 0 20px;
-}
-
-/* animation class and keyframes */
 .overflow-hidden {
   overflow: hidden;
 }
@@ -339,4 +266,16 @@ i {
 
 .chatlink:hover {
   color: var(--butClrHvr);
+}
+
+.fa-regular {
+  transition: 0.1s ease-in-out;
+}
+
+.fa-regular:hover {
+  opacity: 0.65;
+}
+
+.icon-placement {
+  right: 1.5%;
 }

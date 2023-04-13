@@ -20,14 +20,10 @@ session_start();
     </div>
     <div class="modal-bodyi">
         <form class="form" action="db/includes/login.inc.php" method="post" style="background-color: var(--b);border: none;width: 450px;">
-        <!-- <label class="label" for="uid" style="color: #e7e7e7;font-size: 16px;font-weight: 200;">Brugernavn/email</label> -->
         <input class="input3" type="text" name="uid" placeholder="Brugernavn / Email" style="margin-bottom:20px">
-
-        <!-- <label class="label" for="pwd" style="color: #e7e7e7;font-size: 16px;font-weight: 200;">Adgangskode</label> -->
             <input class="input3"  type="password" name="pwd" placeholder="Adgangskode" style="margin-bottom:20px">
-
             <div class="" style="text-align:center;">
-                <button class="modal-btn startclr" type="submit" name="submit" style="width: 100%;">Log på</button>
+                <button class="startclr" type="submit" name="submit" style="width: 100%;">Log på</button>
             </div>
         </form>
         
@@ -60,4 +56,4 @@ session_start();
     include_once 'db/includes/footer.php';
 ?>
 
-<link rel="stylesheet" href="css/palette-selector.css">
+ 

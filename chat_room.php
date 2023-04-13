@@ -9,12 +9,9 @@ $dBUsername = "u463909974_exam";
 $dBPassword = "Ekg123321";
 $dBName = "u463909974_portal";
 
-// $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
-
 try {
     $conn = new PDO("mysql:host=$serverName;dbname=$dBName", $dBUsername, $dBPassword);
 } catch(PDOException $e) {
-    // Handle any database connection errors
     die("Database connection failed: " . $e->getMessage());
 }
 
@@ -61,10 +58,10 @@ if(isset($_SESSION['useruid'])){
     <div class='sidebar-content'>
 
         <div class='sidebar-header'>
-            <a style='pointer-events:none;opacity:0.35;font-size:13px;'>CHATRUM<br><br></a>
         </div>
-
-        <div class='aalign' style='text-align:left;font-weight:300;'>"; /* width: 80% */
+        
+        <div class='aalign' style='text-align:left;font-weight:300;top: 45%;'>
+        <a style='pointer-events:none;opacity:0.35;font-size:13px;font-weight:200;'>CHATRUM<br><br></a>";
 
         foreach($chat_rooms as $row) {
             $chat_room_id = $row['id'];
@@ -75,7 +72,7 @@ if(isset($_SESSION['useruid'])){
 
             if($uuid === $user_from_id || $uuid === $user_to_id) {
                 echo "
-                <a href='chat_room.php?room=" . htmlspecialchars($ranid, ENT_QUOTES) . "' class='sid' style='list-style-type: none;'>" . htmlspecialchars($chat_room_name, ENT_QUOTES) . "<br><br></a>
+                <a href='chat_room.php?room=" . htmlspecialchars($ranid, ENT_QUOTES) . "' class='sid' style='list-style-type: none;'><i class='bi bi-hash i-a' style='vertical-align: bottom;margin-right: 5px;font-size:19px'></i>" . htmlspecialchars($chat_room_name, ENT_QUOTES) . "</a><br><br>
                 ";
             }
         }
@@ -159,16 +156,15 @@ if (!$authorized  && $host != 'devmch.online/chat_room.php') {
 if(count($rows) > 0 && $host != 'devmch.online/chat_room.php') {
 
     // Verificere, at session bruger er den samme som en bruger fra chatten
-    // ellers skal den ikke vise beskederne, men i stedet skrive, at de ikke 
-    // har adgang til chatten.
+    // ellers skal den ikke vise beskederne, men i stedet skrive, at de ikke har adgang til chatten.
     if($uuid == $user_from_id || $uuid == $user_to_id){
         foreach($rows as $row) {
             // ! Lånt linjekode
             // !
             $date = new DateTime($row['timestamp']); // Tidspunkt  
-            $msg = htmlspecialchars($row["message"], ENT_QUOTES); // Splitter beskeder i multiline og undgår XSS // ! Lånt linjekode
+            $msg = htmlspecialchars($row["message"], ENT_QUOTES); // Splitter beskeder i multiline og undgår XSS 
 
-            // $msg = str_replace("\r\n", "\n", $msg); // convert Windows line breaks to Unix style
+            // Laver linebreak som i database, og laver links klikbare
             $msg = nl2br($msg);
             $msg = preg_replace('/(<\/?\w+(?:(?!<\/?\w+>).)*>|^)\K((?:https?:\/\/)[^\s<>"\']+(?:\([\w\d]+\)|[^<>"\'()\[\]\s]))/i', '$1<a class="chatlink" href="$2" target="_blank" rel="noopener noreferrer">$2</a>', $msg);
 
@@ -184,7 +180,6 @@ if(count($rows) > 0 && $host != 'devmch.online/chat_room.php') {
             $userColor = htmlspecialchars($row_color['usersColor']);
 
             // Udskriver beskederne
-            // echo "<a style='color: $userColor; font-weight:300;pointer-events: none;'>".$row["user_id"]. "</a> " ."<a style='opacity:0.15;pointer-events: none;font-weight:200'>" . $date->format('d/m H:i'). "</a> " . " " . $msg. "<br><br>"; 
             echo "<div style='line-height: 1.5;'><a style='color: $userColor; font-weight:300;pointer-events: none;'>".$row["user_id"]. "</a> " ."<a style='opacity:0.15;pointer-events: none;font-weight:200'>" . $date->format('d/m H:i'). "</a> " . " <div style='display: inline-grid;margin-bottom: 15px;'>" . $msg. "</div><br></div>";
         }
     } 
@@ -204,13 +199,27 @@ echo "
 if($_SESSION['useruid'] == $user_from_id || $_SESSION['useruid'] == $user_to_id) {
     echo "<br><br>";
     echo "<div class='fixed-input main-content'>"; // ! Lånt fixed-input css
-    echo "<form class='form' method='POST' action='message_submit.php' style='background-color: var(--b);border: none;' >"; /* action='message_submit.php' */
-    // echo "<input type='textarea' name='input' class='input5' autocomplete='off' placeholder='Skriv en besked...'/>";
+    echo "<form class='form' method='POST' action='message_submit.php' style='background-color: var(--b);border: none;' >"; 
     echo "<textarea type='textarea' id='messageid' name='input' class='input5' style='display:inline-block;height: 4rem' autocomplete='off' placeholder='Skriv en besked...'></textarea>";
     echo "  <input type='hidden' name='chat_room_id' value='$chat_room_id'>";
     echo "  <input type='hidden' name='chatToken' value='$ranid'>";
     echo "  <input type='hidden' name='chat_room_name' value='$chat_room_name'>";
-    echo "    <button class='modal-btn sendbtn startclr' type='submit' value='Send' style='margin-left: 1%;padding: 1.25rem 0rem;border: 1px solid var(--borderclr);'>Send</button>"; /* background: #ff462e; */
+
+
+    echo "    
+    <button type='submit' id='msgbtn' value='Send' style='border:none;background:none'>
+    
+    <i id='iconbtn' class='fa-regular fa-paper-plane-top fa-xl icon-placement' style='
+        font-weight:900;
+        float: right;
+        position: absolute;
+        background: none;
+        color:white;
+        align-items: flex-end;
+        top: 2rem;
+    '></i>
+    </button>"; 
+
     echo "</form>";
     echo "</div>";
 }
@@ -221,8 +230,8 @@ else {
     echo "<div class='aalign'>";
     echo "<p style='margin-top: 25px;'>Log på for at skrive og se beskeder!</p>";
     
-    echo "<div class='modal-spc' style='text-align:center;'>";
-    echo "<a href='/login.php'><button class='modal-btn startclr'>Log på</button></a>";
+    echo "<div style='text-align:center;margin-top: 2rem;'>";
+    echo "<a href='/login.php'><button class='startclr'>Log på</button></a>";
     echo "</div>";
 
     }
@@ -237,5 +246,3 @@ else {
 
     $conn->close();
 ?>
-
-<link rel="stylesheet" href="css/palette-selector.css">

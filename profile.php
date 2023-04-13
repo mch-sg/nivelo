@@ -33,7 +33,7 @@ session_start();
                 <input class='input3' type='text' name='mailchange' id='mailchange' placeholder='Skift Email' style='margin-bottom:20px'>
     
                 <div class='' style='text-align:center'>
-                    <button class='modal-btn startclr' type='submit' name='submit' style='width:100%;margin-top:3px'>Opdater</button>
+                    <button class='startclr' type='submit' name='submit' style='width:100%;margin-top:3px'>Opdater</button>
                 </div>
             </form>";
 
@@ -63,8 +63,8 @@ session_start();
             echo "<div class='aalign'>";
             echo "<p style='margin-top: 25px;'>Du har ikke adgang! Log på for at se din profil.</p>";
         
-            echo "<div class='modal-spc' style='text-align:center;'>";
-            echo "<a href='/login.php'><button class='modal-btn startclr'>Log på</button></a>";
+            echo "<div style='text-align:center;margin-top: 2rem;'>";
+            echo "<a href='/login.php'><button class='startclr'>Log på</button></a>";
             echo "</div>";
             echo "</div>";
         }
@@ -88,4 +88,4 @@ session_start();
     include_once 'db/includes/footer.php';
 ?>
 
-<link rel="stylesheet" href="css/palette-selector.css">
+ 

@@ -17,30 +17,15 @@ session_start();
     </div>
     <div class="modal-bodyi">
         <form class="form" action="db/includes/signup.inc.php" method="post" style="background-color: var(--b);border: none;width: 450px;">
-            <!-- <label class="label" for="name" style="color: #e7e7e7;font-size: 16px;font-weight: 200;">Fulde navn</label> -->
             <input class="input3" type="text" name="name" placeholder="Fulde Navn" style="margin-bottom:20px;">
-
-            <!-- <label class="label" for="email" style="color: #e7e7e7;font-size: 16px;font-weight: 200;">Email</label> -->
             <input class="input3"  type="text" name="email" placeholder="Email" style="margin-bottom:20px;">
-
-            <!-- <label class="label" for="uid" style="color: #e7e7e7;font-size: 16px;font-weight: 200;">Brugernavn</label> -->
             <input class="input3"  type="text" name="uid" placeholder="Brugernavn" style="margin-bottom:20px;">
-
-            <!-- <label class="label" for="pwd" style="color: #e7e7e7;font-size: 16px;font-weight: 200;">Adgangskode</label> -->
             <input class="input3"  type="password" name="pwd" placeholder="Adgangskode" style="margin-bottom:20px;">
-
-            <!-- <label class="label" for="pwdrepeat" style="color: #e7e7e7;font-size: 16px;font-weight: 200;">Gentag adgangskode</label> -->
-            <!-- <input class="input3"  type="password" name="pwdrepeat" placeholder="" style="margin-top:10px;margin-bottom:5px;"> -->
-            
-            <!-- <small class="" style="font-weight: 300">Glemt adgangskode?</small> -->
 
             <div class="" style="text-align:center">
                 <button class="modal-btn startclr" type="submit" name="submit" style="width:100%;margin-top:3px;">Lav din nye konto</button>
             </div>
-            <!-- <p style='margin-top:50px;text-align:center;font-weight:300;font-size:17px;'>Har du allerede en konto? <a href="/login.php"> Log på</a></p> -->
         </form>
-
-
     </div>
 
     <?php
@@ -72,18 +57,11 @@ session_start();
 </section>
 
 
-
 <div id="preloader" class="loader"></div>
-<!-- <footer class="footer" style="position:fixed;">
-
-<p class="copy">© Webportal by <a href="https://" target="_blank"> Magnus Hvidtfeldt</a></p>
-
-</footer> -->
-
 
 
 <?php
     include_once 'db/includes/footer.php';
 ?>
 
-<link rel="stylesheet" href="css/palette-selector.css">
+ 
