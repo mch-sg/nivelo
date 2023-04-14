@@ -33,17 +33,6 @@ function invalidEmail($email) {
     return $result;
 }
 
-function pwdMatch($pwd, $pwdRepeat) {
-    $result;
-    if ($pwd !== $pwdRepeat) {
-        $result = true;
-    }
-    else {
-        $result = false;
-    }
-    return $result;
-}
-
 function uidExists($conn, $username, $email) {
     $sql = "SELECT * FROM users WHERE usersUid = ? OR usersEmail = ?;";
     $stmt = mysqli_stmt_init($conn);
@@ -68,7 +57,7 @@ function uidExists($conn, $username, $email) {
     mysqli_stmt_close($stmt);
 }
 
-function createUser($conn, $name, $email, $username, $pwd) {
+function lavBruger($conn, $name, $email, $username, $pwd) {
     $sql = "INSERT INTO users (usersName, usersEmail, usersUid, usersPwd) VALUES (?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -82,7 +71,7 @@ function createUser($conn, $name, $email, $username, $pwd) {
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 
-    loginUser($conn, $username, $pwd);
+    loginBruger($conn, $username, $pwd);
 
     header("location: ../../chat_room.php");
     exit();
@@ -101,7 +90,7 @@ function emptyInputLogin($username, $pwd) {
 }
 
 
-function loginUser($conn, $username, $pwd) {
+function loginBruger($conn, $username, $pwd) {
     $uidExists = uidExists($conn, $username, $username);
 
     if ($uidExists === false) {

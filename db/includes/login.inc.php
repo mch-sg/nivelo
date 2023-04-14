@@ -19,7 +19,7 @@ if(isset($_POST['submit'])){
         exit();
     }
 
-    loginUser($conn, $username, $pwd);
+    loginBruger($conn, $username, $pwd);
 
 }
 else{
