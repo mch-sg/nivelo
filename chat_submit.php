@@ -30,7 +30,7 @@ if (isset($_SESSION['useruid'])) {
     $authorized = true;
 }
 if (!$authorized) {
-    die("You are not authorized to view this page.");
+    die("Du har ikke tilladelse til at se denne side.");
 }
 
 $stmt = $conn->prepare("INSERT INTO chat_rooms (name, user_from, user_to, uuid) VALUES (:name, :user_from, :user_to, :uuid)");

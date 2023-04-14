@@ -32,16 +32,16 @@ session_start();
     <?php
         if(isset($_GET["error"])) {
             if($_GET["error"] == "emptyinput") {
-                echo "<p style='margin-top:5px;text-align:center'>Udfyld alle felter!</p>";
+                echo "<p style='margin-top:25px;text-align:center'>Udfyld alle felter!</p>";
             }
             else if($_GET["error"] == "wronglogin") {
-                echo "<p style='margin-top:5px;text-align:center'>Forkert login!</p>";
+                echo "<p style='margin-top:25px;text-align:center'>Forkert login!</p>";
             }
         }
 
         if(isset($_GET["newpwd"])) {
             if($_GET["newpwd"] == "passwordupdated") {
-                echo "<p style='margin-top:5px;text-align:center'>Din adgangskode er blevet ændret!</p>";
+                echo "<p style='margin-top:25px;text-align:center'>Din adgangskode er blevet ændret!</p>";
             }
         }
     ?>

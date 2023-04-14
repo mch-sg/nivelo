@@ -31,25 +31,25 @@ session_start();
     <?php
         if(isset($_GET["error"])) {
             if($_GET["error"] == "emptyinput") {
-                echo "<p style='margin-top:5px;text-align:center'>Udfyld alle felter!</p>";
+                echo "<p style='margin-top:25px;text-align:center'>Udfyld alle felter!</p>";
             }
             else if($_GET["error"] == "invaliduid") {
-                echo "<p style='margin-top:5px;text-align:center'>Dette brugernavn er ikke tilgængeligt!</p>";
+                echo "<p style='margin-top:25px;text-align:center'>Dette brugernavn er ikke tilgængeligt!</p>";
             }
             else if($_GET["error"] == "invalidemail") {
-                echo "<p style='margin-top:5px;text-align:center'>Denne email er ikke tilgængelig!</p>";
+                echo "<p style='margin-top:25px;text-align:center'>Denne email er ikke tilgængelig!</p>";
             }
             else if($_GET["error"] == "passwordsdontmatch") {
-                echo "<p style='margin-top:5px;text-align:center'>Adgangskoderne er ikke det samme!</p>";
+                echo "<p style='margin-top:25px;text-align:center'>Adgangskoderne er ikke det samme!</p>";
             }
             else if($_GET["error"] == "stmtfailed") {
-                echo "<p style='margin-top:5px;text-align:center'>Noget gik galt, prøv igen!</p>";
+                echo "<p style='margin-top:25px;text-align:center'>Noget gik galt, prøv igen!</p>";
             }
             else if($_GET["error"] == "usernametaken") {
-                echo "<p style='margin-top:5px;text-align:center'>Brugernavnet er allerede i brug!</p>";
+                echo "<p style='margin-top:25px;text-align:center'>Brugernavnet er allerede i brug!</p>";
             }
             else if($_GET["error"] == "none") {
-                echo "<p style='margin-top:5px;text-align:center'>Du har nu tilmeldt dig!</p>";
+                echo "<p style='margin-top:25px;text-align:center'>Du har nu tilmeldt dig!</p>";
             }
         }
     ?>

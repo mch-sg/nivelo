@@ -20,7 +20,6 @@ try {
 $name = $_SESSION["useruid"];
 $input = html_entity_decode(htmlspecialchars($_POST['input'], ENT_QUOTES, 'UTF-8'), ENT_QUOTES, 'UTF-8');
 $chat_room_id = htmlspecialchars($_POST['chat_room_id'], ENT_QUOTES, 'UTF-8');
-$chat_room_name = htmlspecialchars($_POST['chat_room_name'], ENT_QUOTES, 'UTF-8');
 $chatToken = htmlspecialchars($_POST['chatToken'], ENT_QUOTES, 'UTF-8');
 
 // Autoriser bruger
@@ -30,10 +29,8 @@ if (isset($_SESSION['useruid'])) {
     $authorized = true;
 }
 if (!$authorized) {
-    die("You are not authorized to view this page.");
+    die("Du har ikke tilladelse til at se denne side.");
 }
-
-// $sql = "INSERT INTO messages (inboxid, user_id, message) VALUES ('$chat_room_id', '$name', '$input')";
 
 if(!empty($input)) {
     $stmt = $conn->prepare("INSERT INTO messages (inboxid, user_id, message) VALUES (:inboxid, :user_id, :message)");
@@ -42,12 +39,10 @@ if(!empty($input)) {
     $stmt->bindParam(':message', $input);
 
     if ($stmt->execute()) {
-        // echo "New record created successfully";
         header("location: chat_room.php?room=$chatToken");
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
-
 } else {
     header("location: chat_room.php?room=$chatToken");
 }

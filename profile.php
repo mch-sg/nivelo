@@ -47,11 +47,9 @@ session_start();
         echo '<div style="color: #C27575;font-size:18px;margin-top:50px;text-align:center">' . $message . '</div>';
 
         }
-        // #a2c275 - #818181
         }
 
-        // echo "<div style='text-align:center;margin-top:55px;opacity:0.2;font-weight:300'><a class='pro' onclick='deleteAllCookies()'>Slet cookies<br></a></div>";
-        echo "<div style='text-align:center;margin-top:30px;opacity:0.25;font-weight:300'><a class='hv' href='db/includes/logout.inc.php'>Log ud</a></div>
+        echo "<div style='text-align:center;margin-top:30px;opacity:0.25;font-weight:300;font-size:18px'><a class='hv' href='db/includes/logout.inc.php'>Log ud</a></div>
 
         </div>
         </div>

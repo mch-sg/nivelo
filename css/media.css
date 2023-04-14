@@ -181,13 +181,60 @@
   }
 }
 
-/* Styles for screens larger than 768px */
 @media (min-width: 942px) {
   /* ? 
   ?
   ? FOR REGULAR CSS
   ?
   ? */
+
+  .icon-placement {
+    right: 2.5%;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  p {
+    font-size: 15px;
+  }
+
+  /* * 
+  *
+  * FOR SIDEBAR CSS
+  *
+  * */
+
+  .wid {
+    width: 70%;
+  }
+
+  .sidebar {
+    display: block;
+  }
+
+  .main-content {
+    width: calc(100% - 24.5%); /* 350px - 200px - 450px */
+    float: left;
+  }
+
+  .fixed-input {
+    width: calc(100% - 24.5%); /* 350px - 200px - 450px */
+  }
+}
+
+/* Styles for screens larger than 768px */
+@media (min-width: 1200px) {
+  /* ? 
+  ?
+  ? FOR REGULAR CSS
+  ?
+  ? */
+
+  .icon-placement {
+    right: 1.5%;
+  }
 
   h1 {
     font-size: 40px;
