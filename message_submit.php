@@ -7,8 +7,6 @@ $dBUsername = "u463909974_exam";
 $dBPassword = "Ekg123321";
 $dBName = "u463909974_portal";
 
-// $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
-
 try {
     $conn = new PDO("mysql:host=$serverName;dbname=$dBName", $dBUsername, $dBPassword);
 } catch(PDOException $e) {

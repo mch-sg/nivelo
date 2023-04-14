@@ -1,6 +1,6 @@
 <?php
 
-// * Selv-lavet kode (ll. 1-37)
+// * Selv-lavet kode
 // *
 session_start();
 
@@ -128,7 +128,7 @@ if($host == 'devmch.online/chat_room.php' && $_SESSION['useruid']){
     echo "Vælg et rum for at begynde, eller <a class='creat' href='/invite.php'> lav et nyt.</a><br>";
 }
 
-// * Selv-lavet kode (ll. 124 - +-resten)
+// * Selv-lavet kode
 // *
 
 $stmt2 = $conn->prepare("SELECT * FROM messages WHERE inboxid = :inboxid");

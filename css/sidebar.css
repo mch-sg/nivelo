@@ -1,25 +1,19 @@
 .sidebar {
-  width: 20%; /* 350px */
-  /* 150px */
+  width: 20%;
   height: 100%;
-
-  /* background-color: #f1f1f1; */
   border-right: 1px solid var(--borderclr);
   color: white;
 
   font-family: "Inter", sans-serif;
   justify-content: flex-end;
   align-items: center;
-  /* padding: 50px 40px; */
   text-align: center;
-
   position: fixed;
   left: 0;
-  /* top: 0; */
 }
 
 .main-content {
-  margin-left: 22.25%; /* 150px - 90px - 400px - 22.5% */
+  margin-left: 22.25%;
 }
 
 .sidebar-header {
@@ -69,11 +63,7 @@
 
 .chatbox-container {
   background-color: var(--minclr);
-  /* height: 72vh; /* 75vh */
-  /* 400px - 75vh */
-  /* width: 100%; /* 100% */
   overflow-y: auto;
-  /* margin-bottom: 20px; */ /*    USEE !!     */
   border: 1px solid var(--borderclr);
   border-radius: 10px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
@@ -91,7 +81,6 @@
 
 .chatbox {
   padding: 20px;
-  /* font-size: 14px; */
 }
 
 .wid {
