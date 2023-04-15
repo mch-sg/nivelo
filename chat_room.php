@@ -41,8 +41,6 @@ include_once 'db/includes/nav.php';
 
 if(isset($_SESSION['useruid'])){
 
-    // ! Lånt kode
-    // !
     $uuid = $_SESSION['useruid'];
 
     $stmt = $conn->prepare("SELECT DISTINCT * FROM chat_rooms WHERE (user_from = :uf OR user_to = :ut)");
@@ -63,6 +61,8 @@ if(isset($_SESSION['useruid'])){
         <div class='aalign' style='text-align:left;font-weight:300;top: 45%;'>
         <a style='pointer-events:none;opacity:0.35;font-size:13px;font-weight:200;'>CHATRUM<br><br></a>";
 
+        // ! Lånt kode
+        // !
         foreach($chat_rooms as $row) {
             $chat_room_id = $row['id'];
             $chat_room_name = $row['name'];
@@ -131,11 +131,6 @@ if($host == 'devmch.online/chat_room.php' && $_SESSION['useruid']){
 // * Selv-lavet kode
 // *
 
-$stmt2 = $conn->prepare("SELECT * FROM messages WHERE inboxid = :inboxid");
-$stmt2->bindParam(':inboxid', $chat_room_id);
-$stmt2->execute();
-$rows = $stmt2->fetchAll(PDO::FETCH_ASSOC);
-
 // Autoriser bruger
 $authorized = false;
 $session_user_id = $_SESSION['useruid'];
@@ -151,6 +146,13 @@ if ($session_user_id == $user_from_id || $session_user_id == $user_to_id) {
 if (!$authorized  && $host != 'devmch.online/chat_room.php') {
     die("Du har ikke adgang til denne chat.");
 }
+
+$stmt2 = $conn->prepare("SELECT *   FROM messages 
+                                    WHERE inboxid = :inboxid");
+$stmt2->bindParam(':inboxid', $chat_room_id);
+$stmt2->execute();
+$rows = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+
 
 // Udprinter messages fra prev. LOAD
 if(count($rows) > 0 && $host != 'devmch.online/chat_room.php') {

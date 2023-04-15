@@ -10,7 +10,6 @@ $dBName = "u463909974_portal";
 try {
     $conn = new PDO("mysql:host=$serverName;dbname=$dBName", $dBUsername, $dBPassword);
 } catch(PDOException $e) {
-    // Handle any database connection errors
     die("Database connection failed: " . $e->getMessage());
 }
 

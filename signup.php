@@ -16,7 +16,7 @@ session_start();
         <div class="title sysText" style="text-align: center;">Tilmeld</div>
     </div>
     <div class="modal-bodyi">
-        <form class="form" action="db/includes/signup.inc.php" method="post" style="background-color: var(--b);border: none;width: 450px;">
+        <form class="form" action="/db/includes/signup.inc.php" method="post" style="background-color: var(--b);border: none;width: 450px;">
             <input class="input3" type="text" name="name" placeholder="Fulde Navn" style="margin-bottom:20px;">
             <input class="input3"  type="text" name="email" placeholder="Email" style="margin-bottom:20px;">
             <input class="input3"  type="text" name="uid" placeholder="Brugernavn" style="margin-bottom:20px;">

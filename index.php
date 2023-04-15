@@ -13,7 +13,7 @@
     include_once 'db/includes/nav.php';
 ?>
 
-<main class="overflow-hidden aalign marleft wid" style="transform: translate(-70%, -50%);"> <!-- transform: translate(-60%, -50%);width:60%; -->
+<main class="overflow-hidden aalign marleft wid" style="transform: translate(-70%, -50%);">
 
 <?php 
     if(isset($_SESSION['useruid'])){
