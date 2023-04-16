@@ -1,4 +1,5 @@
 <?php
+    // Start sessionen
     session_start();
   
     $_SESSION['user_id'] = $uid;

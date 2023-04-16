@@ -1,9 +1,11 @@
 <?php
+// Starter sessionen
 session_start();
 
 ?>
 
 <?php
+    // Inkluderer headeren
     include_once 'db/includes/header.php';
 ?>
 <title>Inviter - Nivelo</title>
@@ -11,10 +13,12 @@ session_start();
 <body>
 
 <?php
+    // Inkluderer navbar
     include_once 'db/includes/nav.php';
 ?>
 
 <?php
+// Hvis brugeren er logget ind, så vises denne tekst
 if(isset($_SESSION['useruid'])){
 echo "
 <section class='logScale'>
@@ -40,6 +44,7 @@ echo "
 ?>
     
     <?php
+        // Hvis der er en fejl i URL'en, så vises denne tekst
         if(isset($_GET["error"])) {
             if($_GET["error"] == "emptyinput") {
                 echo "<p>Fill in all fields!</p>";
@@ -53,7 +58,7 @@ echo "
 <?php echo "</section>";
 
 }
-
+// Hvis man ikke er logget ind, vises dette
 else {
     echo "<div class='aalign'>";
     echo "<p style='margin-top: 25px;text-align:center'>Du har ikke adgang! <br> Log på for at invitere en bruger til et chatrum.</p>";

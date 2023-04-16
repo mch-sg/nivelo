@@ -1,8 +1,10 @@
 <?php
+// Starter sessionen
 session_start();
 ?>
 
 <?php
+    // Inkluderer headeren
     include_once 'db/includes/header.php';
 ?>
 <title>Log på - Nivelo</title>
@@ -10,6 +12,7 @@ session_start();
 <body>
 
 <?php
+    // Inkluderer navbar
     include_once 'db/includes/nav.php';
 ?>
 
@@ -30,6 +33,7 @@ session_start();
     </div>
 
     <?php
+        // Hvis der er en fejl i URL'en, så vises denne tekst
         if(isset($_GET["error"])) {
             if($_GET["error"] == "emptyinput") {
                 echo "<p style='margin-top:25px;text-align:center'>Udfyld alle felter!</p>";
@@ -39,11 +43,6 @@ session_start();
             }
         }
 
-        if(isset($_GET["newpwd"])) {
-            if($_GET["newpwd"] == "passwordupdated") {
-                echo "<p style='margin-top:25px;text-align:center'>Din adgangskode er blevet ændret!</p>";
-            }
-        }
     ?>
 
 </section>

@@ -1,9 +1,11 @@
 <?php
+// Starter sessionen
 session_start();
 
 ?>
 
 <?php
+    // Inkluderer headeren
     include_once 'db/includes/header.php';
 ?>
 <title>Profil - Nivelo</title>
@@ -11,11 +13,13 @@ session_start();
 <body>
 
 <?php
+    // Inkluderer navbar
     include_once 'db/includes/nav.php';
 ?>
 
 
 <?php
+    // Hvis brugeren er logget ind, så vises denne side
     if(isset($_SESSION['useruid'])){
         echo "
         <section class='logScale'> <!-- style='margin-top: 75px;' -->
@@ -37,16 +41,16 @@ session_start();
         </div>
         </form>";
 
+        // Hvis der er en "message" i URL'en, så vises denne tekst
         if (isset($_GET['message'])) {
-        $message = htmlspecialchars($_GET['message'], ENT_QUOTES, 'UTF-8');
-        $allowed_messages = array('Opdateret!');
-        if (in_array($message, $allowed_messages)) {
-        echo '<div style="color: #a2c275;font-size:18px;margin-top:50px;text-align:center">' . $message . '</div>';
-        }
-        else {
-        echo '<div style="color: #C27575;font-size:18px;margin-top:50px;text-align:center">' . $message . '</div>';
-
-        }
+            $message = htmlspecialchars($_GET['message'], ENT_QUOTES, 'UTF-8');
+            $allowed_messages = array('Opdateret!');
+            if (in_array($message, $allowed_messages)) {
+                echo '<div style="color: #a2c275;font-size:18px;margin-top:50px;text-align:center">' . $message . '</div>';
+            }
+            else {
+                echo '<div style="color: #C27575;font-size:18px;margin-top:50px;text-align:center">' . $message . '</div>';
+            }
         }
 
         echo "<div style='text-align:center;margin-top:30px;opacity:0.25;font-weight:300;font-size:18px'><a class='hv' href='db/includes/logout.inc.php'>Log ud</a></div>
@@ -57,6 +61,7 @@ session_start();
         ";
 
     }
+    // Hvis brugeren ikke er logget ind, så vises denne side
     else{
     echo "<div class='aalign'>";
     echo "<p style='margin-top: 25px;'>Du har ikke adgang! Log på for at se din profil.</p>";

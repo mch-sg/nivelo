@@ -1,5 +1,6 @@
 <?php
 
+// Funktion til at lave tom tilmeldelse fejl
 function emptyInputSignup($name, $email, $username, $pwd) {
     $result;
     if (empty($name) || empty($email) || empty($username) || empty($pwd)) {
@@ -11,6 +12,7 @@ function emptyInputSignup($name, $email, $username, $pwd) {
     return $result;
 }
 
+// Funktion til at lave tom userid fejl
 function invalidUid($username) {
     $result;
     if (!preg_match("/^[a-zA-Z0-9.]*$/", $username)) {
@@ -22,6 +24,7 @@ function invalidUid($username) {
     return $result;
 }
 
+// Funktion til at lave tom email fejl
 function invalidEmail($email) {
     $result;
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -33,6 +36,7 @@ function invalidEmail($email) {
     return $result;
 }
 
+// Funktion til at tjekke om brugernavn/mail eksisterer
 function uidExists($conn, $username, $email) {
     $sql = "SELECT * FROM users WHERE usersUid = ? OR usersEmail = ?;";
     $stmt = mysqli_stmt_init($conn);
@@ -57,6 +61,7 @@ function uidExists($conn, $username, $email) {
     mysqli_stmt_close($stmt);
 }
 
+// Funktion til at oprette bruger
 function lavBruger($conn, $name, $email, $username, $pwd) {
     $sql = "INSERT INTO users (usersName, usersEmail, usersUid, usersPwd) VALUES (?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($conn);
@@ -77,7 +82,7 @@ function lavBruger($conn, $name, $email, $username, $pwd) {
     exit();
 }
 
-
+// Funktion til at lave tom login fejl
 function emptyInputLogin($username, $pwd) {
     $result;
     if (empty($username) || empty($pwd)) {
@@ -89,7 +94,7 @@ function emptyInputLogin($username, $pwd) {
     return $result;
 }
 
-
+// Funktion til at logge en bruger ind
 function loginBruger($conn, $username, $pwd) {
     $uidExists = uidExists($conn, $username, $username);
 

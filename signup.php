@@ -1,12 +1,15 @@
 <?php
+// Starter sessionen
 session_start();
-    include_once 'db/includes/header.php';
+// Inkluderer headeren
+include_once 'db/includes/header.php';
 ?>
 <title>Tilmeld - Nivelo</title>
 </head>
 <body>
 
 <?php
+    // Inkluderer navbar
     include_once 'db/includes/nav.php';
 ?>
 
@@ -29,6 +32,7 @@ session_start();
     </div>
 
     <?php
+        // Hvis der er en besked i URL'en, så vises dette
         if(isset($_GET["error"])) {
             if($_GET["error"] == "emptyinput") {
                 echo "<p style='margin-top:25px;text-align:center'>Udfyld alle felter!</p>";
