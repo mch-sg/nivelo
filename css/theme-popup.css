@@ -42,7 +42,7 @@
   background-color: var(--butClr);
 }
 .modal-btn-header:hover {
-  background: var(--butClrHvr);
+  opacity: 0.8;
 }
 .modal-btn-header:active {
   transform: scale(0.98);

@@ -3,23 +3,13 @@
 // Starter sessionen
 session_start();
 
-// Skaber forbindelse til databasen
-$serverName = "127.0.0.1:3306";
-$dBUsername = "u463909974_exam";
-$dBPassword = "Ekg123321";
-$dBName = "u463909974_portal";
-
-$conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
-
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+include_once 'db/includes/dbh.inc.php';
 
 // Definerer variabler fra $_POST "name" i profile.php
 $name = $_SESSION["useruid"];
-$color = mysqli_real_escape_string($conn, $_POST['color']);
-$emailchange = mysqli_real_escape_string($conn, $_POST['mailchange']);
-$namechange = mysqli_real_escape_string($conn, $_POST['namechange']);
+$color = $_POST['color'];
+$emailchange = $_POST['mailchange'];
+$namechange = $_POST['namechange'];
 
 
 // Brugeren skal være logget ind for at kunne ændre i sin profil
@@ -43,32 +33,31 @@ if (!empty($color)) {
         $color = "#" . $color;
     }
     
-    $sql = "UPDATE users SET usersColor = ? WHERE usersUid = ?";
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "ss", $color, $name);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
+    $stmt = $conn->prepare("UPDATE users SET usersColor = :uc WHERE usersUid = :ui"); 
+    $stmt->bindParam(':uc', $color);
+    $stmt->bindParam(':ui', $name);
+    $stmt->execute();
     $messagePROFILE = "Opdateret!";
 }
 
 // Hvis emailen ikke er tom, så indsættes værdierne i databasen med en SQL forespørgsel
 if (!empty($emailchange)) {
-    $sql = "UPDATE users SET usersEmail = ? WHERE usersUid = ?";
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "ss", $emailchange, $name);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
+    $stmt = $conn->prepare("UPDATE users SET usersEmail = :uc WHERE usersUid = :ui"); 
+    $stmt->bindParam(':uc', $emailchange);
+    $stmt->bindParam(':ui', $name);
+    $stmt->execute();
     $messagePROFILE = "Opdateret!";
+
 }
 
 // Hvis navnet ikke er tomt, så indsættes værdierne i databasen med en SQL forespørgsel
 if (!empty($namechange)) {
-    $sql = "UPDATE users SET usersName = ? WHERE usersUid = ?";
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, "ss", $namechange, $name);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
+    $stmt = $conn->prepare("UPDATE users SET usersName = :uc WHERE usersUid = :ui"); 
+    $stmt->bindParam(':uc', $namechange);
+    $stmt->bindParam(':ui', $name);
+    $stmt->execute();
     $messagePROFILE = "Opdateret!";
+
 }
 
 // Hvis der ikke er nogen værdi, så vises en fejlbesked

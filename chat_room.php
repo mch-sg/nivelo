@@ -5,18 +5,7 @@
 // Starter sessionen
 session_start();
 
-// Skaber forbindelse til databasen
-$serverName = "127.0.0.1:3306";
-$dBUsername = "u463909974_exam";
-$dBPassword = "Ekg123321";
-$dBName = "u463909974_portal";
-
-try {
-    $conn = new PDO("mysql:host=$serverName;dbname=$dBName", $dBUsername, $dBPassword);
-} catch(PDOException $e) {
-    // Hvis databasen fejler, så vises fejlbeskeden
-    die("Database connection failed: " . $e->getMessage());
-}
+include_once 'db/includes/dbh.inc.php';
 
 // Inkluderer "header" filen som indeholder <head> og de basiske ting til filerne
 include_once 'db/includes/header.php';
@@ -225,7 +214,7 @@ if($_SESSION['useruid'] == $user_from_id || $_SESSION['useruid'] == $user_to_id)
     echo "<br><br>";
     echo "<div class='fixed-input main-content'>"; // ! Lånt fixed-input css
     echo "<form class='form' method='POST' action='message_submit.php' style='background-color: var(--b);border: none;' >"; 
-    echo "<textarea type='textarea' id='messageid' name='input' class='input5' style='display:inline-block;height: 4rem' autocomplete='off' placeholder='Skriv en besked...'></textarea>";
+    echo "<textarea type='textarea' id='messageid' name='input' class='input5' style='display:inline-block;height: 4rem' autocomplete='off' placeholder='Skriv en besked # $chat_room_name'></textarea>";
     echo "  <input type='hidden' name='chat_room_id' value='$chat_room_id'>";
     echo "  <input type='hidden' name='chatToken' value='$ranid'>";
     echo "  <input type='hidden' name='chat_room_name' value='$chat_room_name'>";

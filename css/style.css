@@ -18,10 +18,10 @@
   --dimclr2: #939393;
 
   --hclr: #fdfdfd;
-  --spinclr: #86a2b8;
+  /* --spinclr: #86a2b8; */
 
-  --butClr: #86a2b8;
-  --butClrHvr: #668299;
+  /* --butClr: #86a2b8;
+  --butClrHvr: #668299; */
 
   --minclr: #171717;
   --bclr: #0000006f;
@@ -111,7 +111,7 @@ body {
   transform: translateZ(0);
 }
 .startclr:hover {
-  background-color: var(--butClrHvr); /* #425A6F - #6e6e6e*/
+  opacity: 0.8;
 }
 
 .startclr:active {
@@ -265,7 +265,7 @@ i {
 }
 
 .chatlink:hover {
-  color: var(--butClrHvr);
+  opacity: 0.8;
 }
 
 .fa-regular {

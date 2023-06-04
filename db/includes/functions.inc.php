@@ -38,19 +38,19 @@ function invalidEmail($email) {
 
 // Funktion til at tjekke om brugernavn/mail eksisterer
 function uidExists($conn, $username, $email) {
-    $sql = "SELECT * FROM users WHERE usersUid = ? OR usersEmail = ?;";
-    $stmt = mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
+    $stmt = $conn->prepare("SELECT * FROM users WHERE usersUid = :uuid OR usersEmail = :uemail");
+
+    if (!$stmt) {
         header("location: ../../signup.php?error=stmtfailed");
         exit();
     }
 
-    mysqli_stmt_bind_param($stmt, "ss", $username, $email);
-    mysqli_stmt_execute($stmt);
+    $stmt->bindParam(':uuid', $username);
+    $stmt->bindParam(':uemail', $email);
+    $stmt->execute();
+    $resultData = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    $resultData = mysqli_stmt_get_result($stmt);
-
-    if ($row = mysqli_fetch_assoc($resultData)) {
+    if ($row = $resultData) {
         return $row;
     }
     else {
@@ -58,23 +58,24 @@ function uidExists($conn, $username, $email) {
         return $result;
     }
 
-    mysqli_stmt_close($stmt);
 }
 
 // Funktion til at oprette bruger
 function lavBruger($conn, $name, $email, $username, $pwd) {
-    $sql = "INSERT INTO users (usersName, usersEmail, usersUid, usersPwd) VALUES (?, ?, ?, ?);";
-    $stmt = mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
+    $stmt = $conn->prepare("INSERT INTO users (usersName, usersEmail, usersUid, usersPwd) VALUES (:uN, :uE, :uU, :uP);");
+
+    if (!$stmt) {
         header("location: ../../signup.php?error=stmtfailed");
         exit();
     }
 
     $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
 
-    mysqli_stmt_bind_param($stmt, "ssss", $name, $email, $username, $hashedPwd);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_close($stmt);
+    $stmt->bindParam(':uN', $name);
+    $stmt->bindParam(':uE', $email);
+    $stmt->bindParam(':uU', $username);
+    $stmt->bindParam(':uP', $hashedPwd);
+    $stmt->execute();
 
     loginBruger($conn, $username, $pwd);
 

@@ -10,6 +10,7 @@
 <html lang="dk">
 <head>
 
+    <link rel="stylesheet" type="text/css" href="css/colorchange.php"> 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/pageload.css">
     <link rel="stylesheet" href="css/home.css">
